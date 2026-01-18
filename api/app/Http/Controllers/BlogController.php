@@ -65,18 +65,6 @@ class BlogController extends Controller
         // create slug
         $slug = Str::slug($request->title);
 
-        // $imagePath = public_path($blog->image);
-        // // delete image
-        // if(file_exists(image_path)) {
-        //     unlink($imagePath);
-        // } 
-
-        // if($request->hasFile('image')) {
-        //     // upload image to images folder
-        //     $imageName = time().'.'.$request->image->extension();
-        //     $request->image->move(public_path('images'), $imageName);
-        // }
-
         $blog->update([
             'title' => $validate['title'],
             'subtitle' => $validate['subtitle'],
@@ -107,5 +95,41 @@ class BlogController extends Controller
                 'data' => $blog
             ], 201);
         }
+    }
+
+    public function updateImage(Request $request, $id) {
+        $blog = Blog::findOrFail($id);
+
+        if(Storage::disk('public')->exists($blog->image)) {
+            Storage::disk('public')->delete($blog->image);
+        }
+
+        $validate = $request->validate([
+            'image' => 'image|mimes:jpeg,jpg,png|max:2000'
+        ]);
+
+        if($request->hasFile('image')) {
+            // upload image to images folder
+            $imageName = time().'.'.$request->image->extension();
+            $request->image->move(public_path('images'), $imageName);
+        }
+
+        $blog->update([
+            'image' => 'images/'.$imageName
+        ]);
+
+        return response()->json([
+                'success' => true,
+                'message' => 'Blog deleted successfully',
+                'data' => $blog->image
+        ], 201);
+    }
+
+    public function latest(){
+        $blogs = Blog::latest()->take(4)->get();
+
+        return response()->json([
+                'data' => $blogs
+        ], 201);
     }
 }
