@@ -1,0 +1,171 @@
+{
+    "services": [
+        {
+            "name": "Land Certification & Permitting",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "offers": [
+                "Complete land certificate processing ",
+                "Land verification (BPN checks)",
+                "Land splitting, merging, and boundary determination",
+                " IMB/PBG land compliance",
+                "Legal opinion & dispute support",
+                "Assistance with ATR/BPN processes"
+            ],
+            "icon": "/assets/service1-icon.png",
+            "image": "/assets/service1.jpg",
+            "summary": "Navigating land certification and permitting processes in Indonesia can be complex and time-consuming. At BHALIERA, we simplify this journey for you with our comprehensive land services.\n\nOur experienced team handles everything from initial document verification through the National Land Agency (BPN) to final certificate delivery, ensuring full compliance with Indonesian land regulations.\n\nWhether you need complete land certificate processing, land verification, boundary determination, or legal support, we provide end-to-end solutions tailored to your specific needs.",
+            "portfolios": [
+                {
+                    "title": "Residential Land Certification",
+                    "description": "Successfully processed 50+ residential land certificates in Jakarta Metropolitan area",
+                    "image": "/assets/service1-portfolio1.jpg"
+                },
+                {
+                    "title": "Commercial Property Permits",
+                    "description": "Facilitated land splitting and merging for commercial development projects",
+                    "image": "/assets/service1-portfolio2.jpg"
+                },
+                {
+                    "title": "Land Boundary Determination",
+                    "description": "Resolved boundary disputes and completed re-surveying for multiple properties",
+                    "image": "/assets/service1-portfolio3.jpg"
+                }
+            ],
+            "workflow": [
+                {
+                    "title": "Initial Consultation & Land Assessment",
+                    "content": [
+                        "Collect client requirements and land information",
+                        "Review land location, size, and intended use",
+                        "Identify required certifications and permits"
+                    ]
+                },
+                {
+                    "title": "Document Collection & Verification",
+                    "content": [
+                        "Gather ownership documents, land history, and supporting data",
+                        "Verify document validity and legal status",
+                        "Identify potential issues or missing requirements"
+                    ]
+                },
+                {
+                    "title": "Land Survey & Technical Review",
+                    "content": [
+                        "Coordinate land measurement and boundary verification",
+                        "Review spatial planning and zoning compliance",
+                        "Prepare technical maps and survey reports"
+                    ]
+                },
+                {
+                    "title": "Application Preparation & Submission",
+                    "content": [
+                        "Prepare certification and permit application files",
+                        "Submit applications to relevant authorities (e.g. land office, local government)",
+                        "Ensure compliance with applicable regulations"
+                    ]
+                }
+            ],
+            "testimonials": [
+                {
+                    "image": "/assets/anggota1.png",
+                    "name": "John Doe",
+                    "comment": "Lorem Ipsum Dolor Sit Amet!"
+                },
+                {
+                    "image": "/assets/anggota3.png",
+                    "name": "John Doe",
+                    "comment": "Lorem Ipsum Dolor Sit Amet!"
+                }
+            ]
+        },
+        {
+            "name": "Architectural & Construction Licensing",
+            "description": "aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ",
+            "offers": [
+                "Building Permit (PBG) compliance",
+                "SLF (Sertifikat Laik Fungsi) processing",
+                "Architectural design legalization",
+                "Licensing for construction and renovation",
+                "Zoning and spatial regulation consultation"
+            ],
+            "icon": "/assets/service2-icon.png",
+            "image": "/assets/service2.jpg",
+            "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.",
+            "portfolios": [
+                {
+                    "title": "Building Permit (PBG) for Commercial Complex",
+                    "image": "/assets/service2-portfolio1.jpg"
+                },
+                {
+                    "title": "Architectural Licensing & Design Compliance Review",
+                    "image": "/assets/service2-portfolio2.jpg"
+                },
+                {
+                    "title": "Construction Business License (SBU & IUJK) Assistance",
+                    "image": "/assets/service2-portfolio3.jpg"
+                }
+            ],
+            "workflow": [
+                {
+                    "title": "Initial Consultation & Land Assessment",
+                    "content": [
+                        "Collect client requirements and land information",
+                        "Review land location, size, and intended use",
+                        "Identify required certifications and permits"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "ISO 22000 Certification Assistance (Food Safety Management System)",
+            "description": "fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            "offers": [
+                "ISO 22000 gap analysis for food safety management",
+                "Preparation of documentation and FSMS procedures",
+                "Internal audit support",
+                "Implementation assistance for food safety controls",
+                "Coordination with accredited certification bodies"
+            ],
+            "icon": "/assets/service3-icon.png",
+            "image": "/assets/service3.jpg",
+            "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+            "portfolios": [
+                {
+                    "title": "Implementation of ISO 22000 Food Safety Management System",
+                    "image": "/assets/service3-portfolio1.jpg"
+                },
+                {
+                    "title": "HACCP Development for Food Processing Plant",
+                    "image": "/assets/service3-portfolio2.jpg"
+                },
+                {
+                    "title": "Food Safety Compliance for Restaurant & Catering Services",
+                    "image": "/assets/service3-portfolio3.jpg"
+                }
+            ]
+        },
+        {
+            "name": "Halal Certification Services",
+            "description": "ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu",
+            "offers": [
+                "End-to-end halal registration (BPJPH & MUI)",
+                "Product and process assessment",
+                "Audit preparation and compliance monitoring",
+                "Support for SMEs and large-scale businesses"
+            ],
+            "icon": "/assets/service4-icon.png",
+            "image": "/assets/service4.jpg",
+            "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+            "portfolios": [
+                {
+                    "title": "Halal Certification for Food Manufacturing Facility",
+                    "image": "/assets/service4-portfolio1.jpg"
+                },
+                {
+                    "title": "Halal Certification for Restaurant & Catering Business",
+                    "image": "/assets/service4-portfolio2.jpg"
+                }
+            ]
+        }
+    ]
+}
