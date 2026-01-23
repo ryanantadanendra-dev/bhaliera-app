@@ -29,6 +29,11 @@
                     "title": "Land Boundary Determination",
                     "description": "Resolved boundary disputes and completed re-surveying for multiple properties",
                     "image": "/assets/service1-portfolio3.jpg"
+                },
+                {
+                    "title": "Land Boundary Determination",
+                    "description": "Resolved boundary disputes and completed re-surveying for multiple properties",
+                    "image": "/assets/service1-portfolio3.jpg"
                 }
             ],
             "workflow": [
@@ -63,18 +68,34 @@
                         "Submit applications to relevant authorities (e.g. land office, local government)",
                         "Ensure compliance with applicable regulations"
                     ]
+                },
+                {
+                    "title": "Application Preparation & Submission",
+                    "content": [
+                        "Prepare certification and permit application files",
+                        "Submit applications to relevant authorities (e.g. land office, local government)",
+                        "Ensure compliance with applicable regulations"
+                    ]
                 }
             ],
             "testimonials": [
                 {
                     "image": "/assets/anggota1.png",
                     "name": "John Doe",
-                    "comment": "Lorem Ipsum Dolor Sit Amet!"
+                    "as": "Property Developer",
+                    "comment": "\"BHALIERA made the complex process of land certification incredibly simple. Their team handled everything professionally and kept me informed throughout. Highly recommended!\""
                 },
                 {
                     "image": "/assets/anggota3.png",
                     "name": "John Doe",
-                    "comment": "Lorem Ipsum Dolor Sit Amet!"
+                    "as": "Homeowner",
+                    "comment": "\"I was struggling with my land certificate for months. BHALIERA resolved all issues within weeks. Their expertise in BPN processes is outstanding.\""
+                },
+                {
+                    "image": "/assets/anggota3.png",
+                    "name": "Ahmad Rizki",
+                    "as": "Business Owner",
+                    "comment": "\"Professional, efficient, and transparent. They helped us with land splitting for our commercial project. The entire process was smooth and hassle-free.\""
                 }
             ]
         },

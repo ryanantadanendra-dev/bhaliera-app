@@ -2,22 +2,65 @@ import Image from 'next/image'
 
 const TestimoialsSection = ({ service }) => {
     return (
-        <div className="w-screen min-h-screen pt-12">
+        <div className="w-screen h-full py-32">
             <h1 className="text-center text-5xl font-bold">What Others Say?</h1>
             <div className="cards-wrapper w-screen flex justify-center flex-wrap gap-12 pt-20">
                 {service[0]?.testimonials?.map((data, index) => (
-                    <div className="card w-64 h-96 bg-white">
-                        <div className="relative w-44 h-44 mx-auto">
-                            <Image
-                                src={data.image}
-                                fill
-                                className="object-cover rounded-full"
-                            />
+                    <div className="card w-80 h-64 bg-white shadow-2xl py-5 px-5 flex flex-col justify-around">
+                        <div className="flex gap-2">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 576 512"
+                                className="w-4">
+                                <path
+                                    fill="#dfae74"
+                                    d="M309.5-18.9c-4.1-8-12.4-13.1-21.4-13.1s-17.3 5.1-21.4 13.1L193.1 125.3 33.2 150.7c-8.9 1.4-16.3 7.7-19.1 16.3s-.5 18 5.8 24.4l114.4 114.5-25.2 159.9c-1.4 8.9 2.3 17.9 9.6 23.2s16.9 6.1 25 2L288.1 417.6 432.4 491c8 4.1 17.7 3.3 25-2s11-14.2 9.6-23.2L441.7 305.9 556.1 191.4c6.4-6.4 8.6-15.8 5.8-24.4s-10.1-14.9-19.1-16.3L383 125.3 309.5-18.9z"
+                                />
+                            </svg>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 576 512"
+                                className="w-4">
+                                <path
+                                    fill="#dfae74"
+                                    d="M309.5-18.9c-4.1-8-12.4-13.1-21.4-13.1s-17.3 5.1-21.4 13.1L193.1 125.3 33.2 150.7c-8.9 1.4-16.3 7.7-19.1 16.3s-.5 18 5.8 24.4l114.4 114.5-25.2 159.9c-1.4 8.9 2.3 17.9 9.6 23.2s16.9 6.1 25 2L288.1 417.6 432.4 491c8 4.1 17.7 3.3 25-2s11-14.2 9.6-23.2L441.7 305.9 556.1 191.4c6.4-6.4 8.6-15.8 5.8-24.4s-10.1-14.9-19.1-16.3L383 125.3 309.5-18.9z"
+                                />
+                            </svg>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 576 512"
+                                className="w-4">
+                                <path
+                                    fill="#dfae74"
+                                    d="M309.5-18.9c-4.1-8-12.4-13.1-21.4-13.1s-17.3 5.1-21.4 13.1L193.1 125.3 33.2 150.7c-8.9 1.4-16.3 7.7-19.1 16.3s-.5 18 5.8 24.4l114.4 114.5-25.2 159.9c-1.4 8.9 2.3 17.9 9.6 23.2s16.9 6.1 25 2L288.1 417.6 432.4 491c8 4.1 17.7 3.3 25-2s11-14.2 9.6-23.2L441.7 305.9 556.1 191.4c6.4-6.4 8.6-15.8 5.8-24.4s-10.1-14.9-19.1-16.3L383 125.3 309.5-18.9z"
+                                />
+                            </svg>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 576 512"
+                                className="w-4">
+                                <path
+                                    fill="#dfae74"
+                                    d="M309.5-18.9c-4.1-8-12.4-13.1-21.4-13.1s-17.3 5.1-21.4 13.1L193.1 125.3 33.2 150.7c-8.9 1.4-16.3 7.7-19.1 16.3s-.5 18 5.8 24.4l114.4 114.5-25.2 159.9c-1.4 8.9 2.3 17.9 9.6 23.2s16.9 6.1 25 2L288.1 417.6 432.4 491c8 4.1 17.7 3.3 25-2s11-14.2 9.6-23.2L441.7 305.9 556.1 191.4c6.4-6.4 8.6-15.8 5.8-24.4s-10.1-14.9-19.1-16.3L383 125.3 309.5-18.9z"
+                                />
+                            </svg>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 576 512"
+                                className="w-4">
+                                <path
+                                    fill="#dfae74"
+                                    d="M309.5-18.9c-4.1-8-12.4-13.1-21.4-13.1s-17.3 5.1-21.4 13.1L193.1 125.3 33.2 150.7c-8.9 1.4-16.3 7.7-19.1 16.3s-.5 18 5.8 24.4l114.4 114.5-25.2 159.9c-1.4 8.9 2.3 17.9 9.6 23.2s16.9 6.1 25 2L288.1 417.6 432.4 491c8 4.1 17.7 3.3 25-2s11-14.2 9.6-23.2L441.7 305.9 556.1 191.4c6.4-6.4 8.6-15.8 5.8-24.4s-10.1-14.9-19.1-16.3L383 125.3 309.5-18.9z"
+                                />
+                            </svg>
                         </div>
-                        <h1 className="mt-12 font-bold text-2xl text-center">
-                            {data.name}
-                        </h1>
-                        <p className="text-center">{data.comment}</p>
+                        <p className="text-[0.9rem]">{data.comment}</p>
+                        <div>
+                            <h1 className=" font-bold text-2xl text-left">
+                                {data.name}
+                            </h1>
+                            <h2>{data.as}</h2>
+                        </div>
                     </div>
                 ))}
             </div>

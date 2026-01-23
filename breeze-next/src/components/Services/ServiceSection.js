@@ -7,7 +7,8 @@ const ServicesSection = () => {
     const displayData = services?.services?.map((service, index) => {
         if (index % 2 == 0) {
             return (
-                <div className="service-container flex flex-col md:flex-row w-screen h-full md:h-96 mt-10 items-center px-12 gap-12">
+                <div
+                    className={`service-container flex flex-col md:flex-row w-screen h-full md:h-96 items-center px-12 gap-12 ${index == 2 && 'bg-[#F5EAD8]'}`}>
                     <div className="image-wrapper relative w-80 h-56 lg:w-96 lg:h-64">
                         <Image
                             src={service.image}
@@ -39,7 +40,8 @@ const ServicesSection = () => {
             )
         } else {
             return (
-                <div className="service-container justify-end flex flex-col-reverse md:flex-row w-screen h-full mt-12 md:h-56 md:mt-10 items-center px-12 gap-12">
+                <div
+                    className={`service-container justify-end flex flex-col-reverse md:flex-row w-screen h-full md:h-56 items-center px-12 gap-12 ${index == 1 ? 'primary-bg' : index == 3 ? 'secondary-bg' : ''}`}>
                     <div className="lg:w-1/2 w-full">
                         <h1 className="text-3xl font-bold">{service.name}</h1>
                         <p>{service.description}</p>
