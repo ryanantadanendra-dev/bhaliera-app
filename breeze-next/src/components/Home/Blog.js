@@ -10,18 +10,18 @@ const Blog = () => {
         <>
             {latests?.blogs?.map((latest, index) => (
                 <div className="card-container w-[23rem] min-h-[33rem] primary-bg text-white flex flex-col justify-around rounded-xl">
-                    <div className="relative w-full h-40">
+                    <figure className="relative w-full h-40">
                         <Image
                             src={`http://localhost:8000/${latest.image}`}
                             fill
                             className="object-contain"
                         />
-                    </div>
+                    </figure>
                     <div>
-                        <h1 className="ms-4  text-3xl font-bold">
+                        <h3 className="ms-4  text-3xl font-bold">
                             {latest.title}
-                        </h1>
-                        <h2 className="ms-4 mt-4">{latest.subtitle}</h2>
+                        </h3>
+                        <p className="ms-4 mt-4">{latest.subtitle}</p>
                     </div>
                     <div>
                         <button className="px-5 py-3 bg-transparent border-2 border-[#dfae74] ms-4 mt- rounded-3xl">

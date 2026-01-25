@@ -13,9 +13,9 @@ const Navbar = () => {
 
     return (
         <nav className=" fixed top-0 flex justify-between items-center w-screen h-20 primary-bg px-6 z-50">
-            <div className="nav-wrapper relative w-32 h-full">
+            <figure className="nav-wrapper relative w-32 h-full">
                 <Image src={Logo} fill className="object-contain" />
-            </div>
+            </figure>
             {isMobile ? (
                 <svg
                     onClick={() => setIsOpen(!isOpen)}

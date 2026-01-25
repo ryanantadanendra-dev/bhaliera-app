@@ -30,22 +30,22 @@ const BrandValuesSection = () => {
                 className="w-16 mx-auto">
                 <path fill="#dfae74" d={`${data.path}`} />
             </svg>
-            <h1 className="font-bold text-white mt-4 ms-6">{data.title}</h1>
+            <h3 className="font-bold text-white mt-4 ms-6">{data.title}</h3>
             <p className="text-white ms-6 mt-7">{data.description}</p>
         </div>
     ))
 
     return (
-        <div className="w-screen min-h-screen md:min-h-full lg:min-h-screen bg-white pt-20 pb-12">
-            <h1 className="text-5xl text-center">Brand Values</h1>
-            <h2 className="text-center mt-5 px-8 md:px-32 lg:px-72">
+        <section className="w-screen min-h-screen md:min-h-full lg:min-h-screen bg-white pt-20 pb-12">
+            <h2 className="text-5xl text-center">Brand Values</h2>
+            <p className="text-center mt-5 px-8 md:px-32 lg:px-72">
                 The principles that guide our brand in creating meaningful
                 products, building trust, and delivering lasting value.
-            </h2>
+            </p>
             <div className="flex flex-col md:flex-row md:gap-4 items-center mt-5 md:mt-12 px-3 flex-wrap md:justify-center lg:gap-10">
                 {displayData}
             </div>
-        </div>
+        </section>
     )
 }
 export default BrandValuesSection

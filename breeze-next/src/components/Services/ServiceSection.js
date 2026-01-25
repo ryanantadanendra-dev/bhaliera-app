@@ -8,32 +8,39 @@ const ServicesSection = () => {
         if (index % 2 == 0) {
             return (
                 <div
-                    className={`service-container flex flex-col md:flex-row w-screen h-full md:h-96 items-center px-12 gap-12 ${index == 2 && 'bg-[#F5EAD8]'}`}>
-                    <div className="image-wrapper relative w-80 h-56 lg:w-96 lg:h-64">
+                    className={`service-container flex flex-col md:flex-row md:justify-center w-screen h-full md:h-[30rem] md:py-7 items-center px-12 gap-12 lg:py-8 ${index == 2 && 'bg-[#F5EAD8]'}`}>
+                    <figure className="image-wrapper relative w-80 h-56 lg:w-[28rem] lg:h-full">
                         <Image
                             src={service.image}
                             fill
                             className="object-cover"
                         />
-                    </div>
-                    <div className="lg:w-1/2">
-                        <h1 className="text-3xl font-bold">{service.name}</h1>
-                        <p>{service.description}</p>
-                        <Link href={`/services/${service.name}`}>
-                            <button className="px-5 py-3 bg-transparent border-2 border-[#dfae74] ms-8 lg:ms-0 mt-12 lg:mt-5 rounded-3xl">
-                                <div className="flex gap-3">
-                                    Learn More
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 384 512"
-                                        className="w-4 rotate-45">
-                                        <path
-                                            fill="#dfae74"
-                                            d="M214.6 17.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 117.3 160 488c0 17.7 14.3 32 32 32s32-14.3 32-32l0-370.7 105.4 105.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
-                                        />
-                                    </svg>
-                                </div>
-                            </button>
+                    </figure>
+                    <div className="w-1/2 h-full lg:h-96 flex flex-col justify-around">
+                        <h3 className="text-3xl font-bold">
+                            {index == 0 ? 'A.' : 'C.'} {service.name}
+                        </h3>
+                        <p>{service?.subname}</p>
+                        <ul className="list-disc">
+                            {service?.offers?.map((offer, index) => (
+                                <li key={index} className="mt-2 lg:ms-5">
+                                    {offer}
+                                </li>
+                            ))}
+                        </ul>
+                        <Link
+                            href={`/services/${service.name}`}
+                            className={`${index == 0 ? 'secondary-bg' : 'bg-[#082841]'} text-white w-[9rem] h-[3.5rem] flex items-center justify-center rounded-xl gap-2`}>
+                            <p className="text-center">Learn More</p>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 512 512"
+                                className="w-2">
+                                <path
+                                    fill="#FFFFFF"
+                                    d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-105.4 105.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+                                />
+                            </svg>
                         </Link>
                     </div>
                 </div>
@@ -41,43 +48,47 @@ const ServicesSection = () => {
         } else {
             return (
                 <div
-                    className={`service-container justify-end flex flex-col-reverse md:flex-row w-screen h-full md:h-56 items-center px-12 gap-12 ${index == 1 ? 'primary-bg' : index == 3 ? 'secondary-bg' : ''}`}>
-                    <div className="lg:w-1/2 w-full">
-                        <h1 className="text-3xl font-bold">{service.name}</h1>
-                        <p>{service.description}</p>
-                        <Link href={`/services/${service.name}`}>
-                            <button className="px-5 py-3 bg-transparent border-2 border-[#dfae74] ms-8 mt-12 lg:mt-5 rounded-3xl lg:ms-0">
-                                <div className="flex gap-3">
-                                    Learn More
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 384 512"
-                                        className="w-4 rotate-45">
-                                        <path
-                                            fill="#dfae74"
-                                            d="M214.6 17.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 117.3 160 488c0 17.7 14.3 32 32 32s32-14.3 32-32l0-370.7 105.4 105.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
-                                        />
-                                    </svg>
-                                </div>
-                            </button>
+                    className={`service-container justify-end flex flex-col-reverse md:justify-center md:flex-row w-screen h-full md:h-96 items-center px-12 gap-12 lg:py-8 text-white ${index == 1 ? 'primary-bg' : index == 3 ? 'secondary-bg' : ''}`}>
+                    <div className="lg:w-1/2 w-full h-full lg:h-96 flex flex-col justify-around">
+                        <h3 className="text-3xl font-bold">
+                            {index == 1 ? 'B. ' : 'D. '}
+                            {service.name}
+                        </h3>
+                        <ul className="list-disc">
+                            {service?.offers.map((offer, index) => (
+                                <li key={index} className="mt-2 lg:ms-5">
+                                    {offer}
+                                </li>
+                            ))}
+                        </ul>
+                        <Link
+                            href={`/services/${service.name}`}
+                            className={`${index == 1 ? 'secondary-bg' : 'bg-white'} text-black w-[9rem] h-[3.5rem] flex items-center justify-center rounded-xl gap-2`}>
+                            <p className="text-center">Learn More</p>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 512 512"
+                                className="w-2">
+                                <path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-105.4 105.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
+                            </svg>
                         </Link>
                     </div>
-                    <div className="image-wrapper relative lg:w-96 lg:h-64 w-80 h-56">
+                    <figure className="image-wrapper relative w-96 h-56 lg:w-[28rem] lg:h-full">
                         <Image
                             src={service.image}
                             fill
                             className="object-cover"
                         />
-                    </div>
+                    </figure>
                 </div>
             )
         }
     })
 
     return (
-        <div className="w-screen min-h-screen bg-white lg:pt-20 pt-20 pb-32">
+        <section className="w-screen min-h-screen bg-white lg:pt-20 pt-20 pb-32">
             {displayData}
-        </div>
+        </section>
     )
 }
 export default ServicesSection

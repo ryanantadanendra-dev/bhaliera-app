@@ -7,19 +7,21 @@ const Card = () => {
             {services?.services?.map((service, index) => (
                 <div className="card-container w-[23rem] primary-bg text-white flex flex-col justify-between pb-10">
                     <div>
-                        <div className="image-wrapper relative w-56 h-56 mx-auto">
+                        <figure className="image-wrapper relative w-56 h-56 mx-auto">
                             <Image
                                 src={service.icon}
                                 fill
                                 className="object-cover"
                             />
-                        </div>
-                        <h1 className="font-bold ms-8 text-lg">
+                        </figure>
+                        <h3 className="font-bold ms-8 text-lg">
                             {service.name}
-                        </h1>
+                        </h3>
                         <ul className="ms-8 mt-4">
                             {service.offers?.map((offer, index) => (
-                                <li className="list-disc mt-2 text-xs">
+                                <li
+                                    key={index}
+                                    className="list-disc mt-2 text-xs">
                                     {offer}
                                 </li>
                             ))}

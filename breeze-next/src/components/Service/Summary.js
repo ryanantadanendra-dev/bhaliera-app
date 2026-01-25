@@ -2,18 +2,20 @@ import Image from 'next/image'
 
 const Summary = ({ service }) => {
     return (
-        <div className="w-screen min-h-screen lg:pt-32 pt-32 md:min-h-full">
-            <h1 className="text-3xl md:text-4xl font-bold text-center md:px-56">
+        <section className="w-screen min-h-screen lg:pt-32 pt-32 md:min-h-full">
+            <h2 className="text-3xl md:text-4xl font-bold text-center md:px-56">
                 {`${service[0]?.name}`} Services
-            </h1>
+            </h2>
             <div className="content-wrapper flex flex-col-reverse items-center md:items-start lg:items-start md:mt-20 md:flex-row-reverse pt-12 md:px-5 md:pt-0 md:gap-10 lg:px-32 lg:gap-10">
                 <div className="md:w-1/2md:h-full lg:py-7 py-7 lg:px-5 px-5 primary-bg text-white">
-                    <h1 className="font-bold lg:text-2xl">
+                    <h2 className="font-bold lg:text-2xl">
                         Our Service Includes
-                    </h1>
+                    </h2>
                     <ul className="lg:mt-4 mt-4">
                         {service[0]?.offers.map(offer => (
-                            <li className="flex items-center gap-1 lg:mt-3 mt-2">
+                            <li
+                                key={index}
+                                className="flex items-center gap-1 lg:mt-3 mt-2">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 512 512"
@@ -34,7 +36,7 @@ const Summary = ({ service }) => {
                     </p>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
 

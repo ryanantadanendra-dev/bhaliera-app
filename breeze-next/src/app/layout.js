@@ -26,7 +26,9 @@ const RootLayout = ({ children }) => {
             className={`${playfairDisplay.variable} ${inter.variable}`}>
             <body
                 className={`antialiased ${playfairDisplay.variable} ${inter.variable}`}>
-                <Navbar />
+                <header>
+                    <Navbar />
+                </header>
                 {children}
             </body>
         </html>

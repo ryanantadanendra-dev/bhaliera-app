@@ -23,16 +23,16 @@ const WhySection = () => {
     ))
 
     return (
-        <div className="w-screen min-h-screen bg-primary flex flex-col md:flex-row py-5">
+        <section className="w-screen min-h-screen bg-primary flex flex-col md:flex-row py-5">
             <div className="w-full md:w-1/2 h-3/4 md:h-full lg:h-screen secondary-bg lg:rounded-xl">
-                <h1 className="text-5xl lg:text-6xl font-bold ms-4 mt-4">
+                <h2 className="text-5xl lg:text-6xl font-bold ms-4 mt-4">
                     Why us?
-                </h1>
-                <h2 className="ms-4 mt-4">
+                </h2>
+                <p className="ms-4 mt-4">
                     We combine regulatory expertise, professional integrity, and
                     a structured working approach to deliver reliable and
                     effective solutions.
-                </h2>
+                </p>
                 <div className="mt-32 lg:mt-3">{displayData}</div>
             </div>
             <div className="w-full md:w-1/2 h-1/4 md:h-full flex justify-center lg:ps-8">
@@ -45,7 +45,7 @@ const WhySection = () => {
                     referrerpolicy="strict-origin-when-cross-origin"
                     allowfullscreen></iframe>
             </div>
-        </div>
+        </section>
     )
 }
 

@@ -2,8 +2,8 @@ import Image from 'next/image'
 
 const TestimoialsSection = ({ service }) => {
     return (
-        <div className="w-screen h-full py-32">
-            <h1 className="text-center text-5xl font-bold">What Others Say?</h1>
+        <section className="w-screen h-full py-32">
+            <h2 className="text-center text-5xl font-bold">What Others Say?</h2>
             <div className="cards-wrapper w-screen flex justify-center flex-wrap gap-12 pt-20">
                 {service[0]?.testimonials?.map((data, index) => (
                     <div className="card w-80 h-64 bg-white shadow-2xl py-5 px-5 flex flex-col justify-around">
@@ -56,15 +56,15 @@ const TestimoialsSection = ({ service }) => {
                         </div>
                         <p className="text-[0.9rem]">{data.comment}</p>
                         <div>
-                            <h1 className=" font-bold text-2xl text-left">
+                            <h3 className=" font-bold text-2xl text-left">
                                 {data.name}
-                            </h1>
-                            <h2>{data.as}</h2>
+                            </h3>
+                            <p>{data.as}</p>
                         </div>
                     </div>
                 ))}
             </div>
-        </div>
+        </section>
     )
 }
 export default TestimoialsSection

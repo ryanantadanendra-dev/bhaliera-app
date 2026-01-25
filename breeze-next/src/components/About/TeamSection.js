@@ -36,27 +36,25 @@ const TeamSection = () => {
 
     const displayData = datas.map((data, index) => (
         <div className="card w-72 h-[30rem] mt-12">
-            <div className="image-wrapper w-full h-72 relative shadow-xl shadow-[#00000050] rounded-2xl">
+            <figure className="image-wrapper w-full h-72 relative shadow-xl shadow-[#00000050] rounded-2xl">
                 <Image
                     src={data.image}
                     fill
                     className="object-cover rounded-2xl"
                 />
-            </div>
-            <h1 className="text-center mt-8">{data.name}</h1>
-            <h2 className="text-[#00000050] text-center mt-2">
-                {data.jabatan}
-            </h2>
+            </figure>
+            <h3 className="text-center mt-8">{data.name}</h3>
+            <p className="text-[#00000050] text-center mt-2">{data.jabatan}</p>
         </div>
     ))
 
     return (
-        <div className="w-screen min-h-screen bg-white">
-            <h1 className="text-center text-6xl font-bold">Meet the team</h1>
+        <section className="w-screen min-h-screen bg-white">
+            <h2 className="text-center text-6xl font-bold">Meet the team</h2>
             <div className="flex flex-wrap justify-center mt-28 md:gap-12">
                 {displayData}
             </div>
-        </div>
+        </section>
     )
 }
 export default TeamSection
