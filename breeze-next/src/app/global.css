@@ -24,8 +24,26 @@ body {
     background-color: #0f2742;
 }
 
-h1 {
+h1,
+h2,
+h3 {
     font-family: var(--font-playfair-display);
+    font-weight: bold;
+}
+
+.content {
+    margin-left: auto;
+    margin-right: auto;
+    width: 59rem;
+    color: white;
+}
+.content h2 {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+}
+
+.content p {
+    margin-top: 1rem;
 }
 
 .portfolio-title {

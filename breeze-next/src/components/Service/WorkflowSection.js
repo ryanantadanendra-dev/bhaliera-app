@@ -5,7 +5,7 @@ const WorkflowSection = ({ service }) => {
     }))
 
     return (
-        <section className="w-screen h-full pt-32 relative overflow-clip">
+        <section className="w-screen h-full pt-32 relative  bg-white">
             <h2 className="text-5xl text-center">Workflow</h2>
 
             <div className="flex justify-center flex-wrap lg:px-12 gap-12 mt-12 text-white text-center">

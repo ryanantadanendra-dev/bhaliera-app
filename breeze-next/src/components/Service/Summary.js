@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 const Summary = ({ service }) => {
     return (
-        <section className="w-screen min-h-screen lg:pt-32 pt-32 md:min-h-full">
+        <section className="w-screen min-h-screen lg:pt-32 pt-32 md:min-h-full bg-white">
             <h2 className="text-3xl md:text-4xl font-bold text-center md:px-56">
                 {`${service[0]?.name}`} Services
             </h2>
@@ -12,7 +12,7 @@ const Summary = ({ service }) => {
                         Our Service Includes
                     </h2>
                     <ul className="lg:mt-4 mt-4">
-                        {service[0]?.offers.map(offer => (
+                        {service[0]?.offers.map((offer, index) => (
                             <li
                                 key={index}
                                 className="flex items-center gap-1 lg:mt-3 mt-2">

@@ -121,7 +121,7 @@ const AddForm = ({ isOpen, setIsOpen, isLoading, setisLoading }) => {
                         <button
                             type="submit"
                             className="px-12 py-4 primary-bg text-white rounded-xl">
-                            Add
+                            {isLoading ? 'Adding. . .' : 'Add'}
                         </button>
                     </li>
                 </ul>

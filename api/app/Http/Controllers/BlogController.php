@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Response;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Mews\Purifier\Facades\Purifier;
 
 class BlogController extends Controller
 {
@@ -38,10 +39,14 @@ class BlogController extends Controller
             $request->image->move(public_path('images'), $imageName);
         }
 
+        $cleanContent = Purifier::clean($request->content, [
+            'HTML.Allowed' => 'p,strong,em,ul,ol,li,a[href],br,h2,h3'
+        ]);
+
         $blog = Blog::create([
             'title' => $request->title,
             'subtitle' => $request->subtitle,
-            'content' => $request->content,
+            'content' => $cleanContent,
             'image' => 'images/'.$imageName,
             'slug' => $slug
         ]);

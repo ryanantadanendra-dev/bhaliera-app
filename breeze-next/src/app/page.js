@@ -12,7 +12,7 @@ export const metadata = {
 const Home = () => {
     return (
         <>
-            <div className="relative min-h-screen flex flex-col justify-center lg:justify-start sm:items-center lg:items-start sm:pt-0 bg-[#082841]">
+            <section className="relative min-h-screen flex flex-col justify-center lg:justify-start sm:items-center lg:items-start sm:pt-0 bg-[#082841]">
                 <h1 className=" text-white text-3xl lg:text-5xl lg:text-left ms-3 lg:ms-10 lg:pe-[30rem] lg:mt-40">
                     Your Trusted Partner in Legal, Licensing, and Certification
                     Solutions.
@@ -42,7 +42,7 @@ const Home = () => {
                 <div className="image-wrapper absolute bottom-0 right-0 w-72 h-44 lg:w-96 lg:h-56">
                     <Image src={Pattern} fill className="object-cover top-0" />
                 </div>
-            </div>
+            </section>
             <ServicesSection />
             <WhySection />
             <BlogsSection />

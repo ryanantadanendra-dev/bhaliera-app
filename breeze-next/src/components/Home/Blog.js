@@ -4,8 +4,6 @@ import Image from 'next/image'
 const Blog = () => {
     const { latests } = useBlog()
 
-    console.log(latests)
-
     return (
         <>
             {latests?.blogs?.map((latest, index) => (

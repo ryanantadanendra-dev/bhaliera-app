@@ -18,12 +18,10 @@ const Service = () => {
     return (
         <>
             <Hero title={displayTItle} />
-            <div className="w-screen min-h-screen bg-white">
-                <Summary service={service} />
-                <Portfolios service={service} />
-                <WorkflowSection service={service} />
-                <TestimoialsSection service={service} />
-            </div>
+            <Summary service={service} />
+            <Portfolios service={service} />
+            <WorkflowSection service={service} />
+            <TestimoialsSection service={service} />
         </>
     )
 }

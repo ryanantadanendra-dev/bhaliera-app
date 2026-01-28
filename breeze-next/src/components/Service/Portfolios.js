@@ -7,7 +7,7 @@ const Portfolios = ({ service }) => {
     const isMobile = useIsMobile()
 
     return (
-        <div className="w-screen h-full pt-20">
+        <div className="w-screen h-full pt-20 bg-white">
             <h2 className="text-center text-5xl">Our PortFolios</h2>
             <p className="text-center mt-3 text-2xl">
                 A Showcase of Our Professional Work

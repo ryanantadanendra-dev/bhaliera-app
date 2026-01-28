@@ -48,7 +48,7 @@ const ServicesSection = () => {
         } else {
             return (
                 <div
-                    className={`service-container justify-end flex flex-col-reverse md:justify-center md:flex-row w-screen h-full md:h-96 items-center px-12 gap-12 lg:py-8 text-white ${index == 1 ? 'primary-bg' : index == 3 ? 'secondary-bg' : ''}`}>
+                    className={`service-container justify-end flex flex-col-reverse md:justify-center md:flex-row w-screen h-full md:h-[30rem] items-center px-12 gap-12 lg:py-8 text-white ${index == 1 ? 'primary-bg' : index == 3 ? 'secondary-bg' : ''}`}>
                     <div className="lg:w-1/2 w-full h-full lg:h-96 flex flex-col justify-around">
                         <h3 className="text-3xl font-bold">
                             {index == 1 ? 'B. ' : 'D. '}

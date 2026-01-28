@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 const TestimoialsSection = ({ service }) => {
     return (
-        <section className="w-screen h-full py-32">
+        <section className="w-screen h-full py-32 bg-white">
             <h2 className="text-center text-5xl font-bold">What Others Say?</h2>
             <div className="cards-wrapper w-screen flex justify-center flex-wrap gap-12 pt-20">
                 {service[0]?.testimonials?.map((data, index) => (
