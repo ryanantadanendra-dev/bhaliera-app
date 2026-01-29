@@ -3,19 +3,20 @@
 import useEmblaCarousel from 'embla-carousel-react'
 import { useBlog } from '@/hooks/blog'
 import { useIsMobile } from '@/hooks/useIsMobile'
-import { useCallback, useEffect } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
 const Carousel = () => {
     const isMobile = useIsMobile(500)
+    const [selectedIndex, setSelectedIndex] = useState(0)
+    const { blogs } = useBlog()
 
     const [emblaRef, emblaApi] = useEmblaCarousel({
         loop: false,
         slidesToScroll: 1,
         align: 'center',
     })
-    const { blogs } = useBlog()
 
     const scrollTo = useCallback(
         i => emblaApi && emblaApi.scrollTo(i),
@@ -29,6 +30,23 @@ const Carousel = () => {
         }
         return res
     }
+
+    const onSelect = useCallback(() => {
+        if (!emblaApi) return
+        setSelectedIndex(emblaApi.selectedScrollSnap())
+    }, [emblaApi])
+
+    useEffect(() => {
+        if (!emblaApi) return
+        onSelect()
+        emblaApi.on('select', onSelect)
+        emblaApi.on('reInit', onSelect)
+
+        return () => {
+            emblaApi.off('select', onSelect)
+            emblaApi.off('reInit', onSelect)
+        }
+    }, [emblaApi, onSelect])
 
     const blogsData = blogs?.blogs ?? []
     const size = isMobile ? 2 : 4
@@ -93,13 +111,18 @@ const Carousel = () => {
 
             {!blogs && <p className="text-center">Loading. . .</p>}
 
-            {emblaApi && (
+            {slides.length > 0 && (
                 <div className="flex justify-center mt-5 gap-2">
-                    {emblaApi?.scrollSnapList().map((_, i) => (
+                    {slides.map((_, i) => (
                         <button
                             key={i}
                             onClick={() => scrollTo(i)}
-                            className="dot w-3 h-3 rounded-full bg-gray-500"
+                            className={`dot w-3 h-3 rounded-full transition-colors ${
+                                i === selectedIndex
+                                    ? 'bg-gray-800'
+                                    : 'bg-gray-300'
+                            }`}
+                            aria-label={`Go to slide ${i + 1}`}
                         />
                     ))}
                 </div>

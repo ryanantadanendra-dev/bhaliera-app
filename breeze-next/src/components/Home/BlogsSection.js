@@ -1,11 +1,10 @@
 'use client'
 
-import { useBlog } from '@/hooks/blog'
 import Blog from './Blog'
 
 const BlogsSection = () => {
     return (
-        <section className="w-screen min-h-screen bg-white pt-10">
+        <section className="w-screen min-h-screen bg-white py-10">
             <h2 className="text-3xl lg:text-5xl text-center">
                 News & Articles
             </h2>

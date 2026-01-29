@@ -32,7 +32,7 @@ const Summary = ({ service }) => {
                 </div>
                 <div className=" px-10 md:px-0 mt-5 md:mt-0 md:w-1/2 pb-8">
                     <p className="md:mt-0 lg:text-[1.2rem] whitespace-pre-line">
-                        {service[0].summary}
+                        {service[0]?.summary}
                     </p>
                 </div>
             </div>

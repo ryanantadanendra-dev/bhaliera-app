@@ -21,6 +21,37 @@ const AddForm = ({ isOpen, setIsOpen, isLoading, setisLoading }) => {
 
     const handleFileChange = e => {
         const file = e.target.files[0]
+        const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/jpg']
+
+        if (!ALLOWED_TYPES.includes(file.type)) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'File Must Be JPG, JPEG, Or PNG',
+            })
+
+            e.target.value = null
+
+            setFormData({
+                ...formData,
+                image: null,
+            })
+        }
+
+        if (file.size > 2 * 1024 * 1024) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'File Must Be Under 2mb',
+            })
+
+            e.target.value = null
+
+            setFormData({
+                ...formData,
+                image: null,
+            })
+        }
 
         if (file) {
             {

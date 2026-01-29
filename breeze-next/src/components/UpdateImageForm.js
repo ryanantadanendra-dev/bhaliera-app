@@ -73,7 +73,7 @@ const UpdateImageForm = ({
             <form onSubmit={handleUpdateImage}>
                 <ul>
                     <li className="flex justify-center mt-5 gap-10 px-5">
-                        <div className="relative w-full h-32">
+                        <div className="relative w-full h-56">
                             <Image
                                 src={
                                     preview ?? `http://localhost:8000/${image}`
@@ -84,7 +84,7 @@ const UpdateImageForm = ({
                             />
                         </div>
                     </li>
-                    <li className="flex justify-center gap-10 md:mt-32 mt-20">
+                    <li className="flex justify-center gap-10 md:mt-12 mt-20">
                         <label htmlFor="image" className="w-12">
                             Image
                         </label>

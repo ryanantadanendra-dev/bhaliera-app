@@ -12,13 +12,16 @@ const Modal = ({ children, open, setIsOpen }) => {
     return (
         <div
             onClick={() => setIsOpen(false)}
-            className={`overlay bg-[#00000050] w-screen h-screen ${open ? `opacity-100 pointer-events-auto` : `opacity-0 pointer-events-none`} absolute top-0 left-0 transition-all duration-200 ease-out overflow-x-hidden`}>
+            className={`overlay bg-[#00000050] w-screen h-screen ${open ? `opacity-100 pointer-events-auto` : `opacity-0 pointer-events-none`} fixed top-0 left-0 transition-all duration-200 ease-out overflow-x-hidden`}>
             <div className="modal-container w-screen h-screen flex justify-center items-center">
                 <div
                     onClick={e => e.stopPropagation()}
                     className="md:w-[40rem] md:h-[35rem] w-[23rem] h-[30rem] pb-12 bg-white rounded-xl">
                     <svg
-                        onClick={() => setIsOpen(false)}
+                        onClick={() => {
+                            setIsOpen(false)
+                            // setPreview(null)
+                        }}
                         className="w-6 ms-auto me-6 mt-6 cursor-pointer"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 448 512">

@@ -6,13 +6,13 @@ const Blog = () => {
 
     return (
         <>
-            {latests?.blogs?.map((latest, index) => (
+            {latests?.data?.map((latest, index) => (
                 <div className="card-container w-[23rem] min-h-[33rem] primary-bg text-white flex flex-col justify-around rounded-xl">
-                    <figure className="relative w-full h-40">
+                    <figure className="relative w-[20rem] h-56 mx-auto">
                         <Image
                             src={`http://localhost:8000/${latest.image}`}
                             fill
-                            className="object-contain"
+                            className="object-cover"
                         />
                     </figure>
                     <div>

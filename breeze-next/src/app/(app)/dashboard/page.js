@@ -99,17 +99,23 @@ const Dashboard = () => {
                             <tr
                                 key={blog.id}
                                 className={`${blog.id % 2 == 1 ? `bg-gray-200` : `bg-white`}`}>
-                                <td className="text-xs md:text-xl text-center">
+                                <td className="text-xs md:text-xl text-center w-20 text-center">
                                     {blog.id}
                                 </td>
                                 <td className="text-center text-xs md:text-lg">
-                                    {blog.title}
+                                    <p className="truncate w-44">
+                                        {blog.title}
+                                    </p>
                                 </td>
                                 <td className="text-xs md:text-xl">
-                                    {blog.subtitle}
+                                    <p className="truncate w-56 text-center">
+                                        {blog.subtitle}
+                                    </p>
                                 </td>
                                 <td className="whitespace-pre-line text-xs md:text-xl">
-                                    {blog.content}
+                                    <p className="truncate w-72">
+                                        {blog.content}
+                                    </p>
                                 </td>
                                 <td className="">
                                     <Image

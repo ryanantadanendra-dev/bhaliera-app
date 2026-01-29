@@ -9,6 +9,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Mews\Purifier\Facades\Purifier;
+use Illuminate\Validation\Rule;
 
 class BlogController extends Controller
 {
@@ -24,7 +25,11 @@ class BlogController extends Controller
 
     public function addBlog(Request $request) {
         $validate = $request->validate([
-            'title' => 'required|max:100',
+            'title' =>  [
+                'required',
+                'max:100',
+                Rule::unique('blogs', 'title'),
+            ],
             'subtitle' => 'required|max:255',
             'content' => 'required',
             'image' => 'image|mimes:jpg,png,jpeg|max:2000'
@@ -131,7 +136,7 @@ class BlogController extends Controller
     }
 
     public function latest(){
-        $blogs = Blog::latest()->take(4)->get();
+        $blogs = Blog::orderBy('created_at', 'desc')->limit(4)->get();
 
         return response()->json([
                 'data' => $blogs

@@ -4,7 +4,7 @@ import Pattern from '../../public/assets/pattern.png'
 const Hero = ({ title }) => {
     return (
         <header className="hero-container w-screen h-64 primary-bg pt-24 overflow-hidden relative">
-            <h1 className="text-white md:text-6xl text-4xl text-center">
+            <h1 className="text-white md:text-5xl lg:text-6xl text-4xl text-center">
                 {title}
             </h1>
             <div className="flex mt-4">

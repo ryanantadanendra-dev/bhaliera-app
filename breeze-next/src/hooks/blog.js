@@ -10,6 +10,7 @@ export const useBlog = () => {
     const { data: blogs, mutate } = useSWR('/api/blogs', async url => {
         try {
             const response = await axios.get('/api/blogs')
+
             return response.data
         } catch (error) {
             throw error
@@ -34,10 +35,6 @@ export const useBlog = () => {
             },
         })
 
-        if (response.data.success) {
-            mutate()
-        }
-
         return response.data.success
     }
 
@@ -57,6 +54,10 @@ export const useBlog = () => {
             },
         })
 
+        if (response.statusText == 'Created') {
+            mutate()
+        }
+
         return response.data.success
     }
 
@@ -64,6 +65,12 @@ export const useBlog = () => {
         await csrf()
 
         const response = await axios.delete(`/api/blog/delete/${id}`)
+
+        if (response.statusText == 'Created') {
+            mutate()
+        }
+
+        console.log(response.statusText == 'Created')
 
         return response.data.success
     }
@@ -91,7 +98,7 @@ export const useBlog = () => {
         return response.data.success
     }
 
-    const { data: latests } = useSWR('/api/blogs', async url => {
+    const { data: latests } = useSWR('/api/blogs/latest', async url => {
         try {
             const response = await axios.get('/api/blogs/latest')
             return response.data

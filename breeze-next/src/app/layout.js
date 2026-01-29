@@ -2,6 +2,8 @@ import { Nunito, Playfair_Display, Inter } from 'next/font/google'
 
 import '@/app/global.css'
 import Navbar from '@/components/Navbar'
+import Chatty from '@/components/Chatty'
+import Footer from '@/components/Footer'
 
 const nunitoFont = Nunito({
     subsets: ['latin'],
@@ -30,6 +32,8 @@ const RootLayout = ({ children }) => {
                     <Navbar />
                 </header>
                 {children}
+                <Chatty />
+                <Footer />
             </body>
         </html>
     )
