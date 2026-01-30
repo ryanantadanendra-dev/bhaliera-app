@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Mews\Purifier\Facades\Purifier;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Log;
 
 class BlogController extends Controller
 {
@@ -93,8 +94,12 @@ class BlogController extends Controller
         $blog = Blog::findOrFail($id);
 
         if($blog) {
-            // FIND IMAGE PATH AND DELETE IMAGE IN STORAGE
-            Storage::delete('public/images/'. $blog->image);
+            // file path
+            $file = public_path($blog->image);
+
+            if(file_exists($file)) {
+                unlink($file);
+            }
 
             // DELETE BLOG DATA
             $blog->delete();
@@ -110,23 +115,28 @@ class BlogController extends Controller
     public function updateImage(Request $request, $id) {
         $blog = Blog::findOrFail($id);
 
-        if(Storage::disk('public')->exists($blog->image)) {
-            Storage::disk('public')->delete($blog->image);
+        if($blog) {
+            // file path
+            $file = public_path($blog->image);
+
+            if(file_exists($file)) {
+                unlink($file);
+            }
+
+            $validate = $request->validate([
+                'image' => 'image|mimes:jpeg,jpg,png|max:2000'
+            ]);
+
+            if($request->hasFile('image')) {
+                // upload image to images folder
+                $imageName = time().'.'.$request->image->extension();
+                $request->image->move(public_path('images'), $imageName);
+            }
+
+            $blog->update([
+                'image' => 'images/'.$imageName
+            ]);
         }
-
-        $validate = $request->validate([
-            'image' => 'image|mimes:jpeg,jpg,png|max:2000'
-        ]);
-
-        if($request->hasFile('image')) {
-            // upload image to images folder
-            $imageName = time().'.'.$request->image->extension();
-            $request->image->move(public_path('images'), $imageName);
-        }
-
-        $blog->update([
-            'image' => 'images/'.$imageName
-        ]);
 
         return response()->json([
                 'success' => true,
