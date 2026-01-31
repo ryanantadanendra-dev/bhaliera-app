@@ -8,6 +8,10 @@ module.exports = {
                 inter: ['var(--font-inter)'],
             },
         },
+        screens: {
+            md: '501px',
+            lg: '1025px',
+        },
         extend: {
             borderRadius: {
                 lg: 'var(--radius)',

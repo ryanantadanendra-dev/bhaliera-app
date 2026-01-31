@@ -6,7 +6,9 @@ const TestimoialsSection = ({ service }) => {
             <h2 className="text-center text-5xl font-bold">What Others Say?</h2>
             <div className="cards-wrapper w-screen flex justify-center flex-wrap gap-12 pt-20">
                 {service[0]?.testimonials?.map((data, index) => (
-                    <div className="card w-80 h-64 bg-white shadow-2xl py-5 px-5 flex flex-col justify-around">
+                    <div
+                        key={index}
+                        className="card w-80 h-64 bg-white shadow-2xl py-5 px-5 flex flex-col justify-around">
                         <div className="flex gap-2">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"

@@ -8,20 +8,19 @@ const ServicesSection = () => {
         if (index % 2 == 0) {
             return (
                 <div
-                    className={`service-container flex flex-col md:flex-row md:justify-center w-screen h-full md:h-[30rem] md:py-7 items-center px-12 gap-12 lg:py-8 ${index == 2 && 'bg-[#F5EAD8]'}`}>
-                    <figure className="image-wrapper relative w-80 h-56 lg:w-[28rem] lg:h-full">
+                    key={index}
+                    className={`service-container flex flex-col md:flex-row md:justify-center w-screen h-full md:h-[34rem] py-7 items-center px-12 gap-12 lg:py-8 ${index == 2 && 'bg-[#F5EAD8]'}`}>
+                    <figure className="image-wrapper relative w-80 h-56 md:w-[25rem] md:h-[25rem] lg:w-[28rem] lg:h-full">
                         <Image
                             src={service.image}
                             fill
                             className="object-cover"
                         />
                     </figure>
-                    <div className="w-1/2 h-full lg:h-96 flex flex-col justify-around">
-                        <h3 className="text-3xl font-bold">
-                            {index == 0 ? 'A.' : 'C.'} {service.name}
-                        </h3>
+                    <div className="w-full md:w-1/2 h-full lg:h-96 flex flex-col justify-around">
+                        <h3 className="text-3xl font-bold">{service.name}</h3>
                         <p>{service?.subname}</p>
-                        <ul className="list-disc">
+                        <ul className="list-disc mt-8 md:mt-0">
                             {service?.offers?.map((offer, index) => (
                                 <li key={index} className="mt-2 lg:ms-5">
                                     {offer}
@@ -30,7 +29,7 @@ const ServicesSection = () => {
                         </ul>
                         <Link
                             href={`/services/${service.name}`}
-                            className={`${index == 0 ? 'secondary-bg' : 'bg-[#082841]'} text-white w-[9rem] h-[3.5rem] flex items-center justify-center rounded-xl gap-2`}>
+                            className={`${index == 0 ? 'secondary-bg' : 'bg-[#082841]'} text-white w-[9rem] h-[3.5rem] flex items-center justify-center rounded-xl gap-2 mt-8 md:mt-4`}>
                             <p className="text-center">Learn More</p>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -48,13 +47,11 @@ const ServicesSection = () => {
         } else {
             return (
                 <div
-                    className={`service-container justify-end flex flex-col-reverse md:justify-center md:flex-row w-screen h-full md:h-[30rem] items-center px-12 gap-12 lg:py-8 text-white ${index == 1 ? 'primary-bg' : index == 3 ? 'secondary-bg' : ''}`}>
-                    <div className="lg:w-1/2 w-full h-full lg:h-96 flex flex-col justify-around">
-                        <h3 className="text-3xl font-bold">
-                            {index == 1 ? 'B. ' : 'D. '}
-                            {service.name}
-                        </h3>
-                        <ul className="list-disc">
+                    key={index}
+                    className={`serve-container justify-end flex flex-col-reverse md:justify-center md:flex-row w-screen h-full md:h-[30rem] items-center px-12 gap-12 py-7 lg:py-8 text-white ${index == 1 ? 'primary-bg' : index == 3 ? 'secondary-bg' : ''}`}>
+                    <div className="md:w-1/2 w-full h-full lg:h-96 flex flex-col justify-around">
+                        <h3 className="text-3xl font-bold">{service.name}</h3>
+                        <ul className="list-disc mt-8 md:mt-0">
                             {service?.offers.map((offer, index) => (
                                 <li key={index} className="mt-2 lg:ms-5">
                                     {offer}
@@ -63,7 +60,7 @@ const ServicesSection = () => {
                         </ul>
                         <Link
                             href={`/services/${service.name}`}
-                            className={`${index == 1 ? 'secondary-bg' : 'bg-white'} text-black w-[9rem] h-[3.5rem] flex items-center justify-center rounded-xl gap-2`}>
+                            className={`${index == 1 ? 'secondary-bg' : 'bg-white'} text-black w-[9rem] h-[3.5rem] flex items-center justify-center rounded-xl gap-2 mt-8 md:mt-0`}>
                             <p className="text-center">Learn More</p>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +70,7 @@ const ServicesSection = () => {
                             </svg>
                         </Link>
                     </div>
-                    <figure className="image-wrapper relative w-96 h-56 lg:w-[28rem] lg:h-full">
+                    <figure className="image-wrapper relative w-80 h-56 md:w-[25rem] md:h-[25rem] lg:w-[28rem] lg:h-full">
                         <Image
                             src={service.image}
                             fill

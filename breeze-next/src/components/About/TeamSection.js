@@ -35,7 +35,7 @@ const TeamSection = () => {
     ]
 
     const displayData = datas.map((data, index) => (
-        <div className="card w-72 h-[30rem] mt-12">
+        <div className="card w-72 h-[30rem] mt-12" key={index}>
             <figure className="image-wrapper w-full h-72 relative shadow-xl shadow-[#00000050] rounded-2xl">
                 <Image
                     src={data.image}

@@ -66,11 +66,9 @@ export const useBlog = () => {
 
         const response = await axios.delete(`/api/blog/delete/${id}`)
 
-        if (response.statusText == 'Created') {
+        if (response.status === 201) {
             mutate()
         }
-
-        console.log(response.statusText == 'Created')
 
         return response.data.success
     }
@@ -94,6 +92,10 @@ export const useBlog = () => {
                 },
             },
         )
+
+        if (response.status === 201) {
+            mutate()
+        }
 
         return response.data.success
     }

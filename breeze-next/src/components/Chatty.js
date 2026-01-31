@@ -11,7 +11,7 @@ const Chatty = () => {
         return (
             <Link
                 href=""
-                className="icon w-16 h-16 bg-[#25D366] grid place-items-center rounded-full fixed bottom-3 right-3">
+                className="icon w-16 h-16 bg-[#25D366] grid place-items-center rounded-full fixed bottom-3 right-3 z-50">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 448 512"

@@ -86,7 +86,7 @@ const Footer = () => {
                     <h2>Quick Links</h2>
                     <ul>
                         {links.map((link, index) => (
-                            <li className="mt-5 text-[0.8rem]">
+                            <li key={index} className="mt-5 text-[0.8rem]">
                                 <Link href={`${link.link}`}>{link.text}</Link>
                             </li>
                         ))}
@@ -96,7 +96,7 @@ const Footer = () => {
                     <h2>Services</h2>
                     <ul>
                         {services.map((service, index) => (
-                            <li className="mt-5 text-[0.8rem]">
+                            <li key={index} className="mt-5 text-[0.8rem]">
                                 <Link href={`/services/${service}`}>
                                     {service}
                                 </Link>
@@ -147,7 +147,7 @@ const Footer = () => {
                     <h2>Our Location</h2>
                     <div className="w-[15rem] mt-3">
                         <MapPreview
-                            url="https://maps.app.goo.gl/jXQAS62Pa4XdSJB8A"
+                            url="https://maps.app.goo.gl/7TYMsAEfkP2ECWE19"
                             height="160px"
                             borderRadius="12px"
                             style={{

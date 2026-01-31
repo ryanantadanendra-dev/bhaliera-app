@@ -5,9 +5,11 @@ const Card = () => {
     return (
         <>
             {services?.services?.map((service, index) => (
-                <div className="card-container w-[23rem] primary-bg text-white flex flex-col justify-between pb-10">
+                <div
+                    key={index}
+                    className="card-container w-[20rem] md:w-[20rem] lg:w-[23rem] primary-bg text-white flex flex-col justify-between pb-10">
                     <div>
-                        <figure className="image-wrapper relative w-56 h-56 mx-auto">
+                        <figure className="image-wrapper relative w-40 h-40 lg:w-56 lg:h-56 md:w-48 md:h-48 mx-auto">
                             <Image
                                 src={service.icon}
                                 fill
@@ -17,7 +19,7 @@ const Card = () => {
                         <h3 className="font-bold ms-8 text-lg">
                             {service.name}
                         </h3>
-                        <ul className="ms-8 mt-4">
+                        <ul className="ms-8 mt-4 pe-4 md:pe-4">
                             {service.offers?.map((offer, index) => (
                                 <li
                                     key={index}

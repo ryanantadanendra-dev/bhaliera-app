@@ -95,11 +95,11 @@ const Dashboard = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {blogs?.blogs?.map(blog => (
+                        {blogs?.blogs?.map((blog, index) => (
                             <tr
-                                key={blog.id}
+                                key={index}
                                 className={`${blog.id % 2 == 1 ? `bg-gray-200` : `bg-white`}`}>
-                                <td className="text-xs md:text-xl text-center w-20 text-center">
+                                <td className="text-xs md:text-xl w-20 text-center">
                                     {blog.id}
                                 </td>
                                 <td className="text-center text-xs md:text-lg">
@@ -168,7 +168,7 @@ const Dashboard = () => {
                                         )}
                                         <svg
                                             onClick={() => {
-                                                handleDelete(blog.id)
+                                                handleDelete(blog?.id)
                                             }}
                                             xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 448 512"

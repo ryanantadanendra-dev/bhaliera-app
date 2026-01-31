@@ -23,7 +23,9 @@ const BrandValuesSection = () => {
     ]
 
     const displayData = datas.map((data, index) => (
-        <div className="card-container w-72 h-72 primary-bg rounded-xl mt-5 pt-5 md:pt-7 pe-3">
+        <div
+            key={index}
+            className="card-container w-72 h-72 primary-bg rounded-xl mt-5 pt-5 md:pt-7 pe-3">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 512 512"

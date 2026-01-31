@@ -8,7 +8,9 @@ const WhySection = () => {
     ]
 
     const displayData = datas.map((data, index) => (
-        <div className="flex justify-between items-center mt-3 gap-5 bg-[#FFFFFF30] lg:h-14 px-4">
+        <div
+            key={index}
+            className="flex justify-between items-center mt-3 gap-5 bg-[#FFFFFF30] lg:h-14 px-4">
             <p className="text-xs lg:text-xl">{data}</p>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -23,21 +25,23 @@ const WhySection = () => {
     ))
 
     return (
-        <section className="w-screen min-h-screen bg-primary flex flex-col md:flex-row py-5">
+        <section className="w-screen min-h-screen md:min-h-0 md:h-full lg:min-h-screen bg-primary flex flex-col md:flex-row py-5 md:gap-4 lg:gap-0">
             <div className="w-full md:w-1/2 h-3/4 md:h-full lg:h-screen secondary-bg lg:rounded-xl">
-                <h2 className="text-5xl lg:text-6xl font-bold ms-4 mt-4">
-                    Why us?
-                </h2>
-                <p className="ms-4 mt-4">
-                    We combine regulatory expertise, professional integrity, and
-                    a structured working approach to deliver reliable and
-                    effective solutions.
-                </p>
-                <div className="mt-32 lg:mt-3">{displayData}</div>
+                <div>
+                    <h2 className="text-5xl lg:text-6xl font-bold ms-4 mt-4">
+                        Why us?
+                    </h2>
+                    <p className="ms-4 mt-4">
+                        We combine regulatory expertise, professional integrity,
+                        and a structured working approach to deliver reliable
+                        and effective solutions.
+                    </p>
+                </div>
+                <div className="mt-32">{displayData}</div>
             </div>
-            <div className="w-full md:w-1/2 h-1/4 md:h-full flex justify-center lg:ps-8">
+            <div className="w-full md:w-1/2 h-1/4 md:h-[450px] flex justify-center lg:ps-8">
                 <iframe
-                    className={`w-[330px] h-[315px] lg:w-full lg:h-screen`}
+                    className={`w-full h-[315px] mt-8 md:mt-0 md:h-full md:w-full lg:h-screen`}
                     src="https://www.youtube.com/embed/_Sl8diqCAFw?si=cxPiUOI8CBYTR74h"
                     title="YouTube video player"
                     frameborder="0"
