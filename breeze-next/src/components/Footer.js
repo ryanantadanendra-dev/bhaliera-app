@@ -6,6 +6,16 @@ import Link from 'next/link'
 import { MapPreview } from './Map'
 import { useAuth } from '@/hooks/auth'
 
+function slugify(text) {
+    return text
+        .toLowerCase()
+        .trim()
+        .replace(/&/g, 'and') // ganti & jadi 'and'
+        .replace(/[^\w\s-]/g, '') // hapus karakter selain huruf
+        .replace(/\s+/g, '-') // spasi -> -
+        .replace(/-+/g, '-') // hapus --
+}
+
 const Footer = () => {
     const { user } = useAuth({ middleware: 'guest' })
 
@@ -97,7 +107,7 @@ const Footer = () => {
                     <ul>
                         {services.map((service, index) => (
                             <li key={index} className="mt-5 text-[0.8rem]">
-                                <Link href={`/services/${service}`}>
+                                <Link href={`/services/${slugify(service)}`}>
                                     {service}
                                 </Link>
                             </li>

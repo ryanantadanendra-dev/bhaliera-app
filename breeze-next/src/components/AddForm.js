@@ -82,6 +82,10 @@ const AddForm = ({ isOpen, setIsOpen, isLoading, setisLoading }) => {
                     content: '',
                     image: null,
                 })
+                setFormData({
+                    ...formData,
+                    image: null,
+                })
                 setIsOpen(false)
             }
         } catch (error) {

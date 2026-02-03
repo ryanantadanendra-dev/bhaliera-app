@@ -13,16 +13,16 @@ const HighlightBlogs = () => {
         return (
             <figure
                 key={index}
-                className={`${index == 0 ? 'lg:w-[37rem] md:w-[30rem] w-96 md:flex-1' : 'lg:w-[20rem] md:w-[15rem] w-96'} h-56 primary-bg relative`}>
+                className={`${index == 0 ? 'lg:w-[37rem] md:w-[30rem] w-96 md:flex-1' : 'lg:w-[20rem] md:w-[15rem] w-96'} h-56 primary-bg relative z-0`}>
                 <Image
                     src={`http://localhost:8000/${blog.image}`}
                     fill
-                    className="object-contain"
+                    className="object-cover"
                 />
-                <figcaption className=" text-white absolute z-50 bottom-0 px-5 bg-[#00000050] w-full h-16 flex justify-between items-center gap-2">
+                <figcaption className=" text-white absolute z-50 bottom-0 px-5 bg-[#00000090] w-full h-16 flex justify-between items-center gap-2">
                     <h3 className="text-2xl flex-1 truncate">{blog.title}</h3>
                     <Link
-                        href=""
+                        href={`blog/${blog?.slug}`}
                         className="shrink-0 text-blue-300 underline text-xs">
                         {' '}
                         Learn More

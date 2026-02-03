@@ -24,7 +24,7 @@ const Hamburger = ({ isOpen, setIsOpen }) => {
                     className="link-wrapper h-[44.8px] text-white hover:bg-white hover:text-black flex items-center gap-1"
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}>
-                    <Link href="" className="ms-3">
+                    <Link href="/services" className="ms-3">
                         Services
                     </Link>
                     <svg
@@ -42,26 +42,34 @@ const Hamburger = ({ isOpen, setIsOpen }) => {
                     <div className="extended-menu">
                         <div
                             className={`link-wrapper h-[44.8px] text-white hover:bg-white hover:text-black flex items-center`}>
-                            <Link href="" className="ms-3">
+                            <Link
+                                href="/services/land-certification-and-permitting"
+                                className="ms-3">
                                 Land Certification & Permitting
                             </Link>
                         </div>
                         <div
                             className={`link-wrapper h-[44.8px] text-white hover:bg-white hover:text-black flex items-center`}>
-                            <Link href="" className="ms-3">
+                            <Link
+                                href="/services/architectural-and-construction-licensing"
+                                className="ms-3">
                                 Architectural & Construction Licensing
                             </Link>
                         </div>
                         <div
                             className={`link-wrapper h-[44.8px] text-white hover:bg-white hover:text-black flex items-center`}>
-                            <Link href="" className="ms-3">
+                            <Link
+                                href="/services/iso-22000-certification-assistance"
+                                className="ms-3">
                                 ISO 22000 Certification Assistance (Food Safety
                                 Management System)
                             </Link>
                         </div>
                         <div
                             className={`link-wrapper h-[44.8px] text-white hover:bg-white hover:text-black flex items-center`}>
-                            <Link href="" className="ms-3">
+                            <Link
+                                href="/services/halal-certification-services"
+                                className="ms-3">
                                 Halal Certification Services
                             </Link>
                         </div>

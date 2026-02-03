@@ -13,7 +13,7 @@ const Portfolios = ({ service }) => {
                 A Showcase of Our Professional Work
             </p>
             <div className="flex justify-center flex-wrap lg:gap-2 mt-20 gap-12 md:gap-8 lg:px-10">
-                {service[0]?.portfolios.map((portfolio, index) => (
+                {service?.portfolios.map((portfolio, index) => (
                     <div
                         key={index}
                         className="flex flex-col md:w-72 md:h-[23rem] w-72 h-[23rem] pb-4 px-5 bg-white shadow-xl">

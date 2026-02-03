@@ -7,7 +7,11 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
     const router = useRouter()
     const params = useParams()
 
-    const { data: user, error, mutate } = useSWR('/api/user', () =>
+    const {
+        data: user,
+        error,
+        mutate,
+    } = useSWR('/api/user', () =>
         axios
             .get('/api/user')
             .then(res => res.data)
@@ -35,11 +39,12 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
             })
     }
 
-    const login = async ({ setErrors, setStatus, ...props }) => {
+    const login = async ({ setErrors, setStatus, setIsLoading, ...props }) => {
         await csrf()
 
         setErrors([])
         setStatus(null)
+        setIsLoading(true)
 
         axios
             .post('/login', props)
@@ -48,6 +53,9 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
                 if (error.response.status !== 422) throw error
 
                 setErrors(error.response.data.errors)
+            })
+            .finally(() => {
+                setIsLoading(false)
             })
     }
 
@@ -103,9 +111,9 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
         if (middleware === 'guest' && redirectIfAuthenticated && user)
             router.push(redirectIfAuthenticated)
 
-        if (middleware === 'auth' && (user && !user.email_verified_at))
+        if (middleware === 'auth' && user && !user.email_verified_at)
             router.push('/verify-email')
-        
+
         if (
             window.location.pathname === '/verify-email' &&
             user?.email_verified_at

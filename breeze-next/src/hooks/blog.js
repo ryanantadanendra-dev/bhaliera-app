@@ -1,10 +1,9 @@
+'use client'
+
 import useSWR from 'swr'
 import axios from '@/lib/axios'
-import { useEffect } from 'react'
-import { useParams } from 'next/navigation'
 
 export const useBlog = () => {
-    const params = useParams()
     const csrf = () => axios.get('/sanctum/csrf-cookie')
 
     const { data: blogs, mutate } = useSWR('/api/blogs', async url => {
@@ -34,6 +33,10 @@ export const useBlog = () => {
                 'Content-Type': 'multipart/form-data',
             },
         })
+
+        if (response.status === 201) {
+            mutate()
+        }
 
         return response.data.success
     }

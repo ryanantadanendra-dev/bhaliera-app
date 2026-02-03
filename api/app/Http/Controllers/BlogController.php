@@ -33,7 +33,7 @@ class BlogController extends Controller
             ],
             'subtitle' => 'required|max:255',
             'content' => 'required',
-            'image' => 'image|mimes:jpg,png,jpeg|max:2000'
+            'image' => 'image|mimes:jpg,png,jpeg|max:2048'
         ]);
 
         // create slug

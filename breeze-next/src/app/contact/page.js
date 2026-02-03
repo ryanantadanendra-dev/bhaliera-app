@@ -3,6 +3,51 @@ import Image from 'next/image'
 import Img from '../../../public/assets/contact.png'
 import SendEmailForm from '@/components/SendEmailForm'
 
+export const metadata = {
+    title: 'Contact Us | Business Certification & Compliance Consultant in Bali | Bhaliera.com',
+    description:
+        'Get in touch with our business certification and compliance consultants in Bali, Indonesia. We assist with land permits, construction licensing, ISO 22000, and halal certification.',
+    keywords: [
+        'contact business consultant Bali',
+        'legal consulting Indonesia',
+        'business compliance services Bali',
+        'certification services Indonesia',
+        'business licensing consultant Bali',
+        'halal certification consultant Indonesia',
+        'ISO certification consultant Bali',
+        'land permit consultant Bali',
+        'construction permit consultant Indonesia',
+        'corporate compliance Indonesia',
+    ],
+    openGraph: {
+        title: 'Contact Our Business Compliance Consultants in Bali',
+        description:
+            'Speak with our experts for land permits, construction licensing, ISO 22000, and halal certification in Indonesia.',
+        url: 'https://bhaliera.com/contact',
+        siteName: 'Bhaliera',
+        locale: 'en_ID',
+        type: 'website',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Contact Business Compliance Consultants in Bali',
+        description:
+            'We help businesses in Indonesia with permits, ISO, and halal certification.',
+    },
+    robots: {
+        index: true,
+        follow: true,
+        nocache: false,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-snippet': -1,
+            'max-image-preview': 'large',
+            'max-video-preview': -1,
+        },
+    },
+}
+
 const Contact = () => {
     return (
         <>

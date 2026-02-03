@@ -25,6 +25,7 @@ const Login = () => {
     const [shouldRemember, setShouldRemember] = useState(false)
     const [errors, setErrors] = useState([])
     const [status, setStatus] = useState(null)
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
         if (router.reset?.length > 0 && errors.length === 0) {
@@ -43,12 +44,13 @@ const Login = () => {
             remember: shouldRemember,
             setErrors,
             setStatus,
+            setIsLoading,
         })
     }
 
     return (
         <>
-            <div className="image-wrapper relative lg:w-40 lg:h-24 md:w-36 md:h-[5.3rem] w-28 h-[4.15rem] mx-auto">
+            <div className="image-wrapper relative lg:w-[10.1rem] lg:h-24 md:w-36 md:h-[5.3rem] w-28 h-[4.15rem] mx-auto">
                 <Image src={Logo2} fill className="object-cover" />
             </div>
             <AuthSessionStatus className="mb-4" status={status} />
@@ -111,7 +113,9 @@ const Login = () => {
                 </div> */}
 
                 <div className="flex items-center justify-center mt-8">
-                    <Button className="px-7 py-4 ">Login</Button>
+                    <Button className="px-7 py-4 ">
+                        {isLoading ? 'Loging In. . .' : 'Login'}
+                    </Button>
                 </div>
             </form>
         </>

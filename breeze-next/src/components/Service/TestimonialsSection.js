@@ -5,7 +5,7 @@ const TestimoialsSection = ({ service }) => {
         <section className="w-screen h-full py-32 bg-white">
             <h2 className="text-center text-5xl font-bold">What Others Say?</h2>
             <div className="cards-wrapper w-screen flex justify-center flex-wrap gap-12 pt-20">
-                {service[0]?.testimonials?.map((data, index) => (
+                {service?.testimonials?.map((data, index) => (
                     <div
                         key={index}
                         className="card w-80 h-64 bg-white shadow-2xl py-5 px-5 flex flex-col justify-around">

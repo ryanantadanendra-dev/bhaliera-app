@@ -4,15 +4,15 @@ const Summary = ({ service }) => {
     return (
         <section className="w-screen min-h-screen lg:pt-32 pt-32 md:min-h-full bg-white">
             <h2 className="text-3xl md:text-4xl font-bold text-center md:px-56">
-                {`${service[0]?.name}`} Services
+                {`${service?.name}`} Services
             </h2>
             <div className="content-wrapper flex flex-col-reverse items-center md:items-start lg:items-start md:mt-20 md:flex-row-reverse pt-12 md:px-5 md:pt-0 md:gap-10 lg:px-32 lg:gap-10">
-                <div className="md:w-1/2md:h-full lg:py-7 py-7 lg:px-5 px-5 primary-bg text-white">
+                <div className="md:w-1/2 md:h-full lg:py-7 py-7 lg:px-5 px-5 primary-bg text-white">
                     <h2 className="font-bold lg:text-2xl">
                         Our Service Includes
                     </h2>
                     <ul className="lg:mt-4 mt-4">
-                        {service[0]?.offers.map((offer, index) => (
+                        {service?.offers.map((offer, index) => (
                             <li
                                 key={index}
                                 className="flex items-center gap-1 lg:mt-3 mt-2">
@@ -32,7 +32,7 @@ const Summary = ({ service }) => {
                 </div>
                 <div className=" px-10 md:px-0 mt-5 md:mt-0 md:w-1/2 pb-8">
                     <p className="md:mt-0 lg:text-[1.2rem] whitespace-pre-line">
-                        {service[0]?.summary}
+                        {service?.summary}
                     </p>
                 </div>
             </div>

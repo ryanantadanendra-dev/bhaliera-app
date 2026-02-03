@@ -74,22 +74,22 @@ const Dashboard = () => {
                 <table id="blogs-table">
                     <thead>
                         <tr>
-                            <th className="w-6 text-sm md:text-xl text-center">
+                            <th className="w-6 text-xs md:text-xl text-center">
                                 Id
                             </th>
-                            <th className="w-32 text-sm md:text-xl text-center">
+                            <th className="w-32 text-xs md:text-xl text-center">
                                 Title
                             </th>
-                            <th className="w-40 text-sm md:text-xl text-center">
+                            <th className="w-20 md:w-40 text-xs md:text-xl text-center">
                                 Subtitle
                             </th>
-                            <th className="w-80 text-sm md:text-xl text-center">
+                            <th className="w-32 md:w-80 text-xs md:text-xl text-center">
                                 Content
                             </th>
-                            <th className="w-56 text-sm md:text-xl text-center">
+                            <th className="w-32 md:w-56 text-[0.5rem] md:text-xl text-center">
                                 Image
                             </th>
-                            <th className="w-56 text-sm md:text-xl text-center">
+                            <th className="w-56 text-[0.5rem] md:text-xl text-center">
                                 Action
                             </th>
                         </tr>
@@ -99,25 +99,23 @@ const Dashboard = () => {
                             <tr
                                 key={index}
                                 className={`${blog.id % 2 == 1 ? `bg-gray-200` : `bg-white`}`}>
-                                <td className="text-xs md:text-xl w-20 text-center">
+                                <td className="text-[0.5rem] md:text-xl w-12 md:w-20 text-center">
                                     {blog.id}
                                 </td>
-                                <td className="text-center text-xs md:text-lg">
-                                    <p className="truncate w-44">
-                                        {blog.title}
-                                    </p>
+                                <td className="text-center text-[0.5rem] md:text-lg">
+                                    <p className="w-12 md:w-44">{blog.title}</p>
                                 </td>
-                                <td className="text-xs md:text-xl">
-                                    <p className="truncate w-56 text-center">
+                                <td className="text-[0.5rem] md:text-xl">
+                                    <p className="w-20 md:w-56 text-center">
                                         {blog.subtitle}
                                     </p>
                                 </td>
-                                <td className="whitespace-pre-line text-xs md:text-xl">
-                                    <p className="truncate w-72">
+                                <td className="whitespace-pre-line text-[0.5rem] md:text-xl">
+                                    <p className="truncate w-32 md:w-72">
                                         {blog.content}
                                     </p>
                                 </td>
-                                <td className="">
+                                <td className="w-32 md:w-56">
                                     <Image
                                         src={`http://localhost:8000/${blog.image}`}
                                         width={100}
@@ -131,7 +129,7 @@ const Dashboard = () => {
                                         }}
                                         xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 512 512"
-                                        className="w-3 md:w-5 mx-auto mt-3 cursor-pointer">
+                                        className="w-2 md:w-5 mx-auto mt-3 cursor-pointer">
                                         <path d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L368 46.1 465.9 144 490.3 119.6c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L432 177.9 334.1 80 172.4 241.7zM96 64C43 64 0 107 0 160L0 416c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-96c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 96c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l96 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 64z" />
                                     </svg>
                                     {modalName == 'updateForm' && (
@@ -153,7 +151,7 @@ const Dashboard = () => {
                                                 setModalName('update')
                                             }}
                                             xmlns="http://www.w3.org/2000/svg"
-                                            className="w-3 md:w-5 mx-auto"
+                                            className="w-2 md:w-5 mx-auto"
                                             viewBox="0 0 512 512">
                                             <path d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L368 46.1 465.9 144 490.3 119.6c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L432 177.9 334.1 80 172.4 241.7zM96 64C43 64 0 107 0 160L0 416c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-96c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 96c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l96 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 64z" />
                                         </svg>
@@ -172,7 +170,7 @@ const Dashboard = () => {
                                             }}
                                             xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 448 512"
-                                            className="w-3 md:w-5 mx-auto">
+                                            className="w-2 md:w-5 mx-auto">
                                             <path d="M136.7 5.9C141.1-7.2 153.3-16 167.1-16l113.9 0c13.8 0 26 8.8 30.4 21.9L320 32 416 32c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 96C14.3 96 0 81.7 0 64S14.3 32 32 32l96 0 8.7-26.1zM32 144l384 0 0 304c0 35.3-28.7 64-64 64L96 512c-35.3 0-64-28.7-64-64l0-304zm88 64c-13.3 0-24 10.7-24 24l0 192c0 13.3 10.7 24 24 24s24-10.7 24-24l0-192c0-13.3-10.7-24-24-24zm104 0c-13.3 0-24 10.7-24 24l0 192c0 13.3 10.7 24 24 24s24-10.7 24-24l0-192c0-13.3-10.7-24-24-24zm104 0c-13.3 0-24 10.7-24 24l0 192c0 13.3 10.7 24 24 24s24-10.7 24-24l0-192c0-13.3-10.7-24-24-24z" />
                                         </svg>
                                     </div>
@@ -195,7 +193,7 @@ const Dashboard = () => {
                             setIsOpen(!isOpen)
                             setModalName('add')
                         }}
-                        className="md:w-10 w-8 lg:ms-10 ms-3"
+                        className="md:w-10 w-8 lg:ms-4 ms-3"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 512 512">
                         <path

@@ -3,6 +3,16 @@ import { data } from 'autoprefixer'
 import Image from 'next/image'
 import Link from 'next/link'
 
+function slugify(text) {
+    return text
+        .toLowerCase()
+        .trim()
+        .replace(/&/g, 'and') // ganti & jadi 'and'
+        .replace(/[^\w\s-]/g, '') // hapus karakter selain huruf
+        .replace(/\s+/g, '-') // spasi -> -
+        .replace(/-+/g, '-') // hapus --
+}
+
 const ServicesSection = () => {
     const displayData = services?.services?.map((service, index) => {
         if (index % 2 == 0) {
@@ -28,7 +38,7 @@ const ServicesSection = () => {
                             ))}
                         </ul>
                         <Link
-                            href={`/services/${service.name}`}
+                            href={`/services/${slugify(service.name)}`}
                             className={`${index == 0 ? 'secondary-bg' : 'bg-[#082841]'} text-white w-[9rem] h-[3.5rem] flex items-center justify-center rounded-xl gap-2 mt-8 md:mt-4`}>
                             <p className="text-center">Learn More</p>
                             <svg
@@ -59,7 +69,7 @@ const ServicesSection = () => {
                             ))}
                         </ul>
                         <Link
-                            href={`/services/${service.name}`}
+                            href={`/services/${slugify(service.name)}`}
                             className={`${index == 1 ? 'secondary-bg' : 'bg-white'} text-black w-[9rem] h-[3.5rem] flex items-center justify-center rounded-xl gap-2 mt-8 md:mt-0`}>
                             <p className="text-center">Learn More</p>
                             <svg
