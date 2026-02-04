@@ -50,9 +50,15 @@ const Login = () => {
 
     return (
         <>
-            <div className="image-wrapper relative lg:w-[10.1rem] lg:h-24 md:w-36 md:h-[5.3rem] w-28 h-[4.15rem] mx-auto">
-                <Image src={Logo2} fill className="object-cover" />
-            </div>
+            <figure className="image-wrapper relative lg:w-[10.1rem] lg:h-24 md:w-36 md:h-[5.3rem] w-28 h-[4.15rem] mx-auto">
+                <Image
+                    src={Logo2}
+                    alt="Logo"
+                    fill
+                    sizes="100px"
+                    className="object-cover"
+                />
+            </figure>
             <AuthSessionStatus className="mb-4" status={status} />
             <form onSubmit={submitForm} className="lg:mt-20 md:mt-12 mt-8">
                 <h1 className="text-2xl font-bold">Login</h1>

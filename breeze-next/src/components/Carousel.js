@@ -6,6 +6,7 @@ import { useIsMobile } from '@/hooks/useIsMobile'
 import { useCallback, useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import Loading from '@/app/blogs/loading'
 
 const Carousel = () => {
     const isMobile = useIsMobile(500)
@@ -82,8 +83,10 @@ const Carousel = () => {
                                             <figure className="relative min-w-40 h-52">
                                                 <Image
                                                     src={`http://localhost:8000/${blog.image}`}
+                                                    alt={`${blog.title} image`}
                                                     fill
-                                                    className="object-cover absolute"
+                                                    sizes="100px"
+                                                    className="object-cover"
                                                 />
                                             </figure>
 
@@ -109,7 +112,7 @@ const Carousel = () => {
                 </div>
             </div>
 
-            {!blogs && <p className="text-center">Loading. . .</p>}
+            {!blogs && <Loading />}
 
             {slides.length > 0 && (
                 <div className="flex justify-center mt-5 gap-2">

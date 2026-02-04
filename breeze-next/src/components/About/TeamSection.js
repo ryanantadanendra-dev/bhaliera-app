@@ -39,7 +39,9 @@ const TeamSection = () => {
             <figure className="image-wrapper w-full h-72 relative shadow-xl shadow-[#00000050] rounded-2xl">
                 <Image
                     src={data.image}
+                    alt={`${data.jabatan} image`}
                     fill
+                    sizes="100px"
                     className="object-cover rounded-2xl"
                 />
             </figure>

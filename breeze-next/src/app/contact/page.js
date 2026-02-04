@@ -55,7 +55,14 @@ const Contact = () => {
             <section className="w-screen min-h-screen bg-white lg:px-20 pt-32">
                 <div className="flex flex-col md:flex-row justify-center md:gap-12 px-12 md:px-12">
                     <figure className="relative w-full h-56 mx-auto md:w-1/2 md:h-96">
-                        <Image src={Img} fill className="object-cover" />
+                        <Image
+                            src={Img}
+                            alt="contact image"
+                            fill
+                            sizes="100px"
+                            priority
+                            className="object-cover"
+                        />
                     </figure>
                     <div className="w-full md:w-1/2 mt-12 md:mt-0">
                         <h2 className="font-bold text-5xl text-center md:text-start">

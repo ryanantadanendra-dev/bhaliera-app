@@ -13,7 +13,9 @@ const Blog = () => {
                         <figure className="relative w-[20rem] h-56 mx-auto">
                             <Image
                                 src={`http://localhost:8000/${latest.image}`}
+                                alt={`${latest?.title} image`}
                                 fill
+                                sizes="100px"
                                 className="object-cover"
                             />
                         </figure>

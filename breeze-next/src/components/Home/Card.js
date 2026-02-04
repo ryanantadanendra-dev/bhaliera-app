@@ -12,7 +12,9 @@ const Card = () => {
                         <figure className="image-wrapper relative w-40 h-40 lg:w-56 lg:h-56 md:w-48 md:h-48 mx-auto">
                             <Image
                                 src={service.icon}
+                                alt={`${service.name} icon`}
                                 fill
+                                sizes="100px"
                                 className="object-cover"
                             />
                         </figure>

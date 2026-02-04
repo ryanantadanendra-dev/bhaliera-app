@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
-const Hamburger = ({ isOpen, setIsOpen }) => {
+const Hamburger = ({ isOpen, setIsOpen, goToSection, slugify }) => {
     const [isHovered, setIsHovered] = useState(false)
     const [isExtended, setIsExtended] = useState(false)
 
@@ -42,47 +42,80 @@ const Hamburger = ({ isOpen, setIsOpen }) => {
                     <div className="extended-menu">
                         <div
                             className={`link-wrapper h-[44.8px] text-white hover:bg-white hover:text-black flex items-center`}>
-                            <Link
-                                href="/services/land-certification-and-permitting"
+                            <button
+                                onClick={() => {
+                                    goToSection(
+                                        'services',
+                                        slugify(
+                                            'Land Certification & Permitting',
+                                        ),
+                                    )
+                                    setIsExtended(false)
+                                    setIsOpen(false)
+                                }}
                                 className="ms-3">
                                 Land Certification & Permitting
-                            </Link>
+                            </button>
                         </div>
                         <div
                             className={`link-wrapper h-[44.8px] text-white hover:bg-white hover:text-black flex items-center`}>
-                            <Link
-                                href="/services/architectural-and-construction-licensing"
+                            <button
+                                onClick={() => {
+                                    goToSection(
+                                        'services',
+                                        slugify(
+                                            'Architectural & Construction Licensing',
+                                        ),
+                                    )
+                                    setIsExtended(false)
+                                    setIsOpen(false)
+                                }}
                                 className="ms-3">
                                 Architectural & Construction Licensing
-                            </Link>
+                            </button>
                         </div>
                         <div
                             className={`link-wrapper h-[44.8px] text-white hover:bg-white hover:text-black flex items-center`}>
-                            <Link
-                                href="/services/iso-22000-certification-assistance"
+                            <button
+                                onClick={() => {
+                                    goToSection(
+                                        'services',
+                                        slugify(
+                                            'ISO 22000 Certification Assistance',
+                                        ),
+                                    )
+                                    setIsExtended(false)
+                                    setIsOpen(false)
+                                }}
                                 className="ms-3">
-                                ISO 22000 Certification Assistance (Food Safety
-                                Management System)
-                            </Link>
+                                ISO 22000 Certification Assistance
+                            </button>
                         </div>
                         <div
                             className={`link-wrapper h-[44.8px] text-white hover:bg-white hover:text-black flex items-center`}>
-                            <Link
-                                href="/services/halal-certification-services"
+                            <button
+                                onClick={() => {
+                                    goToSection(
+                                        'services',
+                                        slugify('Halal Certification Services'),
+                                    )
+                                    setIsExtended(false)
+                                    setIsOpen(false)
+                                }}
                                 className="ms-3">
                                 Halal Certification Services
-                            </Link>
+                            </button>
                         </div>
                     </div>
                 )}
                 <div
                     className={`link-wrapper h-[44.8px] text-white hover:bg-white hover:text-black flex items-center`}>
-                    <Link href="" className="ms-3">
+                    <Link href="/blogs" className="ms-3">
                         Articles
                     </Link>
                 </div>
                 <div className="link-wrapper h-[44.8px] text-white hover:bg-white hover:text-black flex items-center">
-                    <Link href="" className="ms-3">
+                    <Link href="/contact" className="ms-3">
                         Contact
                     </Link>
                 </div>

@@ -20,6 +20,7 @@ const Dashboard = () => {
     const [errors, setErrors] = useState([])
     const [isLoading, setisLoading] = useState(false)
     const { blogs, addBlog, updateBlog, deleteBlog, updateImage } = useBlog()
+    const [image, setImage] = useState(null)
     const [modalName, setModalName] = useState('')
 
     useEffect(() => {
@@ -115,9 +116,10 @@ const Dashboard = () => {
                                         {blog.content}
                                     </p>
                                 </td>
-                                <td className="w-32 md:w-56">
+                                <td className="w-32 md:w-56 relative">
                                     <Image
                                         src={`http://localhost:8000/${blog.image}`}
+                                        alt={`${blog.title} image`}
                                         width={100}
                                         height={100}
                                         className="object-cover w-full h-full"
@@ -126,6 +128,7 @@ const Dashboard = () => {
                                         onClick={() => {
                                             setIsOpen(!isOpen)
                                             setModalName('updateForm')
+                                            setImage(blog.image)
                                         }}
                                         xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 512 512"
@@ -135,7 +138,7 @@ const Dashboard = () => {
                                     {modalName == 'updateForm' && (
                                         <UpdateImageForm
                                             id={blog.id}
-                                            image={blog.image}
+                                            image={image}
                                             isOpen={isOpen}
                                             setIsOpen={setIsOpen}
                                             isLoading={isLoading}

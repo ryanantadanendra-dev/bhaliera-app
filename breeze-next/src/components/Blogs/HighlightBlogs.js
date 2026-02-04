@@ -7,7 +7,7 @@ import Link from 'next/link'
 const HighlightBlogs = () => {
     const { blogs } = useBlog()
 
-    const displayFirst = blogs?.blogs?.map((blog, index) => {
+    const displayData = blogs?.blogs?.map((blog, index) => {
         if (index !== 0 && index !== 1) return
 
         return (
@@ -16,7 +16,9 @@ const HighlightBlogs = () => {
                 className={`${index == 0 ? 'lg:w-[37rem] md:w-[30rem] w-96 md:flex-1' : 'lg:w-[20rem] md:w-[15rem] w-96'} h-56 primary-bg relative z-0`}>
                 <Image
                     src={`http://localhost:8000/${blog.image}`}
+                    alt={`${blog.title} image`}
                     fill
+                    sizes="100px"
                     className="object-cover"
                 />
                 <figcaption className=" text-white absolute z-50 bottom-0 px-5 bg-[#00000090] w-full h-16 flex justify-between items-center gap-2">
@@ -35,7 +37,7 @@ const HighlightBlogs = () => {
 
     return (
         <div className="blogs-wrapper flex md:flex-row flex-col items-center justify-center gap-3 pt-12 px-20">
-            {displayFirst}
+            {displayData}
         </div>
     )
 }

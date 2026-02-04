@@ -24,7 +24,13 @@ const HistorySection = () => {
                 </div>
                 <div className="md:w-1/2 w-full flex justify-center lg:w-1/2">
                     <figure className="md:w-96 md:h-56 w-[17rem] h-40 relative lg:w-[30rem] lg:h-[17.7rem]">
-                        <Image src={Logo} fill className="object-cover" />
+                        <Image
+                            src={Logo}
+                            alt="brand logo"
+                            fill
+                            sizes="100px"
+                            className="object-cover"
+                        />
                     </figure>
                 </div>
             </section>

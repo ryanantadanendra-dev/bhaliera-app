@@ -1,10 +1,10 @@
 'use client'
 
-import { useIsMobile } from '@/hooks/useIsMobile'
 import Image from 'next/image'
+import services from '@/services.json'
 
-const Portfolios = ({ service }) => {
-    const isMobile = useIsMobile()
+const Portfolios = () => {
+    const portfolios = services?.portfolios
 
     return (
         <div className="w-screen h-full pt-20 bg-white">
@@ -13,14 +13,16 @@ const Portfolios = ({ service }) => {
                 A Showcase of Our Professional Work
             </p>
             <div className="flex justify-center flex-wrap lg:gap-2 mt-20 gap-12 md:gap-8 lg:px-10">
-                {service?.portfolios.map((portfolio, index) => (
+                {portfolios.map((portfolio, index) => (
                     <div
                         key={index}
                         className="flex flex-col md:w-72 md:h-[23rem] w-72 h-[23rem] pb-4 px-5 bg-white shadow-xl">
                         <figure className="md:w-full md:h-44 w-full h-44 relative">
                             <Image
                                 src={portfolio.image}
+                                alt={`${portfolio.title} image`}
                                 fill
+                                sizes="100px"
                                 className="object-cover"
                             />
                         </figure>

@@ -16,24 +16,29 @@ const UpdateImageForm = ({
     const [formData, setFormData] = useState({
         image: null,
     })
-    const [preview, setPreview] = useState(null)
+    const [preview, setPreview] = useState(image ?? null)
 
     useEffect(() => {
-        return () => {
-            if (preview) URL.revokeObjectURL(preview)
-        }
-    }, [])
+        if (!formData.image) return
+
+        const objectUrl = URL.createObjectURL(formData.image)
+        setPreview(objectUrl)
+
+        return () => URL.revokeObjectURL(objectUrl)
+    }, [formData.image])
+
+    useEffect(() => {
+        if (!image) return
+        setPreview(image)
+    }, [image, isOpen])
 
     const handleFileChange = e => {
         const file = e.target.files[0]
+        if (!file) return
 
         setFormData(prev => ({
-            ...prev,
             image: file,
         }))
-
-        const url = URL.createObjectURL(file)
-        setPreview(url)
     }
 
     const handleUpdateImage = async e => {
@@ -74,12 +79,14 @@ const UpdateImageForm = ({
                 <ul>
                     <li className="flex justify-center mt-5 gap-10 px-5">
                         <div className="relative w-full h-56">
-                            <Image
+                            <img
                                 src={
-                                    preview ?? `http://localhost:8000/${image}`
+                                    preview.startsWith('blob')
+                                        ? preview
+                                        : `http://localhost:8000/${preview}`
                                 }
-                                fill
-                                className="object-cover"
+                                alt="Uploaded image"
+                                className="object-cover w-full h-full"
                                 id="preview"
                             />
                         </div>

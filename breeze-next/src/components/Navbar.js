@@ -8,6 +8,7 @@ import { useState } from 'react'
 import Hamburger from './Hamburger'
 import { useAuth } from '@/hooks/auth'
 import Loading from '@/app/(app)/Loading'
+import { useRouter } from 'next/navigation'
 
 function slugify(text) {
     return text
@@ -24,13 +25,25 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false)
     const [isDesktopMenuOpen, setIssDesktopMenuOpen] = useState(false)
     const { user } = useAuth({ middleware: 'guest' })
+    const router = useRouter()
+
+    const goToSection = async (page, id) => {
+        router.push(`/${page}/?scroll=` + id)
+    }
 
     if (!user) {
         return (
             <nav className="fixed top-0 flex justify-between items-center w-screen h-20 primary-bg px-6 z-50">
-                <figure className="nav-wrapper relative w-32 h-full">
-                    <Link href="/">
-                        <Image src={Logo} fill className="object-contain" />
+                <figure className="nav-wrapper w-32 h-full">
+                    <Link href="/" className="relative block w-full h-full">
+                        <Image
+                            src={Logo}
+                            alt="Logo"
+                            fill
+                            sizes="100px"
+                            priority
+                            className="object-contain"
+                        />
                     </Link>
                 </figure>
                 {isMobile ? (
@@ -71,33 +84,69 @@ const Navbar = () => {
                                     />
                                 </svg>
                                 <div
-                                    className={`extended-menu primary-bg left-0 top-20 w-screen ${!isDesktopMenuOpen ? 'invisible' : 'visited:'} ${!isDesktopMenuOpen && isMobile ? 'h-0' : 'h-[179.2px]'} absolute`}>
+                                    className={`extended-menu primary-bg left-0 top-20 w-screen ${!isDesktopMenuOpen ? 'invisible opacity-0' : 'visited: opacity-100'} ${!isDesktopMenuOpen && isMobile ? 'h-0' : 'h-[179.2px]'} absolute transition-all duration-200 ease-out`}>
                                     <ul>
                                         <li className="h-[44.8px] text-white hover:bg-white hover:text-black flex items-center">
-                                            <Link
-                                                href="//services/land-certification-and-permitting"
-                                                className="w-full">
+                                            <button
+                                                onClick={() => {
+                                                    goToSection(
+                                                        'services',
+                                                        slugify(
+                                                            'Land Certification & Permitting',
+                                                        ),
+                                                    )
+                                                    setIssDesktopMenuOpen(false)
+                                                }}
+                                                className="w-full text-left">
                                                 Land Certification & Permitting
-                                            </Link>
+                                            </button>
                                         </li>
                                         <li className="h-[44.8px] text-white hover:bg-white hover:text-black flex items-center">
-                                            <Link
-                                                href="/services/architectural-and-construction-licensing"
-                                                className="w-full">
+                                            <button
+                                                onClick={() => {
+                                                    goToSection(
+                                                        'services',
+                                                        slugify(
+                                                            'Architectural & Construction Licensing',
+                                                        ),
+                                                    )
+                                                    setIssDesktopMenuOpen(false)
+                                                }}
+                                                className="w-full text-left">
                                                 Architectural & Construction
                                                 Licensing
-                                            </Link>
+                                            </button>
                                         </li>
                                         <li className="h-[44.8px] text-white hover:bg-white hover:text-black flex items-center">
-                                            <Link href="/services/iso-22000-certification-assistance">
+                                            <button
+                                                onClick={() => {
+                                                    goToSection(
+                                                        'services',
+                                                        slugify(
+                                                            'ISO 22000 Certification Assistance',
+                                                        ),
+                                                    )
+                                                    setIssDesktopMenuOpen(false)
+                                                }}
+                                                className="w-full text-left">
                                                 ISO 22000 Certification
                                                 Assistance
-                                            </Link>
+                                            </button>
                                         </li>
                                         <li className="h-[44.8px] text-white hover:bg-white hover:text-black flex items-center">
-                                            <Link href="/services/halal-certification-services">
+                                            <button
+                                                onClick={() => {
+                                                    goToSection(
+                                                        'services',
+                                                        slugify(
+                                                            'Halal Certification Services',
+                                                        ),
+                                                    )
+                                                    setIssDesktopMenuOpen(false)
+                                                }}
+                                                className="w-full text-left">
                                                 Halal Certification Services
-                                            </Link>
+                                            </button>
                                         </li>
                                     </ul>
                                 </div>
@@ -115,7 +164,12 @@ const Navbar = () => {
                         </ul>
                     </div>
                 )}
-                <Hamburger isOpen={isOpen} setIsOpen={setIsOpen} />
+                <Hamburger
+                    isOpen={isOpen}
+                    setIsOpen={setIsOpen}
+                    goToSection={goToSection}
+                    slugify={slugify}
+                />
             </nav>
         )
     }

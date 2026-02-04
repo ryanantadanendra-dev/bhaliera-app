@@ -16,9 +16,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
             .get('/api/user')
             .then(res => res.data)
             .catch(error => {
-                if (error.response.status !== 409) throw error
-
-                router.push('/verify-email')
+                return null
             }),
     )
 

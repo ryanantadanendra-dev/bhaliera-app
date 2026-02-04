@@ -38,7 +38,10 @@ const BlogClient = ({ slug }) => {
             <figure className="relative w-[20rem] md:w-[45rem] lg:w-[59rem] h-64 mx-auto mt-10">
                 <Image
                     src={`http://localhost:8000/${blog?.image}`}
+                    alt={`${blog?.title} image`}
                     fill
+                    sizes="100px"
+                    priority
                     className="object-cover"
                 />
             </figure>

@@ -8,18 +8,42 @@ const Hero = ({ title }) => {
                 {title}
             </h1>
             <div className="flex mt-4">
-                <div className="w-80 h-40 relative">
-                    <Image src={Pattern} fill className="object-cover" />
-                </div>
-                <div className="w-80 h-40 relative">
-                    <Image src={Pattern} fill className="object-cover" />
-                </div>
-                <div className="w-80 h-40 relative">
-                    <Image src={Pattern} fill className="object-cover" />
-                </div>
-                <div className="w-80 h-40 relative">
-                    <Image src={Pattern} fill className="object-cover" />
-                </div>
+                <figure className="w-80 h-40 relative">
+                    <Image
+                        src={Pattern}
+                        alt="pattern"
+                        fill
+                        sizes="100px"
+                        className="object-cover"
+                    />
+                </figure>
+                <figure className="w-80 h-40 relative">
+                    <Image
+                        src={Pattern}
+                        alt="pattern"
+                        fill
+                        sizes="100px"
+                        className="object-cover"
+                    />
+                </figure>
+                <figure className="w-80 h-40 relative">
+                    <Image
+                        src={Pattern}
+                        alt="pattern"
+                        fill
+                        sizes="100px"
+                        className="object-cover"
+                    />
+                </figure>
+                <figure className="w-80 h-40 relative">
+                    <Image
+                        src={Pattern}
+                        alt="pattern"
+                        fill
+                        sizes="100px"
+                        className="object-cover"
+                    />
+                </figure>
             </div>
         </header>
     )

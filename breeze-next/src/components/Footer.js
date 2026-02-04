@@ -5,6 +5,7 @@ import Logo from '../../public/assets/logo.png'
 import Link from 'next/link'
 import { MapPreview } from './Map'
 import { useAuth } from '@/hooks/auth'
+import { useRouter } from 'next/navigation'
 
 function slugify(text) {
     return text
@@ -18,6 +19,11 @@ function slugify(text) {
 
 const Footer = () => {
     const { user } = useAuth({ middleware: 'guest' })
+    const router = useRouter()
+
+    const goToSection = async (page, id) => {
+        router.push(`/${page}/?scroll=` + id)
+    }
 
     const links = [
         {
@@ -50,7 +56,13 @@ const Footer = () => {
             <footer className="w-screen lg:h-96 bg-[#0A1F2E] grid lg:grid-cols-5 grid-cols-1  md:grid-cols-3 gap-5 lg:px-20 px-10 md:py-12 text-white ">
                 <div>
                     <figure className="relative w-32 h-12">
-                        <Image src={Logo} fill className="object-contain" />
+                        <Image
+                            src={Logo}
+                            alt="Logo"
+                            fill
+                            sizes="100px"
+                            className="object-contain"
+                        />
                     </figure>
                     <p className="text-xs mt-6">
                         Your trusted partner in legal, licensing, and
@@ -107,9 +119,15 @@ const Footer = () => {
                     <ul>
                         {services.map((service, index) => (
                             <li key={index} className="mt-5 text-[0.8rem]">
-                                <Link href={`/services/${slugify(service)}`}>
+                                <button
+                                    onClick={() =>
+                                        goToSection(
+                                            'services',
+                                            slugify(service),
+                                        )
+                                    }>
                                     {service}
-                                </Link>
+                                </button>
                             </li>
                         ))}
                     </ul>
