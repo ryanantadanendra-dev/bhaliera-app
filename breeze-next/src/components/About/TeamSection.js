@@ -1,36 +1,30 @@
 import Image from 'next/image'
-import Anggota1 from '../../../public/assets/anggota1.png'
-import Anggota2 from '../../../public/assets/anggota2.png'
-import Anggota3 from '../../../public/assets/anggota3.png'
-import Anggota4 from '../../../public/assets/anggota4.png'
-import Anggota5 from '../../../public/assets/anggota5.png'
+import Anggota1 from '../../../public/assets/Arya.png'
+import Anggota2 from '../../../public/assets/Eko.png'
+import Anggota3 from '../../../public/assets/Edy.jpg'
+import Anggota4 from '../../../public/assets/Tyas.png'
 
 const TeamSection = () => {
     const datas = [
         {
-            name: 'Anggota 1',
-            jabatan: 'Licensing Officer',
+            name: 'Arya Budi Setyawan',
+            jabatan: 'Director',
             image: Anggota1,
         },
         {
-            name: 'Anggota 2',
-            jabatan: 'Legal Administration Officer',
+            name: 'Eko Wijiati',
+            jabatan: 'Law and Land Legal Expertise',
             image: Anggota2,
         },
         {
-            name: 'Anggota 3',
-            jabatan: 'Licensing Officer',
+            name: 'Edy Pamuji',
+            jabatan: 'Architecture Expertise',
             image: Anggota3,
         },
         {
-            name: 'Anggota 4',
-            jabatan: 'Licensing Consultant',
+            name: 'Tri Wahyuningtyas',
+            jabatan: 'Certification Expertise',
             image: Anggota4,
-        },
-        {
-            name: 'Anggota 5',
-            jabatan: 'Back Office Staff',
-            image: Anggota5,
         },
     ]
 
@@ -45,8 +39,10 @@ const TeamSection = () => {
                     className="object-cover rounded-2xl"
                 />
             </figure>
-            <h3 className="text-center mt-8">{data.name}</h3>
-            <p className="text-[#00000050] text-center mt-2">{data.jabatan}</p>
+            <h3 className="text-center text-2xl mt-8">{data.name}</h3>
+            <p className="text-[#000000] font-light text-center mt-2">
+                {data.jabatan}
+            </p>
         </div>
     ))
 

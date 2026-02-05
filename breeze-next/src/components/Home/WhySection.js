@@ -1,3 +1,9 @@
+import EmblaCarousel from './Carousel'
+
+const OPTIONS = { loop: true, duration: 30 }
+const SLIDE_COUNT = 5
+const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
+
 const WhySection = () => {
     const datas = [
         'Multi-field expertise: legal, land, architecture, certification.',
@@ -25,7 +31,7 @@ const WhySection = () => {
     ))
 
     return (
-        <section className="w-screen min-h-screen md:min-h-0 md:h-full lg:min-h-screen bg-primary flex flex-col md:flex-row py-5 md:gap-4 lg:gap-0">
+        <section className="w-screen min-h-full md:min-h-0 md:h-[50vh] lg:h-full lg:min-h-full bg-primary flex flex-col gap-12 md:flex-row py-5 md:gap-4 lg:gap-0">
             <div className="w-full md:w-1/2 h-3/4 md:h-full lg:h-screen secondary-bg lg:rounded-xl">
                 <div>
                     <h2 className="text-5xl lg:text-6xl font-bold ms-4 mt-4">
@@ -39,15 +45,8 @@ const WhySection = () => {
                 </div>
                 <div className="mt-32">{displayData}</div>
             </div>
-            <div className="w-full md:w-1/2 h-1/4 md:h-[450px] flex justify-center lg:ps-8">
-                <iframe
-                    className={`w-full h-[315px] mt-8 md:mt-0 md:h-full md:w-full lg:h-screen`}
-                    src="https://www.youtube.com/embed/_Sl8diqCAFw?si=cxPiUOI8CBYTR74h"
-                    title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    allowFullScreen></iframe>
+            <div className="w-full md:w-1/2 h-full md:h-full md:max-h-full flex justify-center lg:ps-8">
+                <EmblaCarousel slides={SLIDES} options={OPTIONS} />
             </div>
         </section>
     )
