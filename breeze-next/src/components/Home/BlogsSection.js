@@ -11,8 +11,7 @@ const BlogsSection = () => {
             <p
                 className="text-center  lg:text-[1rem] lg:px-[24rem] lg:mt-3"
                 style={{ fontFamily: 'var(--font-inter)' }}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.{' '}
+                Stories that matter, updates that move
             </p>
             <div className="blogs-wrapper flex gap-5 justify-center mt-10 flex-wrap">
                 <Blog />

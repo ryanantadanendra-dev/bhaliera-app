@@ -23,7 +23,7 @@ const BlogClient = ({ slug }) => {
     )
 
     return (
-        <article className="w-screen min-h-screen py-28">
+        <article className="blog-wrapper w-screen min-h-screen py-28">
             <header>
                 <h1 className="text-4xl md:text-5xl text-white text-center font-bold">
                     {blog?.title}

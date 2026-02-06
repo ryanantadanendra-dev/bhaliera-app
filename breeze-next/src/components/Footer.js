@@ -125,7 +125,8 @@ const Footer = () => {
                                             'services',
                                             slugify(service),
                                         )
-                                    }>
+                                    }
+                                    className="text-left">
                                     {service}
                                 </button>
                             </li>

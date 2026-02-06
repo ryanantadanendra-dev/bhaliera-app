@@ -1,5 +1,16 @@
 import { useBlog } from '@/hooks/blog'
 import Image from 'next/image'
+import Link from 'next/link'
+
+function slugify(text) {
+    return text
+        .toLowerCase()
+        .trim()
+        .replace(/&/g, 'and') // ganti & jadi 'and'
+        .replace(/[^\w\s-]/g, '') // hapus karakter selain huruf
+        .replace(/\s+/g, '-') // spasi -> -
+        .replace(/-+/g, '-') // hapus --
+}
 
 const Blog = () => {
     const { latests } = useBlog()
@@ -27,7 +38,9 @@ const Blog = () => {
                         </div>
                         <div>
                             <button className="px-5 py-3 bg-transparent border-2 border-[#dfae74] ms-4 mt- rounded-3xl">
-                                <div className="flex gap-3">
+                                <Link
+                                    href={`/blog/${slugify(latest.title)}`}
+                                    className="flex gap-3">
                                     Learn More
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -38,7 +51,7 @@ const Blog = () => {
                                             d="M214.6 17.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 117.3 160 488c0 17.7 14.3 32 32 32s32-14.3 32-32l0-370.7 105.4 105.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
                                         />
                                     </svg>
-                                </div>
+                                </Link>
                             </button>
                         </div>
                     </div>

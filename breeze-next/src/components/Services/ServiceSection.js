@@ -75,7 +75,16 @@ const ServicesSection = () => {
                     </div>
                     <div
                         className={`extended-section w-full flex gap-12 ${accorname == service.name ? 'visible h-full py-32' : 'invisible h-0 py-0'} transition-all duration-200 ease-out`}>
-                        <div className="lg:w-1/2 h-full">{service.summary}</div>
+                        <div className="lg:w-1/2 h-full">
+                            <p
+                                dangerouslySetInnerHTML={{
+                                    __html: service?.summary.replace(
+                                        /\n\s*\n?/g,
+                                        '<br /><br />',
+                                    ),
+                                }}
+                            />
+                        </div>
                         <div className="lg:w-1/2 h-full px-12">
                             <h3 className="text-2xl font-bold">
                                 Ready to Start Your {service.name} Process?
@@ -143,7 +152,16 @@ const ServicesSection = () => {
                     </div>
                     <div
                         className={`extended-section w-full flex gap-12 ${accorname == service.name ? 'visible h-full py-32' : 'invisible h-0 py-0'} transition-all duration-200 ease-out`}>
-                        <div className="lg:w-1/2 h-full">{service.summary}</div>
+                        <div className="lg:w-1/2 h-full">
+                            <p
+                                dangerouslySetInnerHTML={{
+                                    __html: service?.summary.replace(
+                                        /\n\s*\n?/g,
+                                        '<br /><br />',
+                                    ),
+                                }}
+                            />
+                        </div>
                         <div className="lg:w-1/2 h-full px-12">
                             <h3 className="text-2xl font-bold">
                                 Ready to Start Your {service.name} Process?
