@@ -9,8 +9,9 @@ const Portfolios = () => {
     return (
         <div className="w-screen h-full pt-20 bg-white">
             <h2 className="text-center text-5xl">Our PortFolios</h2>
-            <p className="text-center mt-3 text-2xl">
-                A Showcase of Our Professional Work
+            <p className="text-center mt-3 text-xl px-56">
+                Successfully delivered land certification and permitting
+                services for diverse clients across Indonesia
             </p>
             <div className="flex justify-center flex-wrap lg:gap-2 mt-20 gap-12 md:gap-8 lg:px-10">
                 {portfolios.map((portfolio, index) => (

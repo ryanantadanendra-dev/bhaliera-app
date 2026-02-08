@@ -1,6 +1,7 @@
 import { useBlog } from '@/hooks/blog'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useState } from 'react'
 
 function slugify(text) {
     return text
@@ -14,13 +15,15 @@ function slugify(text) {
 
 const Blog = () => {
     const { latests } = useBlog()
+    const [extend, setExtend] = useState(false)
+
     return (
         <>
             {latests?.data?.length > 0 ? (
                 latests?.data?.map((latest, index) => (
                     <div
                         key={index}
-                        className="card-container w-[23rem] min-h-[33rem] primary-bg text-white flex flex-col justify-around rounded-xl">
+                        className="card-container w-[23rem] min-h-[33rem] primary-bg text-white flex flex-col justify-around rounded-xl py-2">
                         <figure className="relative w-[20rem] h-56 mx-auto">
                             <Image
                                 src={`http://localhost:8000/${latest.image}`}
@@ -31,7 +34,23 @@ const Blog = () => {
                             />
                         </figure>
                         <div>
-                            <h3 className="ms-4  text-3xl font-bold">
+                            <h3
+                                onClick={e => {
+                                    if (
+                                        e.currentTarget.classList.contains(
+                                            'truncate',
+                                        )
+                                    ) {
+                                        e.currentTarget.classList.remove(
+                                            'truncate',
+                                        )
+                                    } else {
+                                        e.currentTarget.classList.add(
+                                            'truncate',
+                                        )
+                                    }
+                                }}
+                                className={`ms-4  text-3xl font-bold ${extend ? '' : 'truncate'} cursor-pointer`}>
                                 {latest.title}
                             </h3>
                             <p className="ms-4 mt-4">{latest.subtitle}</p>

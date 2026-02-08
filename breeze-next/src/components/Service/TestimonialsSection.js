@@ -6,7 +6,13 @@ const TestimoialsSection = () => {
 
     return (
         <section className="w-screen h-full py-32 bg-white">
-            <h2 className="text-center text-5xl font-bold">What Others Say?</h2>
+            <h2 className="text-center text-5xl font-bold">
+                Client Testimonials
+            </h2>
+            <p className="text-center mt-3 text-xl">
+                Hear what our satisfied clients have to say about our land
+                certification services
+            </p>
             <div className="cards-wrapper w-screen flex justify-center flex-wrap gap-12 pt-20">
                 {testimonials?.map((data, index) => (
                     <div

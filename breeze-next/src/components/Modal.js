@@ -9,10 +9,12 @@ const Modal = ({ children, open, setIsOpen }) => {
 
     const overlayRef = useRef(null)
 
+    if (!open) return null
+
     return (
         <div
             onClick={() => setIsOpen(false)}
-            className={`overlay bg-[#00000050] w-screen h-screen ${open ? `opacity-100 pointer-events-auto` : `opacity-0 pointer-events-none`} fixed top-0 left-0 transition-all duration-200 ease-out overflow-x-hidden`}>
+            className={`modal-overlay bg-[#00000050] w-screen h-screen ${open ? `opacity-100 pointer-events-auto` : `opacity-0 pointer-events-none`} fixed top-0 left-0 transition-all duration-200 ease-out overflow-x-hidden`}>
             <div className="modal-container w-screen h-screen flex justify-center items-center">
                 <div
                     onClick={e => e.stopPropagation()}

@@ -114,22 +114,38 @@ const Carousel = () => {
 
             {!blogs && <Loading />}
 
-            {slides.length > 0 && (
-                <div className="flex justify-center mt-5 gap-2">
-                    {slides.map((_, i) => (
-                        <button
-                            key={i}
-                            onClick={() => scrollTo(i)}
-                            className={`dot w-3 h-3 rounded-full transition-colors ${
-                                i === selectedIndex
-                                    ? 'bg-gray-800'
-                                    : 'bg-gray-300'
-                            }`}
-                            aria-label={`Go to slide ${i + 1}`}
-                        />
-                    ))}
-                </div>
-            )}
+            <div className="flex justify-center items-center gap-7 mt-8">
+                <svg
+                    onClick={() => emblaApi && emblaApi.scrollPrev()}
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 320 512"
+                    className="w-3 cursor-pointer">
+                    <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
+                </svg>
+                {slides.length > 0 && (
+                    <div className="flex justify-center gap-2">
+                        {slides.map((_, i) => (
+                            <button
+                                key={i}
+                                onClick={() => scrollTo(i)}
+                                className={`dot w-3 h-3 rounded-full transition-colors ${
+                                    i === selectedIndex
+                                        ? 'bg-gray-800'
+                                        : 'bg-gray-300'
+                                }`}
+                                aria-label={`Go to slide ${i + 1}`}
+                            />
+                        ))}
+                    </div>
+                )}
+                <svg
+                    onClick={() => emblaApi && emblaApi.scrollNext()}
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 256 512"
+                    className="w-3 cursor-pointer">
+                    <path d="M247.1 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L179.2 256 41.9 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" />
+                </svg>
+            </div>
         </div>
     )
 }

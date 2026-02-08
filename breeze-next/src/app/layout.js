@@ -1,14 +1,11 @@
-import { Nunito, Playfair_Display, Inter } from 'next/font/google'
+import { Playfair_Display, Inter } from 'next/font/google'
 
 import '@/app/global.css'
 import Navbar from '@/components/Navbar'
 import Chatty from '@/components/Chatty'
-import Footer from '@/components/Footer'
+import Script from 'next/script'
+import dynamic from 'next/dynamic'
 
-const nunitoFont = Nunito({
-    subsets: ['latin'],
-    display: 'swap',
-})
 const inter = Inter({
     subsets: ['latin'],
     display: 'swap',
@@ -22,6 +19,8 @@ const playfairDisplay = Playfair_Display({
 })
 
 const RootLayout = ({ children }) => {
+    const Footer = dynamic(() => import('@/components/Footer'), { ssr: false })
+
     return (
         <html
             lang="en"
@@ -34,13 +33,23 @@ const RootLayout = ({ children }) => {
                 {children}
                 <Chatty />
                 <Footer />
+
+                <Script
+                    src="https://www.googletagmanager.com/gtag/js?id=GA-ID"
+                    strategy="afterInteractive"
+                />
+
+                <Script id="ga-init" strategy="afterInteractive">
+                    {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'GA-ID');
+          `}
+                </Script>
             </body>
         </html>
     )
-}
-
-export const metadata = {
-    title: 'Laravel',
 }
 
 export default RootLayout

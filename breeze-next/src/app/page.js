@@ -1,15 +1,11 @@
 import LoginLinks from '@/app/LoginLinks'
 import Image from 'next/image'
 import Pattern from '../../public/assets/pattern.png'
-import ServicesSection from '@/components/Home/ServicesSection'
-import WhySection from '@/components/Home/WhySection'
-import BlogsSection from '@/components/Home/BlogsSection'
-import Portfolios from '@/components/Service/Portfolios'
-import TestimoialsSection from '@/components/Service/TestimonialsSection'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 
 export const metadata = {
-    title: 'Your Trusted Partner in Legal, Licensing, and Certification Solutions - Bhaliera.com',
+    title: 'Bhaliera - Your Trusted Partner in Legal, Licensing, and Certification Solutions',
     description:
         'provides integrated legal, licensing, and certification services through a professional, transparent, and regulation-compliant approach to support long-term business sustainability.',
     keywords: [
@@ -51,6 +47,16 @@ export const metadata = {
 }
 
 const Home = () => {
+    const ServicesSection = dynamic(
+        () => import('@/components/Home/ServicesSection'),
+    )
+    const WhySection = dynamic(() => import('@/components/Home/WhySection'))
+    const BlogsSection = dynamic(() => import('@/components/Home/BlogsSection'))
+    const Portfolios = dynamic(() => import('@/components/Service/Portfolios'))
+    const TestimoialsSection = dynamic(
+        () => import('@/components/Service/TestimonialsSection'),
+    )
+
     return (
         <>
             <section className="relative min-h-screen md:min-h-full lg:h-screen text-center md:py-32 lg:py-0 md:text-left flex flex-col justify-center px-8 lg:px-0 lg:justify-start sm:items-center md:items-start pt-0 bg-[#082841]">
@@ -71,8 +77,7 @@ const Home = () => {
                 <div className="mt-10">
                     <Link
                         href="/contact"
-                        className="secondary-bg px-5 py-2 ms-0  mt-6 lg:ms-10 lg:mt-10 lg:py-4"
-                        style={{ fontFamily: 'var(--font-inter)' }}>
+                        className="secondary-bg px-5 py-2 ms-0  mt-6 lg:ms-10 lg:mt-10 lg:py-4">
                         Contact Now!
                     </Link>
                 </div>

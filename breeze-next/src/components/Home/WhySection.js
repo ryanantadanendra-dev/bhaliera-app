@@ -1,10 +1,14 @@
-import EmblaCarousel from './Carousel'
+import dynamic from 'next/dynamic'
 
 const OPTIONS = { loop: true, duration: 30 }
-const SLIDE_COUNT = 5
+const SLIDE_COUNT = 4
 const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 
 const WhySection = () => {
+    const EmblaCarousel = dynamic(() => import('@/components/Home/Carousel'), {
+        ssr: false,
+    })
+
     const datas = [
         'Multi-field expertise: legal, land, architecture, certification.',
         'Strong Regulatory Knowledge aligned with current government regulations',

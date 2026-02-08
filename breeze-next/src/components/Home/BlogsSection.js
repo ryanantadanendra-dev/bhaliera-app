@@ -1,15 +1,26 @@
 'use client'
 
 import Blog from './Blog'
+import Pattern from '../../../public/assets/pattern.png'
+import Image from 'next/image'
 
 const BlogsSection = () => {
     return (
-        <section className="w-screen min-h-screen md:min-h-full bg-white py-10">
+        <section className="w-screen min-h-screen md:min-h-full bg-white py-10 relative overflow-hidden">
+            <div className="absolute -top-20">
+                <figure className="relative w-52 h-44  md:w-96 md:h-72">
+                    <Image
+                        src={Pattern}
+                        fill
+                        className="object-cover opacity-30"
+                    />
+                </figure>
+            </div>
             <h2 className="text-3xl lg:text-5xl text-center">
                 News & Articles
             </h2>
             <p
-                className="text-center  lg:text-[1rem] lg:px-[24rem] lg:mt-3"
+                className="text-center  lg:text-xl lg:px-[24rem] lg:mt-3"
                 style={{ fontFamily: 'var(--font-inter)' }}>
                 Stories that matter, updates that move
             </p>

@@ -81,7 +81,7 @@ const UpdateImageForm = ({
                         <div className="relative w-full h-56">
                             <img
                                 src={
-                                    preview.startsWith('blob')
+                                    preview?.startsWith('blob')
                                         ? preview
                                         : `http://localhost:8000/${preview}`
                                 }

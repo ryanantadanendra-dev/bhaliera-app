@@ -1,18 +1,8 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { expandShortUrl } from './Action'
 import { getEmbedSrc } from './mapUtils'
-
-/**
- * @param {Object} props
- * @param {string} props.url - The Google Maps URL (can be short link or full link)
- * @param {string} [props.height="350px"] - Height in px or vh
- * @param {string} [props.borderRadius="0"] - Radius string
- * @param {boolean} [props.showError=true] - Whether to show the error box if URL is invalid
- * @param {string} [props.className=""] - Optional extra class names for the container
- * @param {React.CSSProperties} [props.style] - Optional inline styles
- */
 
 export const MapPreview = ({
     url,
@@ -22,94 +12,95 @@ export const MapPreview = ({
     className = '',
     style = {},
 }) => {
+    const [shouldLoad, setShouldLoad] = useState(false)
     const [embedSrc, setEmbedSrc] = useState(null)
-    const [loading, setLoading] = useState(true)
     const [isValid, setIsValid] = useState(true)
+    const ref = useRef(null)
+
+    // Only activate when visible
+    useEffect(() => {
+        if (!ref.current) return
+
+        let mounted = true
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting && mounted) {
+                    setShouldLoad(true)
+                    observer.disconnect()
+                }
+            },
+            { rootMargin: '250px' },
+        )
+
+        observer.observe(ref.current)
+
+        return () => {
+            mounted = false
+            observer.disconnect()
+        }
+    }, [])
 
     useEffect(() => {
-        let isMounted = true
+        if (!shouldLoad || !url) return
+
+        let cancelled = false
 
         const processUrl = async () => {
-            setLoading(true)
-            setIsValid(true)
+            try {
+                let processedUrl = url
 
-            if (!url) {
-                if (isMounted) {
-                    setIsValid(false)
-                    setLoading(false)
+                if (
+                    url.includes('goo.gl') ||
+                    url.includes('g.co') ||
+                    url.includes('bit.ly')
+                ) {
+                    processedUrl = await expandShortUrl(url)
                 }
-                return
-            }
 
-            // 1. Expand URL (Server Action) if needed
-            let processedUrl = url
-            if (
-                url.includes('goo.gl') ||
-                url.includes('g.co') ||
-                url.includes('bit.ly')
-            ) {
-                processedUrl = await expandShortUrl(url)
-            }
+                const src = getEmbedSrc(processedUrl)
 
-            // 2. Parse for Embed Source
-            const src = getEmbedSrc(processedUrl)
-
-            if (isMounted) {
-                if (src) {
+                if (!cancelled) {
                     setEmbedSrc(src)
-                    setIsValid(true)
-                } else {
-                    setEmbedSrc(null)
-                    setIsValid(false)
+                    setIsValid(!!src)
                 }
-                setLoading(false)
+            } catch {
+                if (!cancelled) setIsValid(false)
             }
         }
 
         processUrl()
 
         return () => {
-            isMounted = false
+            cancelled = true
         }
-    }, [url])
+    }, [shouldLoad, url])
 
-    // If invalid and errors are hidden, return nothing (matching PHP logic)
     if (!isValid && !showError) return null
 
     return (
         <div
+            ref={ref}
             className={`map-preview-container w-full relative bg-gray-100 overflow-hidden ${className}`}
-            style={{
-                height,
-                borderRadius,
-                ...style, // Allows passing box-shadow via style prop
-            }}>
-            {loading ? (
-                // Loading State (Skeleton)
-                <div className="w-full h-full flex items-center justify-center bg-gray-200 animate-pulse">
-                    <span className="text-gray-400 text-sm">
-                        Loading Map...
-                    </span>
+            style={{ height, borderRadius, ...style }}>
+            {!shouldLoad ? (
+                // 🧱 Placeholder
+                <div className="w-full h-full flex items-center justify-center bg-gray-200 text-gray-400">
+                    Map will load on scroll
                 </div>
-            ) : isValid && embedSrc ? (
-                // Map Iframe
+            ) : embedSrc ? (
                 <iframe
+                    src={embedSrc}
                     width="100%"
                     height="100%"
-                    frameBorder="0"
-                    scrolling="no"
-                    marginHeight={0}
-                    marginWidth={0}
-                    src={embedSrc}
-                    title="Map Preview"
                     loading="lazy"
                     className="border-0 block w-full h-full"
                     referrerPolicy="no-referrer-when-downgrade"
+                    title="Map Preview"
                 />
             ) : (
-                // Error State
-                <div className="map-preview-error w-full h-full flex items-center justify-center bg-gray-50 text-gray-500 p-5 text-center">
-                    <span>Invalid Map URL provided.</span>
+                <div className="w-full h-full flex items-center justify-center bg-gray-50 text-gray-500">
+                    Invalid Map URL provided.
                 </div>
             )}
         </div>

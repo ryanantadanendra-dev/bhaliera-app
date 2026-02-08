@@ -4,6 +4,13 @@ import { useEffect } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Fade from 'embla-carousel-fade'
 import Autoplay from 'embla-carousel-autoplay'
+import Carousel1 from '../../../public/assets/carousel1.PNG'
+import Carousel2 from '../../../public/assets/carousel2.PNG'
+import Carousel3 from '../../../public/assets/carousel3.jpeg'
+import Carousel4 from '../../../public/assets/carousel4.jpeg'
+import Image from 'next/image'
+
+const datas = [Carousel1, Carousel2, Carousel3, Carousel4]
 
 const EmblaCarousel = props => {
     const { slides, options } = props
@@ -30,17 +37,18 @@ const EmblaCarousel = props => {
     }, [emblaApi])
 
     return (
-        <div className="embla">
-            <div className="embla__viewport" ref={emblaRef}>
-                <div className="embla__container min-h-full">
-                    {slides?.map(index => (
+        <div className="embla w-full">
+            <div className="embla__viewport w-full" ref={emblaRef}>
+                <div className="embla__container w-full min-h-full">
+                    {datas?.map((image, index) => (
                         <div
-                            className="embla__slide h-[20rem] md:h-[45.5vh] lg:h-screen "
+                            className="embla__slide min-w-full h-[20rem] md:h-[45.5vh] lg:h-screen relative"
                             key={index}>
-                            <img
+                            <Image
                                 className="embla__slide__img"
-                                src={`https://picsum.photos/600/350?v=${index}`}
+                                src={image}
                                 alt="Your alt text"
+                                fill
                             />
                         </div>
                     ))}
