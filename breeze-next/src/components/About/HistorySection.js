@@ -4,7 +4,7 @@ import Image from 'next/image'
 const HistorySection = () => {
     return (
         <>
-            <section className="w-screen h-full md:h-full lg:h-screen pb-0 md:pb-10 lg:pb-0 bg-white md:pt-24 lg:pt-0 flex flex-col-reverse lg:flex-row md:flex-around lg::justify-between md:items-center md:gap-10 lg:gap-0 justify-end pt-12 lg:px-10">
+            <section className="w-screen h-full md:h-full lg:h-screen pb-0 md:pb-10 lg:pb-0 bg-white md:pt-24 lg:pt-0 flex flex-col-reverse lg:flex-row md:flex-around lg::justify-between md:items-center md:gap-10 lg:gap-0 justify-end pt-12 lg:px-10 text-black">
                 <div className="lg::w-1/2 w-full mt-12 md:mt-12 lg:mt-0">
                     <h2 className="text-5xl md:ms-12 ms-0 font-bold text-center md:text-left">
                         Who We Are?

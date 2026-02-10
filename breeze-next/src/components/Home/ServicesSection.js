@@ -1,8 +1,14 @@
-import Card from './Card'
+import dynamic from 'next/dynamic'
+
+const Card = dynamic(() => import('./Card'), {
+    loading: () => <p>Loading. . .</p>,
+})
 
 const ServicesSection = () => {
     return (
-        <section className="minh-screen w-screen bg-white pb-32 pt-10">
+        <section
+            className="min-h-screen w-full bg-white pb-32 pt-10"
+            style={{ color: 'var(--color-primary)' }}>
             <h2 className="text-3xl text-center md:text-5xl">Our Services</h2>
             <p className="text-center lg:text-[1rem] mt-3 md:px-32 lg:px-[24rem]">
                 BHALIERA offers comprehensive regulatory and compliance services

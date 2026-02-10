@@ -1,123 +1,209 @@
+// hooks/useBlog.js
 'use client'
 
 import useSWR from 'swr'
 import axios from '@/lib/axios'
 
+// Shared fetcher
+const fetcher = url => axios.get(url).then(res => res.data)
+
+// CSRF helper
+const ensureCSRF = async () => {
+    try {
+        await axios.get('/sanctum/csrf-cookie')
+    } catch (error) {
+        console.error('CSRF token fetch failed:', error)
+        throw error
+    }
+}
+
+const shouldFetch = typeof window !== 'undefined'
+
 export const useBlog = () => {
-    const csrf = () => axios.get('/sanctum/csrf-cookie')
+    // // Main blogs data
+    // const {
+    //     data: blogs,
+    //     error: blogsError,
+    //     mutate,
+    //     isLoading,
+    //     isValidating,
+    // } = useSWR(shouldFetch ? '/api/blogs' : null, fetcher, swrConfig)
 
-    const { data: blogs, mutate } = useSWR('/api/blogs', async url => {
-        try {
-            const response = await axios.get('/api/blogs')
+    // Latest blogs data
+    // const {
+    //     data: latests,
+    //     error: latestsError,
+    //     mutate: mutateLatests,
+    //     isLoading: isLoadingLatests,
+    // } = useSWR('/api/blogs/latest', fetcher, swrConfig)
 
-            return response.data
-        } catch (error) {
-            throw error
-        }
-    })
-
+    // Add blog with optimistic update
     const addBlog = async formData => {
-        await csrf()
-
-        const data = new FormData()
-
-        data.append('title', formData.title)
-        data.append('subtitle', formData.subtitle)
-        data.append('content', formData.content)
-        if (formData.image) {
-            data.append('image', formData.image)
-        }
-
-        const response = await axios.post('/api/blog/add', data, {
-            headers: {
-                'Content-Type': 'multipart/form-data',
-            },
-        })
-
-        if (response.status === 201) {
-            mutate()
-        }
-
-        return response.data.success
-    }
-
-    const updateBlog = async (id, title, subtitle, content) => {
-        await csrf()
-
-        const data = new FormData()
-
-        data.append('title', title)
-        data.append('subtitle', subtitle)
-        data.append('content', content)
-        data.append('_method', 'PUT')
-
-        const response = await axios.post(`/api/blog/update/${id}`, data, {
-            headers: {
-                'Content-Type': 'multipart/form-data',
-            },
-        })
-
-        if (response.statusText == 'Created') {
-            mutate()
-        }
-
-        return response.data.success
-    }
-
-    const deleteBlog = async id => {
-        await csrf()
-
-        const response = await axios.delete(`/api/blog/delete/${id}`)
-
-        if (response.status === 201) {
-            mutate()
-        }
-
-        return response.data.success
-    }
-
-    const updateImage = async (id, image) => {
-        await csrf()
-
-        const data = new FormData()
-
-        if (image) {
-            data.append('image', image)
-        }
-        data.append('_method', 'PUT')
-
-        const response = await axios.post(
-            `/api/blog/update/image/${id}`,
-            data,
-            {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-            },
-        )
-
-        if (response.status === 201) {
-            mutate()
-        }
-
-        return response.data.success
-    }
-
-    const { data: latests } = useSWR('/api/blogs/latest', async url => {
         try {
-            const response = await axios.get('/api/blogs/latest')
-            return response.data
+            await ensureCSRF()
+
+            const data = new FormData()
+            data.append('title', formData.title)
+            data.append('subtitle', formData.subtitle)
+            data.append('content', formData.content)
+
+            if (formData.image) {
+                data.append('image', formData.image)
+            }
+
+            const response = await axios.post('/api/blog/add', data, {
+                headers: { 'Content-Type': 'multipart/form-data' },
+            })
+
+            // // Revalidate both lists
+            // await Promise.all([mutate(), mutateLatests()])
+
+            return {
+                success: true,
+                data: response.data,
+            }
         } catch (error) {
-            throw error
+            console.error('Add blog failed:', error)
+            return {
+                success: false,
+                error: error.response?.data?.message || 'Failed to add blog',
+            }
         }
-    })
+    }
+
+    // Update blog with optimistic update
+    const updateBlog = async (id, formData) => {
+        try {
+            await ensureCSRF()
+
+            const data = new FormData()
+            data.append('title', formData.title)
+            data.append('subtitle', formData.subtitle)
+            data.append('content', formData.content)
+            data.append('_method', 'PUT')
+
+            // // Optimistic update
+            // mutate(
+            //     currentBlogs => {
+            //         if (!currentBlogs) return currentBlogs
+            //         return currentBlogs.map(blog =>
+            //             blog.id === id ? { ...blog, ...formData } : blog,
+            //         )
+            //     },
+            //     false, // Don't revalidate yet
+            // )
+
+            const response = await axios.post(`/api/blog/update/${id}`, data, {
+                headers: { 'Content-Type': 'multipart/form-data' },
+            })
+
+            // Revalidate to get server data
+            // await mutate()
+
+            return {
+                success: true,
+                data: response.data,
+            }
+        } catch (error) {
+            console.error('Update blog failed:', error)
+            // Revert on error
+            // await mutate()
+            return {
+                success: false,
+                error: error.response?.data?.message || 'Failed to update blog',
+            }
+        }
+    }
+
+    // Delete blog with optimistic update
+    const deleteBlog = async id => {
+        try {
+            await ensureCSRF()
+
+            // Optimistic update - remove from UI immediately
+            // mutate(
+            //     currentBlogs => {
+            //         if (!currentBlogs) return currentBlogs
+            //         return currentBlogs.filter(blog => blog.id !== id)
+            //     },
+            //     false, // Don't revalidate yet
+            // )
+
+            const response = await axios.delete(`/api/blog/delete/${id}`)
+
+            // Revalidate both lists to confirm
+            // await Promise.all([mutate(), mutateLatests()])
+
+            return {
+                success: true,
+                data: response.data,
+            }
+        } catch (error) {
+            console.error('Delete blog failed:', error)
+            // Revert on error
+            // await mutate()
+            return {
+                success: false,
+                error: error.response?.data?.message || 'Failed to delete blog',
+            }
+        }
+    }
+
+    // Update image with optimistic update
+    const updateImage = async (id, image) => {
+        try {
+            await ensureCSRF()
+
+            if (!image) {
+                throw new Error('Image is required')
+            }
+
+            const data = new FormData()
+            data.append('image', image)
+            data.append('_method', 'PUT')
+
+            const response = await axios.post(
+                `/api/blog/update/image/${id}`,
+                data,
+                {
+                    headers: { 'Content-Type': 'multipart/form-data' },
+                },
+            )
+
+            // Update specific blog image
+            // mutate(currentBlogs => {
+            //     if (!currentBlogs) return currentBlogs
+            //     return currentBlogs.map(blog =>
+            //         blog.id === id
+            //             ? { ...blog, image: response.data.image }
+            //             : blog,
+            //     )
+            // }, false)
+
+            // Revalidate to confirm
+            // await mutate()
+
+            return {
+                success: true,
+                data: response.data,
+            }
+        } catch (error) {
+            console.error('Update image failed:', error)
+            return {
+                success: false,
+                error:
+                    error.response?.data?.message || 'Failed to update image',
+            }
+        }
+    }
 
     return {
-        blogs,
+        // Actions
         addBlog,
         updateBlog,
         deleteBlog,
         updateImage,
-        latests,
+
+        // refreshLatests: mutateLatests,
     }
 }

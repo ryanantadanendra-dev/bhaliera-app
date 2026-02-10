@@ -4,17 +4,19 @@ import Image from 'next/image'
 const Card = () => {
     return (
         <>
-            {services?.services?.map((service, index) => (
+            {services?.services?.map(service => (
                 <div
-                    key={index}
-                    className="card-container w-[20rem] md:w-[20rem] lg:w-[23rem] primary-bg text-white flex flex-col justify-between pb-10">
+                    key={service?.id}
+                    className="card-container w-[20rem] md:w-[20rem] lg:w-[23rem] text-white flex flex-col justify-between pb-10"
+                    style={{ backgroundColor: 'var(--color-primary)' }}>
                     <div>
                         <figure className="image-wrapper relative w-40 h-40 lg:w-56 lg:h-56 md:w-48 md:h-48 mx-auto">
                             <Image
                                 src={service.icon}
                                 alt={`${service.name} icon`}
                                 fill
-                                sizes="100px"
+                                loading="lazy"
+                                sizes="(max-width: 768px) 160px, 224px"
                                 className="object-cover"
                             />
                         </figure>
@@ -22,9 +24,9 @@ const Card = () => {
                             {service.name}
                         </h3>
                         <ul className="ms-8 mt-4 pe-4 md:pe-4">
-                            {service.offers?.map((offer, index) => (
+                            {service.offers?.map(offer => (
                                 <li
-                                    key={index}
+                                    key={offer}
                                     className="list-disc mt-2 text-xs">
                                     {offer}
                                 </li>

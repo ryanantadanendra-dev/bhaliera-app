@@ -2,9 +2,11 @@ import { useBlog } from '@/hooks/blog'
 import Modal from './Modal'
 import { useState } from 'react'
 import Swal from 'sweetalert2'
+import { useBlogPublic } from '@/hooks/blogPublig'
 
 const AddForm = ({ isOpen, setIsOpen, isLoading, setisLoading }) => {
     const { addBlog } = useBlog()
+    const { mutate } = useBlogPublic()
     const [formData, setFormData] = useState({
         title: '',
         subtitle: '',
@@ -87,6 +89,7 @@ const AddForm = ({ isOpen, setIsOpen, isLoading, setisLoading }) => {
                     image: null,
                 })
                 setIsOpen(false)
+                mutate()
             }
         } catch (error) {
             Swal.fire({
@@ -155,7 +158,8 @@ const AddForm = ({ isOpen, setIsOpen, isLoading, setisLoading }) => {
                     <li className="flex justify-center mt-12">
                         <button
                             type="submit"
-                            className="px-12 py-4 primary-bg text-white rounded-xl">
+                            className="px-12 py-4 text-white rounded-xl"
+                            style={{ backgroundColor: 'var(--color-primary)' }}>
                             {isLoading ? 'Adding. . .' : 'Add'}
                         </button>
                     </li>

@@ -79,7 +79,7 @@ const UpdateImageForm = ({
                 <ul>
                     <li className="flex justify-center mt-5 gap-10 px-5">
                         <div className="relative w-full h-56">
-                            <img
+                            <Image
                                 src={
                                     preview?.startsWith('blob')
                                         ? preview
@@ -105,7 +105,8 @@ const UpdateImageForm = ({
                     <li className="flex justify-center mt-12">
                         <button
                             type="submit"
-                            className="px-12 py-4 primary-bg text-white rounded-xl">
+                            className="px-12 py-4 text-white rounded-xl"
+                            style={{ backgroundColor: 'var(--color-primary)' }}>
                             {isLoading ? 'Editing. . .' : 'Edit'}
                         </button>
                     </li>

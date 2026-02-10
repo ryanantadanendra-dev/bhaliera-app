@@ -3,7 +3,9 @@ import Pattern from '../../public/assets/pattern.png'
 
 const Hero = ({ title }) => {
     return (
-        <header className="hero-container w-screen h-56 md:h-64 primary-bg pt-24 overflow-hidden relative">
+        <header
+            className="hero-container w-screen h-56 md:h-64 pt-24 overflow-hidden relative"
+            style={{ backgroundColor: 'var(--color-primary)' }}>
             <h1 className="text-white md:text-5xl lg:text-6xl text-4xl text-center">
                 {title}
             </h1>
@@ -13,7 +15,9 @@ const Hero = ({ title }) => {
                         src={Pattern}
                         alt="pattern"
                         fill
-                        sizes="100px"
+                        sizes="(max-width: 768px) 100vw,
+                        (max-width: 1200px) 50vw,
+                        33vw"
                         className="object-cover"
                     />
                 </figure>
@@ -22,7 +26,9 @@ const Hero = ({ title }) => {
                         src={Pattern}
                         alt="pattern"
                         fill
-                        sizes="100px"
+                        sizes="(max-width: 768px) 100vw,
+                        (max-width: 1200px) 50vw,
+                        33vw"
                         className="object-cover"
                     />
                 </figure>
@@ -31,7 +37,9 @@ const Hero = ({ title }) => {
                         src={Pattern}
                         alt="pattern"
                         fill
-                        sizes="100px"
+                        sizes="(max-width: 768px) 100vw,
+                        (max-width: 1200px) 50vw,
+                        33vw"
                         className="object-cover"
                     />
                 </figure>
@@ -40,7 +48,9 @@ const Hero = ({ title }) => {
                         src={Pattern}
                         alt="pattern"
                         fill
-                        sizes="100px"
+                        sizes="(max-width: 768px) 100vw,
+                        (max-width: 1200px) 50vw,
+                        33vw"
                         className="object-cover"
                     />
                 </figure>

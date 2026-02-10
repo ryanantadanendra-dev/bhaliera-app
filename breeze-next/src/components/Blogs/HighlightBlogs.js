@@ -1,45 +1,55 @@
 'use client'
-
-import { useBlog } from '@/hooks/blog'
+import { useMemo } from 'react'
+import { useBlogPublic } from '@/hooks/blogPublig'
 import Image from 'next/image'
 import Link from 'next/link'
 
-const HighlightBlogs = () => {
-    const { blogs } = useBlog()
+export default function HighlightBlogs() {
+    const { blogs } = useBlogPublic()
 
-    const displayData = blogs?.blogs?.map((blog, index) => {
-        if (index !== 0 && index !== 1) return
+    const highlight = useMemo(() => {
+        if (!blogs?.blogs) return []
+        return blogs.blogs.slice(0, 2)
+    }, [blogs])
 
-        return (
-            <figure
-                key={index}
-                className={`${index == 0 ? 'lg:w-[37rem] md:w-[30rem] w-96 md:flex-1' : 'lg:w-[20rem] md:w-[15rem] w-96'} h-56 primary-bg relative z-0`}>
-                <Image
-                    src={`http://localhost:8000/${blog.image}`}
-                    alt={`${blog.title} image`}
-                    fill
-                    sizes="100px"
-                    className="object-cover"
-                />
-                <figcaption className=" text-white absolute z-50 bottom-0 px-5 bg-[#00000090] w-full h-16 flex justify-between items-center gap-2">
-                    <h3 className="text-2xl flex-1 truncate">{blog.title}</h3>
-                    <Link
-                        href={`blog/${blog?.slug}`}
-                        className="shrink-0 text-blue-300 underline text-xs">
-                        {' '}
-                        Learn More
-                        {`${' >>>'}`}
-                    </Link>
-                </figcaption>
-            </figure>
-        )
-    })
+    if (!highlight.length) return null
 
     return (
-        <div className="blogs-wrapper flex md:flex-row flex-col items-center justify-center gap-3 pt-12 px-20">
-            {displayData}
+        <div className="blogs-wrapper flex md:flex-row flex-col items-center justify-center gap-3 pt-12 px-6 md:px-20">
+            {highlight.map((blog, index) => (
+                <figure
+                    key={blog.slug}
+                    className={`relative h-56 aspect-[16/9] ${
+                        index === 0
+                            ? 'lg:w-[37rem] md:w-[30rem] w-96 md:flex-1'
+                            : 'lg:w-[20rem] md:w-[15rem] w-96'
+                    }`}
+                    style={{ backgroundColor: 'var(--color-primary)' }}>
+                    <Image
+                        src={blog?.image}
+                        alt={blog.title}
+                        fill
+                        priority={index === 0}
+                        fetchPriority={index === 0 ? 'high' : 'auto'}
+                        loading={index === 0 ? 'eager' : 'lazy'}
+                        decoding="async"
+                        sizes="(max-width: 768px) 90vw, 400px"
+                        unoptimized={false}
+                        className="object-cover"
+                    />
+
+                    <figcaption className="absolute bottom-0 z-10 w-full h-16 px-5 bg-black/60 flex items-center justify-between gap-2">
+                        <h3 className="text-white text-lg md:text-2xl flex-1 truncate">
+                            {blog.title}
+                        </h3>
+                        <Link
+                            href={`/blog/${blog?.slug}`}
+                            className="text-blue-300 underline text-xs shrink-0">
+                            Learn More &gt;&gt;&gt;
+                        </Link>
+                    </figcaption>
+                </figure>
+            ))}
         </div>
     )
 }
-
-export default HighlightBlogs

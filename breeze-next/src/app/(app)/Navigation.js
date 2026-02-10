@@ -16,7 +16,9 @@ const Navigation = ({ user }) => {
     const [open, setOpen] = useState(false)
 
     return (
-        <nav className="primary-bg w-screen border-b border-gray-100 fixed z-50">
+        <nav
+            className=" w-screen border-b border-gray-100 fixed z-50"
+            style={{ backgroundColor: 'var(--color-primary)' }}>
             {/* Primary Navigation Menu */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between h-16">

@@ -5,6 +5,7 @@ import axios from '@/lib/axios'
 import useSWR from 'swr'
 import { useState, useEffect } from 'react'
 import { useBlog } from '@/hooks/blog'
+import { useBlogPublic } from '@/hooks/blogPublig'
 
 import Modal from '@/components/Modal'
 import Image from 'next/image'
@@ -19,7 +20,8 @@ const Dashboard = () => {
     const [isOpen, setIsOpen] = useState(false)
     const [errors, setErrors] = useState([])
     const [isLoading, setisLoading] = useState(false)
-    const { blogs, addBlog, updateBlog, deleteBlog, updateImage } = useBlog()
+    const { blogs, mutate } = useBlogPublic()
+    const { addBlog, updateBlog, deleteBlog, updateImage } = useBlog()
     const [image, setImage] = useState(null)
     const [modalName, setModalName] = useState('')
     const [activeBlog, setActiveBlog] = useState(null)
@@ -54,6 +56,7 @@ const Dashboard = () => {
                             icon: 'success',
                         })
                         setIsOpen(false)
+                        mutate()
                     }
                 } catch (error) {
                     Swal.fire({
@@ -73,7 +76,7 @@ const Dashboard = () => {
             return <p>No Blog Yet!</p>
         } else {
             return (
-                <table id="blogs-table">
+                <table id="blogs-table" className="text-black">
                     <thead>
                         <tr>
                             <th className="w-6 text-xs md:text-xl text-center">
@@ -117,13 +120,14 @@ const Dashboard = () => {
                                         {blog.content}
                                     </p>
                                 </td>
-                                <td className="w-32 md:w-56 relative">
+                                <td className="w-32 h-32 md:w-56 md:h-56 relative">
                                     <Image
-                                        src={`http://localhost:8000/${blog.image}`}
+                                        src={blog.image}
                                         alt={`${blog.title} image`}
-                                        width={100}
-                                        height={100}
-                                        className="object-cover w-full h-full"
+                                        width={200}
+                                        height={200}
+                                        loading="lazy"
+                                        className="mx-auto"
                                     />
                                     <svg
                                         onClick={() => {

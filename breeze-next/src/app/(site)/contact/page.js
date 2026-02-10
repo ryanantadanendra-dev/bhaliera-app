@@ -1,6 +1,6 @@
 import Hero from '@/components/Hero'
 import Image from 'next/image'
-import Img from '../../../public/assets/contact.png'
+import Img from '../../../../public/assets/carousel4.jpeg'
 import SendEmailForm from '@/components/SendEmailForm'
 
 export const metadata = {
@@ -59,7 +59,7 @@ const Contact = () => {
                             src={Img}
                             alt="contact image"
                             fill
-                            sizes="100px"
+                            sizes="(max-widtz-024px) 224px, 384px"
                             priority
                             className="object-cover"
                         />
@@ -68,7 +68,7 @@ const Contact = () => {
                         <h2 className="font-bold text-5xl text-center md:text-start">
                             Contact Information
                         </h2>
-                        <ul className="mt-8 md:mt-12 text-lg">
+                        <ul className="mt-8 md:mt-12 text-lg text-black">
                             <li>PT. Bhumi Bali Sejahtera (BHALIERA)</li>
                             <li className="mt-3">
                                 Address: Jl. Raya Puputan Depan Gedung BCA
@@ -90,7 +90,7 @@ const Contact = () => {
                             Looking for reliable legal, licensing, or
                             certification assistance?
                         </h2>
-                        <p className="mt-8 text-center md:text-start">
+                        <p className="mt-8 text-center md:text-start text-black">
                             Our professional team at PT. Bhumi Bali Sejahtera
                             (BHALIERA) is ready to support your needs with
                             accurate, transparent, and regulation-compliant

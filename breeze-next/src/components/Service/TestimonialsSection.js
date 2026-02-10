@@ -5,11 +5,13 @@ const TestimoialsSection = () => {
     const testimonials = services?.testimonials
 
     return (
-        <section className="w-screen h-full py-32 bg-white">
+        <section className="w-full h-full py-32 bg-white">
             <h2 className="text-center text-5xl font-bold">
                 Client Testimonials
             </h2>
-            <p className="text-center mt-3 text-xl">
+            <p
+                className="text-center mt-3 text-xl"
+                style={{ color: 'var(--color-primary)' }}>
                 Hear what our satisfied clients have to say about our land
                 certification services
             </p>
@@ -65,7 +67,11 @@ const TestimoialsSection = () => {
                                 />
                             </svg>
                         </div>
-                        <p className="text-[0.9rem]">{data.comment}</p>
+                        <p
+                            className="text-[0.9rem]"
+                            style={{ color: 'var(--color-primary)' }}>
+                            {data.comment}
+                        </p>
                         <div>
                             <h3 className=" font-bold text-2xl text-left">
                                 {data.name}

@@ -1,55 +1,53 @@
+// app/layout.jsx
 import { Playfair_Display, Inter } from 'next/font/google'
-
 import '@/app/global.css'
-import Navbar from '@/components/Navbar'
-import Chatty from '@/components/Chatty'
-import Script from 'next/script'
 import dynamic from 'next/dynamic'
 
 const inter = Inter({
     subsets: ['latin'],
     display: 'swap',
+    fallback: ['system-ui', '-apple-system', 'sans-serif'],
     variable: '--font-inter',
 })
 
 const playfairDisplay = Playfair_Display({
     subsets: ['latin'],
-    weight: ['400', '600', '700'],
+    weight: ['400', '700'], // Remove '600' if not used
+    display: 'swap',
+    fallback: ['Georgia', 'serif'],
     variable: '--font-playfair-display',
 })
 
-const RootLayout = ({ children }) => {
-    const Footer = dynamic(() => import('@/components/Footer'), { ssr: false })
+// Lazy load analytics
+const Analytics = dynamic(() => import('@/components/Analytics'), {
+    ssr: false,
+})
 
+export const metadata = {
+    metadataBase: new URL('https://bhaliera.com'),
+}
+
+export default function RootLayout({ children }) {
     return (
         <html
-            lang="en"
-            className={`${playfairDisplay.variable} ${inter.variable}`}>
-            <body
-                className={`antialiased ${playfairDisplay.variable} ${inter.variable}`}>
-                <header>
-                    <Navbar />
-                </header>
-                {children}
-                <Chatty />
-                <Footer />
-
-                <Script
-                    src="https://www.googletagmanager.com/gtag/js?id=GA-ID"
-                    strategy="afterInteractive"
+            lang="id"
+            className={`${playfairDisplay.variable} ${inter.variable}`}
+            suppressHydrationWarning>
+            <head>
+                {/* Preconnect to external domains */}
+                <link
+                    rel="preconnect"
+                    href="https://www.googletagmanager.com"
                 />
-
-                <Script id="ga-init" strategy="afterInteractive">
-                    {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'GA-ID');
-          `}
-                </Script>
+                <link
+                    rel="dns-prefetch"
+                    href="https://www.googletagmanager.com"
+                />
+            </head>
+            <body className="antialiased font-sans">
+                {children}
+                <Analytics />
             </body>
         </html>
     )
 }
-
-export default RootLayout

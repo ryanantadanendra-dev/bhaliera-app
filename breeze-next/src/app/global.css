@@ -2,30 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-.primary-bg {
-    background-color: #0f2742;
-}
-.secondary-bg {
-    background-color: #dfae74;
-}
+@layer base {
+    :root {
+        --color-primary: #0f2742;
+        --color-secondary: #f5c77e;
+        --color-secondary-text: #dfae74;
+        --color-ternary: #ececec;
+        --font-inter: 'Inter', system-ui, -apple-system, sans-serif;
+        --font-playfair: 'Playfair Display', Georgia, serif;
+    }
 
-.secondary-text {
-    color: #dfae74;
-}
+    html {
+        font-family: var(--font-inter);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+        scroll-behavior: smooth;
+    }
 
-.ternary-bg {
-    background-color: #ececec;
-}
-
-html,
-body {
-    overflow-x: hidden;
-    font-family: var(--font-inter);
-    background-color: #0f2742;
-}
-
-h1 {
-    content-visibility: auto;
+    body {
+        overflow-x: hidden;
+        font-family: var(--font-inter);
+        background-color: var(--color-primary);
+        color: white;
+    }
 }
 
 h1,
@@ -33,6 +33,7 @@ h2,
 h3 {
     font-family: var(--font-playfair-display);
     font-weight: bold;
+    color: var(--color-primary);
 }
 
 .content {

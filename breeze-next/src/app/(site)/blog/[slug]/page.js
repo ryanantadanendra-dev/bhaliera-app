@@ -1,16 +1,27 @@
-'use client'
-
 import Image from 'next/image'
-import { useBlogPublic } from '@/hooks/blogPublig'
+import { getBlogs } from '@/lib/getBlog'
 
-const BlogClient = ({ slug }) => {
-    const { blogs } = useBlogPublic()
+export async function generateMetadata({ params }) {
+    const { blogs } = await getBlogs()
+    const blog = blogs.find(b => b.slug === params.slug)
 
-    // const blog = blogs?.blogs.find(blog => blog.slug == slug)
+    if (!blog) return { title: 'Not found' }
 
-    const blog = blogs?.blogs.find(
-        b => b.title.toLowerCase().replace(/\s+/g, '-') === slug,
-    )
+    return {
+        title: blog.title + ' | Bhaliera Blog',
+        description: blog.subtitle,
+        openGraph: {
+            title: blog.title,
+            description: blog.subtitle,
+            images: [blog.image],
+            type: 'article',
+        },
+    }
+}
+
+export default async function Blog({ params }) {
+    const { blogs } = await getBlogs()
+    const blog = blogs.find(b => b.slug === params.slug)
 
     const formatedDate = new Date(blog?.created_at).toLocaleDateString(
         'en-US',
@@ -21,6 +32,8 @@ const BlogClient = ({ slug }) => {
             year: 'numeric',
         },
     )
+
+    if (!blog) return <h1>Not found</h1>
 
     return (
         <article className="blog-wrapper w-screen min-h-screen py-28">
@@ -52,4 +65,3 @@ const BlogClient = ({ slug }) => {
         </article>
     )
 }
-export default BlogClient

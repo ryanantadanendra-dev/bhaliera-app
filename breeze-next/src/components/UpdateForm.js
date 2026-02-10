@@ -1,31 +1,42 @@
-const { useState } = require('react')
+'use client'
+
+const { useState, useEffect } = require('react')
 import { useBlog } from '@/hooks/blog'
 import Modal from './Modal'
 import Swal from 'sweetalert2'
+import { useBlogPublic } from '@/hooks/blogPublig'
 
 const UpdateForm = ({ blog, isOpen, setIsOpen, isLoading, setisLoading }) => {
     const [title, setTitle] = useState(blog.title || '')
     const [subtitle, setSubtitle] = useState(blog.subtitle || '')
     const [content, setContent] = useState(blog.content || '')
     const { updateBlog } = useBlog()
+    const { mutate } = useBlogPublic()
 
     const [formData, setFormData] = useState({
-        title: blog.title || '',
-        subtitle: blog.subtitle || '',
-        content: blog.content || '',
+        title: blog.title,
+        subtitle: blog.subtitle,
+        content: blog.content,
     })
+
+    useEffect(() => {
+        if (!blog) return
+
+        if (blog) {
+            setFormData({
+                title: blog.title,
+                subtitle: blog.subtitle,
+                content: blog.content,
+            })
+        }
+    }, [blog])
 
     const handleUpdate = async e => {
         e.preventDefault()
         setisLoading(true)
 
         try {
-            const result = await updateBlog(
-                blog.id,
-                formData.title,
-                formData.subtitle,
-                formData.content,
-            )
+            const result = await updateBlog(blog.id, formData)
 
             if (result) {
                 Swal.fire({
@@ -33,12 +44,9 @@ const UpdateForm = ({ blog, isOpen, setIsOpen, isLoading, setisLoading }) => {
                     text: 'Blog Updated Successfully!?',
                     icon: 'success',
                 })
-                setFormData({
-                    title: '',
-                    subtitle: '',
-                    content: '',
-                })
+
                 setIsOpen(false)
+                mutate()
             }
         } catch (error) {
             Swal.fire({
@@ -101,7 +109,8 @@ const UpdateForm = ({ blog, isOpen, setIsOpen, isLoading, setisLoading }) => {
                     <li className="flex justify-center mt-12">
                         <button
                             type="submit"
-                            className="px-12 py-4 primary-bg text-white rounded-xl">
+                            className="px-12 py-4 text-white rounded-xl"
+                            style={{ backgroundColor: 'var(--color-primary)' }}>
                             {isLoading ? 'Editing. . .' : 'Edit'}
                         </button>
                     </li>

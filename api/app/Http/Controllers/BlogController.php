@@ -17,7 +17,10 @@ class BlogController extends Controller
     //
 
     public function getBlogs() {
-        $blogs = Blog::all();
+        $blogs = Blog::all()->map(function ($blog) {
+            $blog->image = asset('/' . $blog->image);
+            return $blog;
+        });
 
         return response()->json([
             'blogs' => $blogs
@@ -57,10 +60,10 @@ class BlogController extends Controller
             'slug' => $slug
         ]);
 
+
         return response()->json([
             'success' => true,
             'message' => 'Blog created successfully',
-            'data' => $blog
         ], 201);
     }
 
@@ -146,7 +149,10 @@ class BlogController extends Controller
     }
 
     public function latest(){
-        $blogs = Blog::orderBy('created_at', 'desc')->limit(4)->get();
+        $blogs = Blog::orderBy('created_at', 'desc')->limit(4)->get()->map(function ($blog) {
+            $blog->image = asset('/' . $blog->image);
+            return $blog;
+        });;
 
         return response()->json([
                 'data' => $blogs

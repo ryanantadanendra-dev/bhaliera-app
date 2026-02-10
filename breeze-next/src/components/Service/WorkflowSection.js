@@ -12,7 +12,8 @@ const WorkflowSection = ({ service }) => {
                 {service[0]?.workflow?.map((data, index) => (
                     <div
                         key={index}
-                        className="lg:w-[15rem] w-72 h-[22rem] primary-bg px-5 py-6 lg:px-3 flex flex-col justify-around">
+                        className="lg:w-[15rem] w-72 h-[22rem] px-5 py-6 lg:px-3 flex flex-col justify-around"
+                        style={{ backgroundColor: 'var(--color-primary)' }}>
                         <p className="text-6xl">{index + 1}</p>
                         <h3 className="font-bold mt-2">{data.title}</h3>
                         <p className=" text-[0.9rem]">{data.content}</p>

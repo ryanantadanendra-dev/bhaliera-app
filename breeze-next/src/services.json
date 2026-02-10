@@ -58,27 +58,14 @@
             "summary": "BHALIERA provides professional Halal Certification Services to support organizations in meeting national halal assurance requirements and regulatory obligations in Indonesia. We assist companies across food and beverage, pharmaceuticals, cosmetics, and related industries in establishing compliant halal systems in accordance with applicable standards and authorities.\nOur services include end-to-end certification assistance, covering gap assessment, system and documentation preparation, implementation guidance, coordination with Halal Inspection Bodies (LPH), and certification readiness. BHALIERA ensures that all processes align with prevailing halal regulations and requirements set by the Halal Product Assurance Agency (BPJPH).\nWith a structured consulting methodology and in-depth understanding of halal compliance frameworks, BHALIERA facilitates a clear and efficient certification process—strengthening product credibility, regulatory compliance, and market trust."
         }
     ],
-    "portfolios": [
-        {
-            "title": "Residential Land Certification",
-            "description": "Successfully processed 50+ residential land certificates in Jakarta Metropolitan area",
-            "image": "/assets/service1-portfolio1.jpg"
-        },
-        {
-            "title": "Commercial Property Permits",
-            "description": "Facilitated land splitting and merging for commercial development projects",
-            "image": "/assets/service1-portfolio2.jpg"
-        },
-        {
-            "title": "Land Boundary Determination",
-            "description": "Resolved boundary disputes and completed re-surveying for multiple properties",
-            "image": "/assets/service1-portfolio3.jpg"
-        },
-        {
-            "title": "Land Boundary Determination",
-            "description": "Resolved boundary disputes and completed re-surveying for multiple properties",
-            "image": "/assets/service1-portfolio3.jpg"
-        }
+    "galleries": [
+        "/assets/service1-portfolio1.jpg",
+        "/assets/service1-portfolio2.jpg",
+        "/assets/service1-portfolio3.jpg",
+        "/assets/carousel1.png",
+        "/assets/carousel2.png",
+        "/assets/carousel3-fixed.jpeg",
+        "/assets/carousel4.jpeg"
     ],
     "testimonials": [
         {

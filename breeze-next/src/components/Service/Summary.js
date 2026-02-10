@@ -7,7 +7,9 @@ const Summary = ({ service }) => {
                 {`${service?.name}`} Services
             </h2>
             <div className="content-wrapper flex flex-col-reverse items-center md:items-start lg:items-start md:mt-20 md:flex-row-reverse pt-12 md:px-5 md:pt-0 md:gap-10 lg:px-32 lg:gap-10">
-                <div className="md:w-1/2 md:h-full lg:py-7 py-7 lg:px-5 px-5 primary-bg text-white">
+                <div
+                    className="md:w-1/2 md:h-full lg:py-7 py-7 lg:px-5 px-5 text-white"
+                    style={{ backgroundColor: 'var(--color-primary)' }}>
                     <h2 className="font-bold lg:text-2xl">
                         Our Service Includes
                     </h2>

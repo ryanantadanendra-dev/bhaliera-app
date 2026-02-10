@@ -1,86 +1,77 @@
+// components/Home/Carousel.jsx
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useCallback, useState, useMemo } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Fade from 'embla-carousel-fade'
 import Autoplay from 'embla-carousel-autoplay'
-import Carousel1 from '../../../public/assets/carousel1.PNG'
-import Carousel2 from '../../../public/assets/carousel2.PNG'
-import Carousel3 from '../../../public/assets/carousel3.jpeg'
-import Carousel4 from '../../../public/assets/carousel4.jpeg'
 import Image from 'next/image'
+import Carousel1 from '../../../public/assets/carousel1.png'
+import Carousel2 from '../../../public/assets/carousel2.png'
+import Carousel3 from '../../../public/assets/carousel3-fixed.jpeg'
+import Carousel4 from '../../../public/assets/carousel4.jpeg'
 
-const datas = [Carousel1, Carousel2, Carousel3, Carousel4]
+const CAROUSEL_IMAGES = [Carousel1, Carousel2, Carousel3, Carousel4]
 
-const EmblaCarousel = props => {
-    const { slides, options } = props
-    const [emblaRef, emblaApi] = useEmblaCarousel(options, [
-        Fade(),
-        Autoplay({ delay: 6000 }),
-    ])
+const EmblaCarousel = ({ options }) => {
+    const [selectedIndex, setSelectedIndex] = useState(0)
+
+    // Memoize plugin instances to prevent recreation on every render
+    const plugins = useMemo(
+        () => [Fade(), Autoplay({ delay: 6000, stopOnInteraction: false })],
+        [],
+    )
+
+    const [emblaRef, emblaApi] = useEmblaCarousel(options, plugins)
+
+    const onSelect = useCallback(() => {
+        if (!emblaApi) return
+        setSelectedIndex(emblaApi.selectedScrollSnap())
+    }, [emblaApi])
 
     useEffect(() => {
         if (!emblaApi) return
 
-        const updateFade = () => {
-            emblaApi.slideNodes().forEach((slide, index) => {
-                slide.classList.toggle(
-                    'is-selected',
-                    index === emblaApi.selectedScrollSnap(),
-                )
-            })
-        }
+        onSelect()
+        emblaApi.on('select', onSelect).on('reInit', onSelect)
 
-        emblaApi.on('select', updateFade)
-        emblaApi.on('init', updateFade)
-        updateFade()
-    }, [emblaApi])
+        return () => {
+            emblaApi.off('select', onSelect).off('reInit', onSelect)
+        }
+    }, [emblaApi, onSelect])
 
     return (
         <div className="embla w-full">
             <div className="embla__viewport w-full" ref={emblaRef}>
                 <div className="embla__container w-full min-h-full">
-                    {datas?.map((image, index) => (
-                        <div
-                            className="embla__slide min-w-full h-[20rem] md:h-[45.5vh] lg:h-screen relative"
-                            key={index}>
-                            <Image
-                                className="embla__slide__img"
-                                src={image}
-                                alt="Your alt text"
-                                fill
-                            />
-                        </div>
-                    ))}
+                    {CAROUSEL_IMAGES.map((image, index) => {
+                        const isActive = index === selectedIndex
+                        const isPriority = index === 0
+
+                        return (
+                            <div
+                                className="embla__slide min-w-full h-[20rem] md:h-[45.5vh] lg:h-screen relative"
+                                key={image.src}>
+                                <Image
+                                    src={image}
+                                    alt={`Carousel slide ${index + 1}`}
+                                    priority={isPriority}
+                                    loading={isPriority ? 'eager' : 'lazy'}
+                                    sizes="100vw"
+                                    quality={85}
+                                    fill
+                                    className="embla__slide__img object-cover"
+                                    placeholder="blur"
+                                    // Preload adjacent slides for smoother transitions
+                                    fetchPriority={
+                                        isActive || isPriority ? 'high' : 'low'
+                                    }
+                                />
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
-
-            {/* <div className="embla__controls">
-                <div className="embla__buttons">
-                    <PrevButton
-                        onClick={onPrevButtonClick}
-                        disabled={prevBtnDisabled}
-                    />
-                    <NextButton
-                        onClick={onNextButtonClick}
-                        disabled={nextBtnDisabled}
-                    />
-                </div> */}
-
-            {/* <div className="embla__dots">
-                    {scrollSnaps.map((_, index) => (
-                        <DotButton
-                            key={index}
-                            onClick={() => onDotButtonClick(index)}
-                            className={'embla__dot'.concat(
-                                index === selectedIndex
-                                    ? ' embla__dot--selected'
-                                    : '',
-                            )}
-                        />
-                    ))}
-                </div> */}
-            {/* </div> */}
         </div>
     )
 }

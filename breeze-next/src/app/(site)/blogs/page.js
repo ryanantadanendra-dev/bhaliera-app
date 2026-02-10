@@ -1,5 +1,10 @@
 import Hero from '@/components/Hero'
-import BlogsSection from '@/components/Blogs/BlogsSection'
+import dynamic from 'next/dynamic'
+
+const BlogsSection = dynamic(() => import('@/components/Blogs/BlogsSection'), {
+    ssr: false,
+    loading: () => <div className="h-[60vh]" />,
+})
 
 export const metadata = {
     title: 'Business & Certification Blog - Bhaliera.com',
