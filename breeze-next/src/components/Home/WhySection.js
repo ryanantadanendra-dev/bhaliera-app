@@ -62,7 +62,7 @@ const WhySection = () => {
                 <ul className="mt-12 lg:mt-32 space-y-3 px-4" role="list">
                     {WHY_US_DATA.map((data, index) => (
                         <li
-                            key={index}
+                            key={data}
                             className="flex justify-between items-center gap-5 bg-[#FFFFFF30] lg:h-14 px-4 py-3 lg:py-0 rounded-lg hover:bg-[#FFFFFF40] transition-colors">
                             <p className="text-xs lg:text-base xl:text-lg leading-relaxed">
                                 {data}

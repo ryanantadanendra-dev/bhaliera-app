@@ -1,4 +1,5 @@
 'use client'
+
 import { useMemo } from 'react'
 import { useBlogPublic } from '@/hooks/blogPublig'
 import Image from 'next/image'
@@ -17,8 +18,10 @@ export default function HighlightBlogs() {
     return (
         <div className="blogs-wrapper flex md:flex-row flex-col items-center justify-center gap-3 pt-12 px-6 md:px-20">
             {highlight.map((blog, index) => (
-                <figure
-                    key={blog.slug}
+                <Link
+                    href={`/blog/${blog?.slug}`}
+                    key={blog?.slug || index}
+                    aria-label={`Read Blog: ${blog?.title}`}
                     className={`relative h-56 aspect-[16/9] ${
                         index === 0
                             ? 'lg:w-[37rem] md:w-[30rem] w-96 md:flex-1'
@@ -26,8 +29,13 @@ export default function HighlightBlogs() {
                     }`}
                     style={{ backgroundColor: 'var(--color-primary)' }}>
                     <Image
-                        src={blog?.image}
-                        alt={blog.title}
+                        src={
+                            typeof blog?.image === 'string' &&
+                            blog?.image.length > 0
+                                ? blog.image
+                                : 'placeholder.jpg'
+                        }
+                        alt={`${blog?.title} image` ?? 'Blog Image'}
                         fill
                         priority={index === 0}
                         fetchPriority={index === 0 ? 'high' : 'auto'}
@@ -38,17 +46,12 @@ export default function HighlightBlogs() {
                         className="object-cover"
                     />
 
-                    <figcaption className="absolute bottom-0 z-10 w-full h-16 px-5 bg-black/60 flex items-center justify-between gap-2">
+                    <div className="absolute bottom-0 z-10 w-full h-16 px-5 bg-black/60 flex items-center justify-between gap-2">
                         <h3 className="text-white text-lg md:text-2xl flex-1 truncate">
                             {blog.title}
                         </h3>
-                        <Link
-                            href={`/blog/${blog?.slug}`}
-                            className="text-blue-300 underline text-xs shrink-0">
-                            Learn More &gt;&gt;&gt;
-                        </Link>
-                    </figcaption>
-                </figure>
+                    </div>
+                </Link>
             ))}
         </div>
     )

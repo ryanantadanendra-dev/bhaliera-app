@@ -63,7 +63,7 @@ export default function ServiceCard({ service, index, isOpen, toggle }) {
                 </div>
             </div>
             <div
-                className={`extended-section w-full flex gap-12 ${isOpen ? 'visible h-full py-32' : 'invisible h-0 py-0'} transition-all duration-200 ease-out`}>
+                className={`extended-section w-full flex flex-col md:flex-row gap-12 ${isOpen ? 'visible h-full py-32' : 'invisible h-0 py-0'} transition-all duration-200 ease-out`}>
                 <div className="lg:w-1/2 h-full">
                     <p
                         dangerouslySetInnerHTML={{
@@ -74,7 +74,7 @@ export default function ServiceCard({ service, index, isOpen, toggle }) {
                         }}
                     />
                 </div>
-                <div className="lg:w-1/2 h-full px-12">
+                <div className="lg:w-1/2 h-full md:px-12">
                     <h3 className="text-2xl font-bold">
                         Ready to Start Your {service.name} Process?
                     </h3>
@@ -143,7 +143,7 @@ export default function ServiceCard({ service, index, isOpen, toggle }) {
                 </figure>
             </div>
             <div
-                className={`extended-section w-full flex gap-12 ${isOpen ? 'visible h-full py-32' : 'invisible h-0 py-0'} transition-all duration-200 ease-out`}>
+                className={`extended-section w-full flex-col md:flex-row flex gap-12 ${isOpen ? 'visible h-full py-32' : 'invisible h-0 py-0'} transition-all duration-200 ease-out`}>
                 <div className="lg:w-1/2 h-full">
                     <p
                         dangerouslySetInnerHTML={{
@@ -154,7 +154,7 @@ export default function ServiceCard({ service, index, isOpen, toggle }) {
                         }}
                     />
                 </div>
-                <div className="lg:w-1/2 h-full px-12">
+                <div className="lg:w-1/2 h-full md:px-12">
                     <h3
                         className={`text-2xl font-bold ${index == 1 ? 'text-white' : 'text-black'} `}>
                         Ready to Start Your {service.name} Process?

@@ -16,7 +16,7 @@ const Hamburger = ({ isOpen, setIsOpen, goToSection, slugify }) => {
             className={`menu-wrapper w-screen ${isExtended ? 'h-[358.4px]' : 'h-[179.2px]'} absolute bg-[#0f2742] ${isOpen ? 'top-20' : '-top-96'} left-0`}>
             <div className="link-wrapper">
                 <div className="link-wrapper h-[44.8px] text-white hover:bg-white hover:text-black flex items-center">
-                    <Link href="" className="ms-3">
+                    <Link href="/about" className="ms-3">
                         About Us
                     </Link>
                 </div>
@@ -111,7 +111,7 @@ const Hamburger = ({ isOpen, setIsOpen, goToSection, slugify }) => {
                 <div
                     className={`link-wrapper h-[44.8px] text-white hover:bg-white hover:text-black flex items-center`}>
                     <Link href="/blogs" className="ms-3">
-                        Articles
+                        Blogs
                     </Link>
                 </div>
                 <div className="link-wrapper h-[44.8px] text-white hover:bg-white hover:text-black flex items-center">

@@ -39,7 +39,14 @@ export const metadata = {
         description:
             'Your trusted partner for land permits, construction licensing, halal and ISO 22000 certification. Fast, compliant, and professional solutions.',
         creator: '@bhalieragroup',
-        images: [],
+        images: [
+            {
+                url: 'https://bhaliera.com/public/assets/service1.jpeg',
+                width: 1200,
+                height: 630,
+                alt: 'Bhaliera Logo',
+            },
+        ],
     },
     robots: {
         index: true,
@@ -59,7 +66,9 @@ const Services = () => {
     return (
         <>
             <Hero title="Services" />
-            <ServicesSection />
+            <main>
+                <ServicesSection />
+            </main>
         </>
     )
 }

@@ -10,12 +10,12 @@ const Galleries = () => {
         <section className="w-full min-h-screen pt-20 bg-white pb-12">
             <h2 className="text-center text-5xl">Galleries</h2>
             <p
-                className="text-center mt-3 text-xl px-56"
+                className="text-center mt-3 text-xl px-1 md:px-32 lg::px-56"
                 style={{ color: 'var(--color-primary)' }}>
                 Successfully delivered land certification and permitting
                 services for diverse clients across Indonesia
             </p>
-            <div className="grid grid-cols-4 grid-rows-3 lg:gap-2 mt-20 gap-12 md:gap-2 lg:px-10">
+            <div className="grid grid-cols-2 grid-rows-5 md:grid-cols-4 md:grid-rows-3 lg:gap-2 mt-20 gap-2 md:gap-2 lg:px-10">
                 {galleries?.map((gallery, index) => (
                     <div
                         key={index}

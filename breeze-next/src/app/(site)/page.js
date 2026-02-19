@@ -10,13 +10,22 @@ export const metadata = {
     description:
         'provides integrated legal, licensing, and certification services through a professional, transparent, and regulation-compliant approach to support long-term business sustainability.',
     keywords: [
+        'Bhaliera',
         'legal licensing services',
+        'business licensing services',
         'certification consulting',
-        'land certification',
-        'construction licensing',
-        'halal certification',
-        'ISO 22000',
-        'regulatory compliance',
+        'land certification services',
+        'construction licensing services',
+        'halal certification services',
+        'ISO 22000 certification',
+        'regulatory compliance services',
+        'layanan perizinan legal',
+        'jasa perizinan usaha',
+        'konsultasi sertifikasi',
+        'sertifikasi tanah',
+        'perizinan konstruksi',
+        'sertifikasi halal',
+        'sertifikasi ISO 22000',
     ],
     openGraph: {
         title: 'Legal, Licensing & Certification Solutions',
@@ -31,7 +40,14 @@ export const metadata = {
         description:
             'Your trusted partner for land permits, construction licensing, halal and ISO 22000 certification. Fast, compliant, and professional solutions.',
         creator: '@bhalieragroup',
-        images: [],
+        images: [
+            {
+                url: 'https://bhaliera.com/public/assets/logo.png',
+                width: 1200,
+                height: 630,
+                alt: 'Bhaliera Logo',
+            },
+        ],
     },
     robots: {
         index: true,
@@ -71,8 +87,8 @@ const TestimoialsSection = dynamic(
 
 const Home = () => {
     return (
-        <main>
-            <section className="relative min-h-screen md:min-h-full lg:h-screen text-center md:py-32 lg:py-0 md:text-left flex flex-col justify-center px-8 lg:px-0 lg:justify-start sm:items-center md:items-start pt-0 bg-[#082841] overflow-hidden">
+        <>
+            <header className="relative min-h-screen md:min-h-full lg:h-screen text-center md:py-32 lg:py-0 md:text-left flex flex-col justify-center px-8 lg:px-0 lg:justify-start sm:items-center md:items-start pt-0 bg-[#082841] overflow-hidden">
                 {/* Main Content - This should be LCP element */}
                 <h1 className="text-white text-3xl md:text-4xl lg:text-5xl lg:text-left ms-0 lg:ms-10 lg:pe-[18rem] md:pe-32 md:mt-28 lg:mt-40 z-30">
                     <span>Your Trusted Partner in Legal,</span>
@@ -95,7 +111,7 @@ const Home = () => {
                         href={waLink({ data: null, isService: false })}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className=" px-5 py-2 ms-0 mt-6 lg:ms-10 lg:mt-5 lg:py-4 inline-block hover:opacity-90 transition-opacity text-black"
+                        className=" px-5 py-3 ms-0 mt-6 lg:ms-10 lg:mt-5 lg:py-4 inline-block hover:opacity-90 transition-opacity text-black"
                         style={{ backgroundColor: 'var(--color-secondary)' }}>
                         Contact Now!
                     </Link>
@@ -152,15 +168,17 @@ const Home = () => {
                         />
                     </div>
                 </div>
-            </section>
+            </header>
 
-            {/* Below-the-fold sections - all lazy loaded */}
-            <ServicesSection />
-            <WhySection />
-            <BlogsSection />
-            <TestimoialsSection />
-            <Galleries />
-        </main>
+            <main>
+                {/* Below-the-fold sections - all lazy loaded */}
+                <ServicesSection />
+                <WhySection />
+                <BlogsSection />
+                <TestimoialsSection />
+                <Galleries />
+            </main>
+        </>
     )
 }
 

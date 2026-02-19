@@ -4,6 +4,9 @@ import { getBlogs } from '@/lib/getBlog'
 export async function generateMetadata({ params }) {
     const { blogs } = await getBlogs()
     const blog = blogs.find(b => b.slug === params.slug)
+    const imageUrl = blog?.image
+        ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/${blog?.image}`
+        : `https://stellabali.com/public/assets/carousel1.png`
 
     if (!blog) return { title: 'Not found' }
 
@@ -13,7 +16,7 @@ export async function generateMetadata({ params }) {
         openGraph: {
             title: blog.title,
             description: blog.subtitle,
-            images: [blog.image],
+            images: imageUrl,
             type: 'article',
         },
     }
@@ -48,16 +51,18 @@ export default async function Blog({ params }) {
                     {formatedDate}
                 </time>
             </header>
-            <figure className="relative w-[20rem] md:w-[45rem] lg:w-[59rem] h-64 mx-auto mt-10">
-                <Image
-                    src={blog?.image}
-                    alt={`${blog?.title} image`}
-                    fill
-                    sizes="100px"
-                    priority
-                    className="object-cover"
-                />
-            </figure>
+            <main>
+                <figure className="relative w-[20rem] md:w-[45rem] lg:w-[59rem] md:h-96 h-64 mx-auto mt-10">
+                    <Image
+                        src={blog?.image}
+                        alt={`${blog?.title} image`}
+                        fill
+                        sizes="100px"
+                        priority
+                        className="object-cover"
+                    />
+                </figure>
+            </main>
             <div
                 dangerouslySetInnerHTML={{ __html: blog?.content }}
                 className="content max-w-full px-8 md:px-12 lg:px-0"

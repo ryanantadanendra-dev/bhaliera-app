@@ -49,11 +49,11 @@ const EmblaCarousel = ({ options }) => {
                         const isPriority = index === 0
 
                         return (
-                            <div
+                            <figure
                                 className="embla__slide min-w-full h-[20rem] md:h-[45.5vh] lg:h-screen relative"
                                 key={image.src}>
                                 <Image
-                                    src={image}
+                                    src={image || ''}
                                     alt={`Carousel slide ${index + 1}`}
                                     priority={isPriority}
                                     loading={isPriority ? 'eager' : 'lazy'}
@@ -67,7 +67,7 @@ const EmblaCarousel = ({ options }) => {
                                         isActive || isPriority ? 'high' : 'low'
                                     }
                                 />
-                            </div>
+                            </figure>
                         )
                     })}
                 </div>

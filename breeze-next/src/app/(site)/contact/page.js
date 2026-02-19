@@ -33,6 +33,14 @@ export const metadata = {
         title: 'Contact Business Compliance Consultants in Bali',
         description:
             'We help businesses in Indonesia with permits, ISO, and halal certification.',
+        images: [
+            {
+                url: 'https://bhaliera.com/public/assets/carousel4.jpeg',
+                width: 1200,
+                height: 630,
+                alt: 'Bhaliera Logo',
+            },
+        ],
     },
     robots: {
         index: true,
@@ -52,7 +60,7 @@ const Contact = () => {
     return (
         <>
             <Hero title="Contact Us" />
-            <section className="w-screen min-h-screen bg-white lg:px-20 pt-32">
+            <main className="w-screen min-h-screen bg-white lg:px-20 pt-32">
                 <div className="flex flex-col md:flex-row justify-center md:gap-12 px-12 md:px-12">
                     <figure className="relative w-full h-56 mx-auto md:w-1/2 md:h-96">
                         <Image
@@ -101,7 +109,7 @@ const Contact = () => {
                         <SendEmailForm />
                     </div>
                 </div>
-            </section>
+            </main>
         </>
     )
 }

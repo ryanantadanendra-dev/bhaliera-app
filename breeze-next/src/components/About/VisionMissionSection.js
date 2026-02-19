@@ -24,7 +24,7 @@ const VisionMissionSection = () => {
             </div>
             <div className="mt-10">
                 <div
-                    className="card w-full h-[30rem] mx-auto px-5 py-5 md:w-full md:h-full lg:w-full lg:h-full flex flex-col justify-between "
+                    className="card w-full h-full mx-auto px-5 py-5 md:w-full md:h-full lg:w-full lg:h-full flex flex-col justify-between "
                     style={{ backgroundColor: 'var(--color-primary)' }}>
                     <h3 className="text-6xl font-bold text-white">Mission</h3>
                     <p className="text-white mt-32 text-xl md:mt-[16.5rem] md:text-2xl lg:mt-44 ms-4">
