@@ -72,7 +72,7 @@ const AddForm = ({ isOpen, setIsOpen, isLoading, setisLoading }) => {
         try {
             const result = await addBlog(formData)
 
-            if (result) {
+            if (result.success) {
                 Swal.fire({
                     title: 'Success',
                     text: 'Blog Added Successfully!?',
@@ -84,12 +84,15 @@ const AddForm = ({ isOpen, setIsOpen, isLoading, setisLoading }) => {
                     content: '',
                     image: null,
                 })
-                setFormData({
-                    ...formData,
-                    image: null,
-                })
+
                 setIsOpen(false)
                 mutate()
+            } else {
+                Swal.fire({
+                    title: 'Error!',
+                    text: result.error,
+                    icon: 'error',
+                })
             }
         } catch (error) {
             Swal.fire({
@@ -118,6 +121,7 @@ const AddForm = ({ isOpen, setIsOpen, isLoading, setisLoading }) => {
                             onChange={handleChange}
                             type="text"
                             name="title"
+                            required
                             className="md:w-96 md:h-12 w-52 h-7"
                         />
                     </li>
@@ -130,6 +134,7 @@ const AddForm = ({ isOpen, setIsOpen, isLoading, setisLoading }) => {
                             onChange={handleChange}
                             type="text"
                             name="subtitle"
+                            required
                             className="md:w-96 md:h-12 w-52 h-7"
                         />
                     </li>
@@ -141,6 +146,7 @@ const AddForm = ({ isOpen, setIsOpen, isLoading, setisLoading }) => {
                             value={formData.content}
                             onChange={handleChange}
                             name="content"
+                            required
                             className="md:w-96 md:h-40 w-52 h-32"
                         />
                     </li>
@@ -152,6 +158,7 @@ const AddForm = ({ isOpen, setIsOpen, isLoading, setisLoading }) => {
                             onChange={handleFileChange}
                             type="file"
                             name="image"
+                            required
                             className="md:w-96 w-52"
                         />
                     </li>

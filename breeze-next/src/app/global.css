@@ -46,10 +46,12 @@ h3 {
 .content h2 {
     margin-top: 2rem;
     font-size: 1.5rem;
+    color: white;
 }
 
 .content p {
     margin-top: 1rem;
+    color: white;
 }
 
 .portfolio-title {

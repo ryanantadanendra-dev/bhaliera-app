@@ -35,7 +35,7 @@ const TeamSection = () => {
                     src={data.image}
                     alt={`${data.jabatan} image`}
                     fill
-                    sizes="100px"
+                    sizes="(max-width: 1024px) 288px, 384px"
                     className="object-cover rounded-2xl"
                 />
             </figure>

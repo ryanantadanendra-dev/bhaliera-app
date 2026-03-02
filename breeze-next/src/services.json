@@ -59,24 +59,24 @@
         }
     ],
     "galleries": [
-        "/assets/service1-portfolio1.jpg",
-        "/assets/service1-portfolio2.jpg",
-        "/assets/service1-portfolio3.jpg",
+        "/assets/gallery2.png",
         "/assets/carousel1.png",
+        "/assets/gallery4.PNG",
+        "/assets/gallery3.jpeg",
         "/assets/carousel2.png",
-        "/assets/carousel3-fixed.jpeg",
+        "/assets/gallery1.png",
         "/assets/carousel4.jpeg"
     ],
     "testimonials": [
         {
             "image": "/assets/anggota1.png",
-            "name": "John Doe",
+            "name": "Nayendra Calista",
             "as": "Property Developer",
             "comment": "\"BHALIERA made the complex process of land certification incredibly simple. Their team handled everything professionally and kept me informed throughout. Highly recommended!\""
         },
         {
             "image": "/assets/anggota3.png",
-            "name": "John Doe",
+            "name": "Elvaro Santikara",
             "as": "Homeowner",
             "comment": "\"I was struggling with my land certificate for months. BHALIERA resolved all issues within weeks. Their expertise in BPN processes is outstanding.\""
         },

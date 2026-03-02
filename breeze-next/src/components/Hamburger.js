@@ -16,7 +16,10 @@ const Hamburger = ({ isOpen, setIsOpen, goToSection, slugify }) => {
             className={`menu-wrapper w-screen ${isExtended ? 'h-[358.4px]' : 'h-[179.2px]'} absolute bg-[#0f2742] ${isOpen ? 'top-20' : '-top-96'} left-0`}>
             <div className="link-wrapper">
                 <div className="link-wrapper h-[44.8px] text-white hover:bg-white hover:text-black flex items-center">
-                    <Link href="/about" className="ms-3">
+                    <Link
+                        onClick={() => setIsOpen(false)}
+                        href="/about"
+                        className="ms-3">
                         About Us
                     </Link>
                 </div>
@@ -24,7 +27,10 @@ const Hamburger = ({ isOpen, setIsOpen, goToSection, slugify }) => {
                     className="link-wrapper h-[44.8px] text-white hover:bg-white hover:text-black flex items-center gap-1"
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}>
-                    <Link href="/services" className="ms-3">
+                    <Link
+                        onClick={() => setIsOpen(false)}
+                        href="/services"
+                        className="ms-3">
                         Services
                     </Link>
                     <svg
@@ -110,12 +116,18 @@ const Hamburger = ({ isOpen, setIsOpen, goToSection, slugify }) => {
                 )}
                 <div
                     className={`link-wrapper h-[44.8px] text-white hover:bg-white hover:text-black flex items-center`}>
-                    <Link href="/blogs" className="ms-3">
+                    <Link
+                        onClick={() => setIsOpen(false)}
+                        href="/blogs"
+                        className="ms-3">
                         Blogs
                     </Link>
                 </div>
                 <div className="link-wrapper h-[44.8px] text-white hover:bg-white hover:text-black flex items-center">
-                    <Link href="/contact" className="ms-3">
+                    <Link
+                        onClick={() => setIsOpen(false)}
+                        href="/contact"
+                        className="ms-3">
                         Contact
                     </Link>
                 </div>

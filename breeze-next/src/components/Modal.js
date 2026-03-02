@@ -18,7 +18,7 @@ const Modal = ({ children, open, setIsOpen }) => {
             <div className="modal-container w-screen h-screen flex justify-center items-center">
                 <div
                     onClick={e => e.stopPropagation()}
-                    className="md:w-[40rem] md:h-[35rem] w-[23rem] h-[30rem] pb-12 bg-white rounded-xl">
+                    className="md:w-[40rem] md:h-[35rem] w-[23rem] h-[35rem] pb-12 bg-white rounded-xl">
                     <svg
                         onClick={() => {
                             setIsOpen(false)

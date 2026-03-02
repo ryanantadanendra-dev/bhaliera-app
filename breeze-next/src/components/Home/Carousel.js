@@ -55,17 +55,12 @@ const EmblaCarousel = ({ options }) => {
                                 <Image
                                     src={image || ''}
                                     alt={`Carousel slide ${index + 1}`}
-                                    priority={isPriority}
-                                    loading={isPriority ? 'eager' : 'lazy'}
-                                    sizes="100vw"
+                                    sizes="(max-width: 1024px) 288px, 384px"
                                     quality={85}
                                     fill
+                                    loading="lazy"
                                     className="embla__slide__img object-cover"
                                     placeholder="blur"
-                                    // Preload adjacent slides for smoother transitions
-                                    fetchPriority={
-                                        isActive || isPriority ? 'high' : 'low'
-                                    }
                                 />
                             </figure>
                         )

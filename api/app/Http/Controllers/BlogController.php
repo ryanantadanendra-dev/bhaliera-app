@@ -28,7 +28,7 @@ class BlogController extends Controller
     }
 
     public function addBlog(Request $request) {
-        $validate = $request->validate([
+        $validated = $request->validate([
             'title' =>  [
                 'required',
                 'max:100',
@@ -53,9 +53,9 @@ class BlogController extends Controller
         ]);
 
         $blog = Blog::create([
-            'title' => $request->title,
-            'subtitle' => $request->subtitle,
-            'content' => $cleanContent,
+            'title' => $validated['title'],
+            'subtitle' => $validated['subtitle'],
+            'content' => $validated['content'],
             'image' => 'images/'.$imageName,
             'slug' => $slug
         ]);

@@ -40,7 +40,7 @@ const BlogClient = ({ slug }) => {
                     src={blog?.image}
                     alt={`${blog?.title} image`}
                     fill
-                    sizes="100px"
+                    sizes="(max-width: 1024px) 288px, 384px"
                     priority
                     className="object-cover"
                 />

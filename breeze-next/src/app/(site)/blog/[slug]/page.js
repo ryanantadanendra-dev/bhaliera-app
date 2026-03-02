@@ -41,10 +41,10 @@ export default async function Blog({ params }) {
     return (
         <article className="blog-wrapper w-screen min-h-screen py-28">
             <header>
-                <h1 className="text-4xl md:text-5xl text-white text-center font-bold">
+                <h1 className="text-2xl md:text-5xl lg:px-72 text-white text-center font-bold">
                     {blog?.title}
                 </h1>
-                <p className="text-center text-[#ffffff90] text-xl md:text-2xl mt-3">
+                <p className="text-center text-[#ffffff90] lg:px-72 text-lg md:text-2xl mt-6">
                     {blog?.subtitle}
                 </p>
                 <time className="block text-center text-gray-400 text-[1rem] mt-10">
@@ -57,7 +57,7 @@ export default async function Blog({ params }) {
                         src={blog?.image}
                         alt={`${blog?.title} image`}
                         fill
-                        sizes="100px"
+                        sizes="(max-width: 1024px) 288px, 384px"
                         priority
                         className="object-cover"
                     />
@@ -65,7 +65,7 @@ export default async function Blog({ params }) {
             </main>
             <div
                 dangerouslySetInnerHTML={{ __html: blog?.content }}
-                className="content max-w-full px-8 md:px-12 lg:px-0"
+                className="content max-w-full px-8 md:px-12 lg:px-0 text-white"
             />
         </article>
     )

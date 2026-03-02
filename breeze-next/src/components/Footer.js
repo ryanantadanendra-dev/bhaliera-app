@@ -102,7 +102,7 @@ const Footer = () => {
                             src={Logo}
                             alt="Company Logo"
                             fill
-                            sizes="128px"
+                            sizes="(max-width: 1024px) 288px, 384px"
                             className="object-contain"
                             priority={false} // Footer doesn't need priority loading
                             quality={85} // Reduce quality slightly for faster load
@@ -197,7 +197,7 @@ const Footer = () => {
                     <h2 className="font-semibold text-white">Our Location</h2>
                     <div className="w-[15rem] mt-3">
                         <MapPreview
-                            url="https://maps.app.goo.gl/Yem67Cm4GZmehazu7"
+                            url="https://maps.app.goo.gl/KDFZFN5fGqnGdzxR9"
                             height="160px"
                             borderRadius="12px"
                             style={{

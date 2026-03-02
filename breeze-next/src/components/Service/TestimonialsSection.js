@@ -76,7 +76,7 @@ const TestimoialsSection = () => {
                             <h3 className=" font-bold text-2xl text-left">
                                 {data.name}
                             </h3>
-                            <p>{data.as}</p>
+                            <p className="text-black">{data.as}</p>
                         </div>
                     </div>
                 ))}

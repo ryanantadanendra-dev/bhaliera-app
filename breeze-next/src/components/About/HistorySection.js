@@ -28,7 +28,8 @@ const HistorySection = () => {
                             src={Logo}
                             alt="brand logo"
                             fill
-                            sizes="100px"
+                            quality={90}
+                            sizes="(max-width: 768px) 100vw, 50vw"
                             className="object-cover"
                         />
                     </figure>

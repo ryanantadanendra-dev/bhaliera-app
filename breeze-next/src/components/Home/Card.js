@@ -1,12 +1,32 @@
+'use client'
+
 import services from '@/services.json'
 import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+
+function slugify(text) {
+    return text
+        .toLowerCase()
+        .trim()
+        .replace(/&/g, 'and')
+        .replace(/[^\w\s-]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-')
+}
 
 const Card = () => {
+    const router = useRouter()
+
+    const goToSection = (page, id) => {
+        router.push(`/${page}/?scroll=${id}`)
+    }
+
     return (
         <>
             {services?.services?.map(service => (
                 <div
-                    key={service?.id}
+                    key={service?.name}
                     className="card-container w-[20rem] md:w-[20rem] lg:w-[23rem] text-white flex flex-col justify-between pb-10"
                     style={{ backgroundColor: 'var(--color-primary)' }}>
                     <div>
@@ -20,7 +40,7 @@ const Card = () => {
                                 className="object-cover"
                             />
                         </figure>
-                        <h3 className="font-bold ms-8 text-lg">
+                        <h3 className="font-bold ms-8 text-lg text-white">
                             {service.name}
                         </h3>
                         <ul className="ms-8 mt-4 pe-4 md:pe-4">
@@ -34,7 +54,11 @@ const Card = () => {
                         </ul>
                     </div>
                     <div>
-                        <button className="px-5 py-3 bg-transparent border-2 border-[#dfae74] ms-8 mt-12 rounded-3xl">
+                        <button
+                            onClick={() =>
+                                goToSection('services', slugify(service.name))
+                            }
+                            className=" px-5 py-3 bg-transparent border-2 border-[#dfae74] ms-8 mt-12 rounded-3xl">
                             <div className="flex gap-3">
                                 Learn More
                                 <svg

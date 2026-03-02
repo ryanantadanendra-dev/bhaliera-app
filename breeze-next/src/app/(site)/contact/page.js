@@ -67,7 +67,7 @@ const Contact = () => {
                             src={Img}
                             alt="contact image"
                             fill
-                            sizes="(max-widtz-024px) 224px, 384px"
+                            sizes="(max-width: 1024px) 224px, 384px"
                             priority
                             className="object-cover"
                         />

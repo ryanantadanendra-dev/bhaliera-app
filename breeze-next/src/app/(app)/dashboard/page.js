@@ -73,7 +73,7 @@ const Dashboard = () => {
 
     const displayData = () => {
         if (blogs?.blogs.length == 0) {
-            return <p>No Blog Yet!</p>
+            return <p className="text-black">No Blog Yet!</p>
         } else {
             return (
                 <table id="blogs-table" className="text-black">
@@ -85,10 +85,10 @@ const Dashboard = () => {
                             <th className="w-32 text-xs md:text-xl text-center">
                                 Title
                             </th>
-                            <th className="w-20 md:w-40 text-xs md:text-xl text-center">
+                            <th className="w-20 md:w-32 text-xs md:text-xl text-center">
                                 Subtitle
                             </th>
-                            <th className="w-32 md:w-80 text-xs md:text-xl text-center">
+                            <th className="w-32 md:w-44 text-xs md:text-xl text-center">
                                 Content
                             </th>
                             <th className="w-32 md:w-56 text-[0.5rem] md:text-xl text-center">
@@ -107,18 +107,22 @@ const Dashboard = () => {
                                 <td className="text-[0.5rem] md:text-xl w-12 md:w-20 text-center">
                                     {blog.id}
                                 </td>
-                                <td className="text-center text-[0.5rem] md:text-lg">
-                                    <p className="w-12 md:w-44">{blog.title}</p>
+                                <td className=" text-[0.5rem] md:text-lg">
+                                    <p className="w-12 md:w-44 line-clamp-2">
+                                        {blog.title}
+                                    </p>
                                 </td>
                                 <td className="text-[0.5rem] md:text-xl">
-                                    <p className="w-20 md:w-56 text-center">
+                                    <p className="w-20 md:w-56 text-start line-clamp-3">
                                         {blog.subtitle}
                                     </p>
                                 </td>
                                 <td className="whitespace-pre-line text-[0.5rem] md:text-xl">
-                                    <p className="truncate w-32 md:w-72">
-                                        {blog.content}
-                                    </p>
+                                    <div className="max-h-56 overflow-y-auto">
+                                        <p className=" w-32 md:w-44">
+                                            {blog.content}
+                                        </p>
+                                    </div>
                                 </td>
                                 <td className="w-32 h-32 md:w-56 md:h-56 relative">
                                     <Image

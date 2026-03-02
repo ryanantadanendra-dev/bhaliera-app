@@ -3,6 +3,7 @@
 
 import useSWR from 'swr'
 import axios from '@/lib/axios'
+import { useBlogPublic } from './blogPublig'
 
 // Shared fetcher
 const fetcher = url => axios.get(url).then(res => res.data)
@@ -20,6 +21,7 @@ const ensureCSRF = async () => {
 const shouldFetch = typeof window !== 'undefined'
 
 export const useBlog = () => {
+    const { mutate } = useBlogPublic()
     // // Main blogs data
     // const {
     //     data: blogs,
@@ -57,6 +59,8 @@ export const useBlog = () => {
 
             // // Revalidate both lists
             // await Promise.all([mutate(), mutateLatests()])
+
+            // if (response.status === 201) mutate()
 
             return {
                 success: true,
@@ -100,6 +104,8 @@ export const useBlog = () => {
             // Revalidate to get server data
             // await mutate()
 
+            if (response.status === 201) mutate()
+
             return {
                 success: true,
                 data: response.data,
@@ -130,6 +136,8 @@ export const useBlog = () => {
             // )
 
             const response = await axios.delete(`/api/blog/delete/${id}`)
+
+            if (response.status === 201) mutate()
 
             // Revalidate both lists to confirm
             // await Promise.all([mutate(), mutateLatests()])
@@ -181,14 +189,13 @@ export const useBlog = () => {
             // }, false)
 
             // Revalidate to confirm
-            // await mutate()
+            if (response.status === 201) mutate()
 
             return {
                 success: true,
                 data: response.data,
             }
         } catch (error) {
-            console.error('Update image failed:', error)
             return {
                 success: false,
                 error:

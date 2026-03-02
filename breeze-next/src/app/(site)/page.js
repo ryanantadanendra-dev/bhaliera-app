@@ -126,7 +126,7 @@ const Home = () => {
                             src={Pattern}
                             alt=""
                             fill
-                            sizes="(max-width-1024px) 224px, 384px"
+                            sizes="(max-width: 1024px) 224px, 384px"
                             loading="lazy"
                             quality={60}
                             placeholder="blur"

@@ -83,8 +83,9 @@ const UpdateImageForm = ({
                                 src={
                                     preview?.startsWith('blob')
                                         ? preview
-                                        : `http://localhost:8000/${preview}`
+                                        : `${preview}`
                                 }
+                                fill
                                 alt="Uploaded image"
                                 className="object-cover w-full h-full"
                                 id="preview"
@@ -99,6 +100,7 @@ const UpdateImageForm = ({
                             onChange={handleFileChange}
                             type="file"
                             name="image"
+                            required
                             className="md:w-96 w-52"
                         />
                     </li>

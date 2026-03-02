@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Swal from 'sweetalert2'
 
 const SendEmailForm = () => {
     const [name, setName] = useState('')
@@ -21,7 +22,23 @@ const SendEmailForm = () => {
         })
 
         const data = await res.json()
-        alert(data.success ? 'Email sent!' : 'Failed to send')
+
+        if (data.success) {
+            Swal.fire({
+                title: 'Success!',
+                text: 'Your Email Have Been Sent!.',
+                icon: 'success',
+            })
+            setName('')
+            setEmail('')
+            setMessage('')
+        } else {
+            Swal.fire({
+                title: 'error!',
+                text: 'Something Went Wrong.',
+                icon: 'error',
+            })
+        }
     }
 
     return (
@@ -40,7 +57,7 @@ const SendEmailForm = () => {
                         value={name}
                         onChange={e => setName(e.target.value)}
                         placeholder="Input Your Name. . ."
-                        className="w-full"
+                        className="w-full text-black"
                     />
                 </li>
                 <li className="mt-3">
@@ -51,7 +68,7 @@ const SendEmailForm = () => {
                         value={email}
                         onChange={e => setEmail(e.target.value)}
                         placeholder="Input Your Email. . ."
-                        className="w-full"
+                        className="w-full text-black"
                     />
                 </li>
                 <li className="mt-3">
@@ -61,7 +78,7 @@ const SendEmailForm = () => {
                         value={message}
                         onChange={e => setMessage(e.target.value)}
                         placeholder="Input Your Message. . ."
-                        className="w-full h-56"
+                        className="w-full h-56 text-black"
                     />
                 </li>
                 <li className="flex justify-center md:justify-end">

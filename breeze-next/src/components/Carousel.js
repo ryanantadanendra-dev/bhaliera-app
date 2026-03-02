@@ -92,7 +92,7 @@ export default function Carousel() {
                                                 />
                                             </figure>
                                             <div>
-                                                <h3 className="font-semibold text-base md:text-lg">
+                                                <h3 className="font-semibold text-base md:text-lg md:line-clamp-2 lg:line-clamp-none">
                                                     {blog.title}
                                                 </h3>
                                                 <p className="text-xs text-gray-500 mt-2">
@@ -100,7 +100,7 @@ export default function Carousel() {
                                                         blog.created_at,
                                                     )}
                                                 </p>
-                                                <p className="text-sm text-gray-400 mt-2 w-32 truncate">
+                                                <p className="text-sm text-gray-400 mt-2 w-32 lg:w-72 md:line-clamp-3 lg:line-clamp-4">
                                                     {blog.subtitle}
                                                 </p>
                                             </div>
