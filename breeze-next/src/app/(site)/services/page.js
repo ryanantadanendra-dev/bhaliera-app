@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import Hero from '@/components/Hero'
 import ServicesSection from '@/components/Services/ServiceSection'
 
@@ -67,7 +68,9 @@ const Services = () => {
         <>
             <Hero title="Services" />
             <main>
-                <ServicesSection />
+                <Suspense fallback={null}>
+                    <ServicesSection />
+                </Suspense>
             </main>
         </>
     )
