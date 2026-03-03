@@ -1,7 +1,7 @@
 // components/Home/Carousel.jsx
 'use client'
 
-import { useEffect, useCallback, useState, useMemo } from 'react'
+import { useEffect, useCallback, useMemo } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Fade from 'embla-carousel-fade'
 import Autoplay from 'embla-carousel-autoplay'
