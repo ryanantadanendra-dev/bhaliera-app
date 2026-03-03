@@ -1,8 +1,8 @@
 import Image from 'next/image'
-import Anggota1 from '../../../public/assets/Arya.png'
-import Anggota2 from '../../../public/assets/Eko.png'
-import Anggota3 from '../../../public/assets/Edy.jpg'
-import Anggota4 from '../../../public/assets/Tyas.png'
+import Anggota1 from '../../../public/assets/Arya.PNG'
+import Anggota2 from '../../../public/assets/Eko.PNG'
+import Anggota3 from '../../../public/assets/Edy.JPG'
+import Anggota4 from '../../../public/assets/Tyas.PNG'
 
 const TeamSection = () => {
     const datas = [
