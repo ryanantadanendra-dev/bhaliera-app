@@ -6,10 +6,10 @@ import useEmblaCarousel from 'embla-carousel-react'
 import Fade from 'embla-carousel-fade'
 import Autoplay from 'embla-carousel-autoplay'
 import Image from 'next/image'
-import Carousel1 from '../../../public/assets/carousel1.png'
-import Carousel2 from '../../../public/assets/carousel2.png'
-import Carousel3 from '../../../public/assets/carousel3-fixed.jpeg'
-import Carousel4 from '../../../public/assets/carousel4.jpeg'
+import Carousel1 from '../../../public/assets/gallery3.jpeg'
+import Carousel2 from '../../../public/assets/carousel4.jpeg'
+import Carousel3 from '../../../public/assets/carousel1.png'
+import Carousel4 from '../../../public/assets/carousel5.jpg'
 
 const CAROUSEL_IMAGES = [Carousel1, Carousel2, Carousel3, Carousel4]
 
@@ -56,7 +56,7 @@ const EmblaCarousel = ({ options }) => {
                                     src={image || ''}
                                     alt={`Carousel slide ${index + 1}`}
                                     sizes="(max-width: 1024px) 288px, 384px"
-                                    quality={85}
+                                    quality={90}
                                     fill
                                     loading="lazy"
                                     className="embla__slide__img object-cover"

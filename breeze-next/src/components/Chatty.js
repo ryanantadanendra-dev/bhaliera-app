@@ -3,8 +3,6 @@ const { default: Link } = require('next/link')
 import waLink from '@/lib/waLink'
 
 const Chatty = () => {
-    console.log('Env from chatty:', process.env.NEXT_PHONE)
-
     return (
         <Link
             href={waLink({ data: null, isService: false })}
