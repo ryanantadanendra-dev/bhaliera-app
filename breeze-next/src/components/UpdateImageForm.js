@@ -36,7 +36,7 @@ const UpdateImageForm = ({
         const file = e.target.files[0]
         if (!file) return
 
-        setFormData(prev => ({
+        setFormData(() => ({
             image: file,
         }))
     }

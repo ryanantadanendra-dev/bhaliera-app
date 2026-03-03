@@ -46,9 +46,6 @@ const EmblaCarousel = ({ options }) => {
             <div className="embla__viewport w-full" ref={emblaRef}>
                 <div className="embla__container w-full min-h-full">
                     {CAROUSEL_IMAGES.map((image, index) => {
-                        const isActive = index === selectedIndex
-                        const isPriority = index === 0
-
                         return (
                             <figure
                                 className="embla__slide min-w-full h-[20rem] md:h-[45.5vh] lg:h-screen relative"

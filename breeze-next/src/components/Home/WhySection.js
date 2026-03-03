@@ -60,7 +60,7 @@ const WhySection = () => {
 
                 {/* Features List */}
                 <ul className="mt-12 lg:mt-32 space-y-3 px-4" role="list">
-                    {WHY_US_DATA.map((data, index) => (
+                    {WHY_US_DATA.map(data => (
                         <li
                             key={data}
                             className="flex justify-between items-center gap-5 bg-[#FFFFFF30] lg:h-14 px-4 py-3 lg:py-0 rounded-lg hover:bg-[#FFFFFF40] transition-colors">

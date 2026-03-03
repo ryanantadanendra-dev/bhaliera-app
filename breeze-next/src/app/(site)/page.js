@@ -1,4 +1,3 @@
-import LoginLinks from '@/app/LoginLinks'
 import Image from 'next/image'
 import Pattern from '/public/assets/pattern.png'
 import Link from 'next/link'

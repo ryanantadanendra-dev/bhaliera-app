@@ -16,7 +16,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
             .get('/api/user')
             .then(res => res.data)
             .catch(error => {
-                return null
+                return error
             }),
     )
 

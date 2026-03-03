@@ -1,19 +1,14 @@
 // hooks/useBlog.js
 'use client'
 
-import useSWR from 'swr'
 import axios from '@/lib/axios'
 import { useBlogPublic } from './blogPublig'
-
-// Shared fetcher
-const fetcher = url => axios.get(url).then(res => res.data)
 
 // CSRF helper
 const ensureCSRF = async () => {
     try {
         await axios.get('/sanctum/csrf-cookie')
     } catch (error) {
-        console.error('CSRF token fetch failed:', error)
         throw error
     }
 }
@@ -67,7 +62,6 @@ export const useBlog = () => {
                 data: response.data,
             }
         } catch (error) {
-            console.error('Add blog failed:', error)
             return {
                 success: false,
                 error: error.response?.data?.message || 'Failed to add blog',
@@ -111,7 +105,6 @@ export const useBlog = () => {
                 data: response.data,
             }
         } catch (error) {
-            console.error('Update blog failed:', error)
             // Revert on error
             // await mutate()
             return {
@@ -147,7 +140,6 @@ export const useBlog = () => {
                 data: response.data,
             }
         } catch (error) {
-            console.error('Delete blog failed:', error)
             // Revert on error
             // await mutate()
             return {

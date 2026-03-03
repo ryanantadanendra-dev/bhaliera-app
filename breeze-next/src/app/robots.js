@@ -1,8 +1,5 @@
-import { userAgent } from 'next/server'
-import sitemap from './sitemap'
-
 export default function robots() {
-    const baseUrl = 'bhaliera.com'
+    const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL
 
     return {
         rules: [

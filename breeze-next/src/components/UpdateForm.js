@@ -7,9 +7,6 @@ import Swal from 'sweetalert2'
 import { useBlogPublic } from '@/hooks/blogPublig'
 
 const UpdateForm = ({ blog, isOpen, setIsOpen, isLoading, setisLoading }) => {
-    const [title, setTitle] = useState(blog.title || '')
-    const [subtitle, setSubtitle] = useState(blog.subtitle || '')
-    const [content, setContent] = useState(blog.content || '')
     const { updateBlog } = useBlog()
     const { mutate } = useBlogPublic()
 

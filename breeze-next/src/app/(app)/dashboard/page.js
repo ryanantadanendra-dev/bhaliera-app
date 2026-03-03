@@ -1,27 +1,20 @@
 'use client'
 
-import Header from '@/app/(app)/Header'
 import axios from '@/lib/axios'
-import useSWR from 'swr'
 import { useState, useEffect } from 'react'
 import { useBlog } from '@/hooks/blog'
 import { useBlogPublic } from '@/hooks/blogPublig'
-
-import Modal from '@/components/Modal'
 import Image from 'next/image'
 import Swal from 'sweetalert2'
-import { Html } from 'next/document'
 import UpdateForm from '@/components/UpdateForm'
 import AddForm from '@/components/AddForm'
 import UpdateImageForm from '@/components/UpdateImageForm'
 
 const Dashboard = () => {
-    const csrf = () => axios.get('/sanctum/csrf-cookie')
     const [isOpen, setIsOpen] = useState(false)
-    const [errors, setErrors] = useState([])
     const [isLoading, setisLoading] = useState(false)
     const { blogs, mutate } = useBlogPublic()
-    const { addBlog, updateBlog, deleteBlog, updateImage } = useBlog()
+    const { deleteBlog } = useBlog()
     const [image, setImage] = useState(null)
     const [modalName, setModalName] = useState('')
     const [activeBlog, setActiveBlog] = useState(null)

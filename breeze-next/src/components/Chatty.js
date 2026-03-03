@@ -1,4 +1,3 @@
-import Loading from '@/app/(app)/Loading'
 const { default: Link } = require('next/link')
 import waLink from '@/lib/waLink'
 

@@ -24,7 +24,6 @@ export async function expandShortUrl(url) {
 
         return response.url
     } catch (error) {
-        console.error('Failed to expand URL:', error)
         return url // Fail gracefully by returning original
     }
 }

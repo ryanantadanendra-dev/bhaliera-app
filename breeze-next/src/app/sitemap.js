@@ -1,5 +1,3 @@
-import { userAgent } from 'next/server'
-
 export default function sitemap() {
     const baseUrl = 'bhaliera.com'
     return [

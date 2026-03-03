@@ -1,5 +1,3 @@
-import Image from 'next/image'
-
 const Summary = ({ service }) => {
     return (
         <section className="w-screen min-h-screen lg:pt-32 pt-32 md:min-h-full bg-white">

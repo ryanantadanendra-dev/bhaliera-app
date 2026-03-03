@@ -1,13 +1,11 @@
 'use client'
 
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 
 const Modal = ({ children, open, setIsOpen }) => {
     useEffect(() => {
         setIsOpen(open)
     }, [open])
-
-    const overlayRef = useRef(null)
 
     if (!open) return null
 
