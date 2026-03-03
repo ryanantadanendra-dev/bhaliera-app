@@ -6,14 +6,8 @@ import { useBlogPublic } from './blogPublig'
 
 // CSRF helper
 const ensureCSRF = async () => {
-    try {
-        await axios.get('/sanctum/csrf-cookie')
-    } catch (error) {
-        throw error
-    }
+    await axios.get('/sanctum/csrf-cookie')
 }
-
-const shouldFetch = typeof window !== 'undefined'
 
 export const useBlog = () => {
     const { mutate } = useBlogPublic()

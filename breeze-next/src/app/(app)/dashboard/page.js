@@ -1,6 +1,5 @@
 'use client'
 
-import axios from '@/lib/axios'
 import { useState, useEffect } from 'react'
 import { useBlog } from '@/hooks/blog'
 import { useBlogPublic } from '@/hooks/blogPublig'

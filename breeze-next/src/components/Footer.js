@@ -4,7 +4,6 @@ import Image from 'next/image'
 import Logo from '../../public/assets/logo.png'
 import Link from 'next/link'
 import { MapPreview } from './Map'
-import { useAuth } from '@/hooks/auth'
 import { useRouter } from 'next/navigation'
 
 function slugify(text) {
@@ -71,7 +70,6 @@ const LocationIcon = () => (
 )
 
 const Footer = () => {
-    const { user } = useAuth({ middleware: 'guest' })
     const router = useRouter()
 
     const goToSection = (page, id) => {
@@ -92,125 +90,118 @@ const Footer = () => {
         'Halal Certification Services',
     ]
 
-    if (!user) {
-        return (
-            <footer className="w-screen lg:h-96 bg-[#0A1F2E] grid lg:grid-cols-5 grid-cols-1 md:grid-cols-3 gap-5 lg:px-20 px-10 md:py-12 py-8 text-white">
-                {/* Logo & Description */}
-                <div>
-                    <figure className="relative w-32 h-12">
-                        <Image
-                            src={Logo}
-                            alt="Company Logo"
-                            fill
-                            sizes="(max-width: 1024px) 288px, 384px"
-                            className="object-contain"
-                            priority={false} // Footer doesn't need priority loading
-                            quality={85} // Reduce quality slightly for faster load
-                        />
-                    </figure>
-                    <p className="text-xs md:text-lg mt-6">
-                        Your trusted partner in legal, licensing, and
-                        certification solutions.
-                    </p>
-                    <nav
-                        className="mt-6 flex items-center gap-4"
-                        aria-label="Social media links">
-                        <Link
-                            href="https://www.instagram.com/bhaliera/"
-                            aria-label="Follow us on Instagram - @bhalieragroup"
-                            rel="noopener noreferrer"
-                            target="_blank">
-                            <InstagramIcon />
-                        </Link>
-                    </nav>
-                </div>
-
-                {/* Quick Links */}
-                <nav className="mt-8 md:mt-0" aria-label="Quick links">
-                    <h2 className="font-semibold text-white">Quick Links</h2>
-                    <ul>
-                        {links.map((link, index) => (
-                            <li key={index} className="mt-5 text-[0.8rem]">
-                                <Link
-                                    href={link.link}
-                                    className="hover:text-[#DFAE74] transition-colors">
-                                    {link.text}
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
+    return (
+        <footer className="w-screen lg:h-96 bg-[#0A1F2E] grid lg:grid-cols-5 grid-cols-1 md:grid-cols-3 gap-5 lg:px-20 px-10 md:py-12 py-8 text-white">
+            {/* Logo & Description */}
+            <div>
+                <figure className="relative w-32 h-12">
+                    <Image
+                        src={Logo}
+                        alt="Company Logo"
+                        fill
+                        sizes="(max-width: 1024px) 288px, 384px"
+                        className="object-contain"
+                        priority={false} // Footer doesn't need priority loading
+                        quality={85} // Reduce quality slightly for faster load
+                    />
+                </figure>
+                <p className="text-xs md:text-lg mt-6">
+                    Your trusted partner in legal, licensing, and certification
+                    solutions.
+                </p>
+                <nav
+                    className="mt-6 flex items-center gap-4"
+                    aria-label="Social media links">
+                    <Link
+                        href="https://www.instagram.com/bhaliera/"
+                        aria-label="Follow us on Instagram - @bhalieragroup"
+                        rel="noopener noreferrer"
+                        target="_blank">
+                        <InstagramIcon />
+                    </Link>
                 </nav>
+            </div>
 
-                {/* Services */}
-                <nav className="mt-8 md:mt-0" aria-label="Services">
-                    <h2 className="font-semibold text-white">Services</h2>
-                    <ul>
-                        {services.map((service, index) => (
-                            <li key={index} className="mt-5 text-[0.8rem]">
-                                <button
-                                    onClick={() =>
-                                        goToSection(
-                                            'services',
-                                            slugify(service),
-                                        )
-                                    }
-                                    className="text-left hover:text-[#DFAE74] transition-colors w-full"
-                                    type="button">
-                                    {service}
-                                </button>
-                            </li>
-                        ))}
-                    </ul>
-                </nav>
-
-                {/* Contact Us */}
-                <div className="mt-8 lg:mt-0">
-                    <h2 className="font-semibold text-white">Contact Us</h2>
-                    <address className="not-italic">
-                        <div className="mt-5 flex gap-2 items-center">
-                            <EmailIcon />
-                            <p
-                                href="mailto:email@gmail.com"
+            {/* Quick Links */}
+            <nav className="mt-8 md:mt-0" aria-label="Quick links">
+                <h2 className="font-semibold text-white">Quick Links</h2>
+                <ul>
+                    {links.map((link, index) => (
+                        <li key={index} className="mt-5 text-[0.8rem]">
+                            <Link
+                                href={link.link}
                                 className="hover:text-[#DFAE74] transition-colors">
-                                bhumibalisejahtera@
-                                <br />
-                                gmail.com
-                            </p>
-                        </div>
-                        <div className="mt-5 flex gap-2 items-center">
-                            <PhoneIcon />
-                            <p
-                                href="tel:+6200000000"
-                                className="hover:text-[#DFAE74] transition-colors">
-                                (+62) 85157780058
-                            </p>
-                        </div>
-                        <div className="mt-5 flex gap-2 items-center">
-                            <LocationIcon />
-                            <p>Jl. Raya Puputan 188, Renon</p>
-                        </div>
-                    </address>
-                </div>
+                                {link.text}
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            </nav>
 
-                {/* Location Map */}
-                <div className="mt-8 lg:mt-0">
-                    <h2 className="font-semibold text-white">Our Location</h2>
-                    <div className="w-[15rem] mt-3">
-                        <MapPreview
-                            url="https://maps.app.goo.gl/KDFZFN5fGqnGdzxR9"
-                            height="160px"
-                            borderRadius="12px"
-                            style={{
-                                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-                            }}
-                        />
+            {/* Services */}
+            <nav className="mt-8 md:mt-0" aria-label="Services">
+                <h2 className="font-semibold text-white">Services</h2>
+                <ul>
+                    {services.map((service, index) => (
+                        <li key={index} className="mt-5 text-[0.8rem]">
+                            <button
+                                onClick={() =>
+                                    goToSection('services', slugify(service))
+                                }
+                                className="text-left hover:text-[#DFAE74] transition-colors w-full"
+                                type="button">
+                                {service}
+                            </button>
+                        </li>
+                    ))}
+                </ul>
+            </nav>
+
+            {/* Contact Us */}
+            <div className="mt-8 lg:mt-0">
+                <h2 className="font-semibold text-white">Contact Us</h2>
+                <address className="not-italic">
+                    <div className="mt-5 flex gap-2 items-center">
+                        <EmailIcon />
+                        <p
+                            href="mailto:email@gmail.com"
+                            className="hover:text-[#DFAE74] transition-colors">
+                            bhumibalisejahtera@
+                            <br />
+                            gmail.com
+                        </p>
                     </div>
-                </div>
-            </footer>
-        )
-    }
+                    <div className="mt-5 flex gap-2 items-center">
+                        <PhoneIcon />
+                        <p
+                            href="tel:+6200000000"
+                            className="hover:text-[#DFAE74] transition-colors">
+                            (+62) 85157780058
+                        </p>
+                    </div>
+                    <div className="mt-5 flex gap-2 items-center">
+                        <LocationIcon />
+                        <p>Jl. Raya Puputan 188, Renon</p>
+                    </div>
+                </address>
+            </div>
 
-    return null
+            {/* Location Map */}
+            <div className="mt-8 lg:mt-0">
+                <h2 className="font-semibold text-white">Our Location</h2>
+                <div className="w-[15rem] mt-3">
+                    <MapPreview
+                        url="https://maps.app.goo.gl/KDFZFN5fGqnGdzxR9"
+                        height="160px"
+                        borderRadius="12px"
+                        style={{
+                            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                        }}
+                    />
+                </div>
+            </div>
+        </footer>
+    )
 }
 
 export default Footer

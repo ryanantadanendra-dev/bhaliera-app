@@ -10,7 +10,7 @@ export function getEmbedSrc(url) {
     // Matches: !3d-8.6559348!4d115.2168231
     const dataMatch = url.match(/!3d(-?\d+\.?\d*)!4d(-?\d+\.?\d*)/)
     if (dataMatch) {
-        const [_, lat, lng] = dataMatch
+        const [, lat, lng] = dataMatch
         // Try to get zoom from URL
         const zoomMatch = url.match(/,(\d+\.?\d*)z/)
         const zoomLevel = zoomMatch ? Math.round(parseFloat(zoomMatch[1])) : 13
@@ -23,7 +23,7 @@ export function getEmbedSrc(url) {
         /@(-?\d+\.?\d*),(-?\d+\.?\d*)(?:,(\d+\.?\d*)z)?/,
     )
     if (coordsMatch) {
-        const [_, lat, lng, zoom] = coordsMatch
+        const [, lat, lng, zoom] = coordsMatch
         const zoomLevel = zoom ? Math.round(parseFloat(zoom)) : 12 // Use URL zoom or default 12
         return `https://maps.google.com/maps?q=${lat},${lng}&z=${zoomLevel}&output=embed`
     }
@@ -38,7 +38,7 @@ export function getEmbedSrc(url) {
 
     // 3. Place Name: /place/Name
     // Matches: /place/Eiffel+Tower or /place/Eiffel%20Tower
-    const placeMatch = url.match(/\/place\/([^\/\?#]+)/)
+    const placeMatch = url.match(/\/place\/([^/?#]+)/)
     if (placeMatch) {
         const query = decodeURIComponent(placeMatch[1])
         return `https://maps.google.com/maps?q=${encodeURIComponent(query)}&z=15&output=embed`
@@ -46,7 +46,7 @@ export function getEmbedSrc(url) {
 
     // 4. Search Query: /search/Query
     // Matches: /search/Pizza or /maps/search/Pizza
-    const searchMatch = url.match(/\/(?:maps\/)?search\/([^\/\?#]+)/)
+    const searchMatch = url.match(/\/(?:maps\/)?search\/([^/?#]+)/)
     if (searchMatch) {
         const query = decodeURIComponent(searchMatch[1])
         return `https://maps.google.com/maps?q=${encodeURIComponent(query)}&z=15&output=embed`
@@ -60,7 +60,7 @@ export function getEmbedSrc(url) {
             return `https://maps.google.com/maps?q=${encodeURIComponent(qParam)}&z=15&output=embed`
         }
     } catch (e) {
-        console.log('❌ Failed to parse URL object:', e.message)
+        // Failed to parse URL object
     }
 
     return null

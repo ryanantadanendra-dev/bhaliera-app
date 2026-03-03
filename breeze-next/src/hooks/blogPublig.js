@@ -26,12 +26,7 @@ export const useBlogPublic = () => {
         },
     )
 
-    const {
-        data: latests,
-        error: latestsError,
-        mutate: mutateLatests,
-        isLoading: isLoadingLatests,
-    } = useSWR('/api/blogs/latest', fetcher, swrConfig)
+    const { data: latests } = useSWR('/api/blogs/latest', fetcher, swrConfig)
 
     return {
         blogs: data,

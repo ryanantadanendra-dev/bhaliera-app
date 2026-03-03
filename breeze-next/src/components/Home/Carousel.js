@@ -15,8 +15,6 @@ const CAROUSEL_IMAGES = [
 ]
 
 const EmblaCarousel = ({ options }) => {
-    const [selectedIndex, setSelectedIndex] = useState(0)
-
     // Memoize plugin instances to prevent recreation on every render
     const plugins = useMemo(
         () => [Fade(), Autoplay({ delay: 6000, stopOnInteraction: false })],
@@ -27,7 +25,6 @@ const EmblaCarousel = ({ options }) => {
 
     const onSelect = useCallback(() => {
         if (!emblaApi) return
-        setSelectedIndex(emblaApi.selectedScrollSnap())
     }, [emblaApi])
 
     useEffect(() => {
