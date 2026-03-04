@@ -12,16 +12,16 @@ const SendEmailForm = () => {
     const handleSubmit = async e => {
         e.preventDefault()
 
-        await axios.get('/sanctum/csrf-cookie')
-        const res = await axios.post('/api/send/email', {
-            name,
-            email,
-            message,
-        })
+        try {
+            await axios.get('/sanctum/csrf-cookie')
+            const res = await axios.post('/api/send/email', {
+                name,
+                email,
+                message,
+            })
 
-        const data = await res.data
+            const data = await res.data
 
-        if (data.success) {
             Swal.fire({
                 title: 'Success!',
                 text: 'Your Email Have Been Sent!.',
@@ -30,10 +30,10 @@ const SendEmailForm = () => {
             setName('')
             setEmail('')
             setMessage('')
-        } else {
+        } catch (err) {
             Swal.fire({
                 title: 'error!',
-                text: 'Something Went Wrong.',
+                text: err,
                 icon: 'error',
             })
         }
