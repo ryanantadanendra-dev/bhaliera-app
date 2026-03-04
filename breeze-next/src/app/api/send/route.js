@@ -15,8 +15,8 @@ export async function POST(req) {
         })
 
         await transporter.sendMail({
-            from: `"${name}" <${process.env.NEXT_GMAIL_USER}>`,
-            to: process.env.NEXT_GMAIL_USER,
+            from: `"${name}" <${process.env.NEXT_SMTP_USER}>`,
+            to: process.env.NEXT_SMTP_USER,
             replyTo: email,
             subject: 'New Contact Form Message',
             html: `
