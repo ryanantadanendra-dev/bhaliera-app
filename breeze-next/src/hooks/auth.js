@@ -16,7 +16,8 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
             .get('/api/user')
             .then(res => res.data)
             .catch(error => {
-                return error
+                if (error.response?.status !== 401) throw error
+                return null
             }),
     )
 
@@ -98,8 +99,13 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
     }
 
     const logout = async () => {
-        if (!error) {
-            await axios.post('/logout').then(() => mutate())
+        try {
+            await axios.post('/logout')
+        } catch (e) {
+            // ignore error, redirect anyway
+        } finally {
+            mutate(null)
+            window.location.pathname = '/login'
         }
 
         window.location.pathname = '/login'
