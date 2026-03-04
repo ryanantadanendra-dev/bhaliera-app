@@ -14,7 +14,7 @@ const SendEmailForm = () => {
 
         try {
             await axios.get('/sanctum/csrf-cookie')
-            const res = await axios.post('/api/send/email', {
+            await axios.post('/api/send/email', {
                 name,
                 email,
                 message,
