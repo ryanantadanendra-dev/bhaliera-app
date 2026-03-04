@@ -20,8 +20,6 @@ const SendEmailForm = () => {
                 message,
             })
 
-            const data = await res.data
-
             Swal.fire({
                 title: 'Success!',
                 text: 'Your Email Have Been Sent!.',
