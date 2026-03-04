@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Swal from 'sweetalert2'
+import axios from '@/lib/axios'
 
 const SendEmailForm = () => {
     const [name, setName] = useState('')
@@ -11,17 +12,14 @@ const SendEmailForm = () => {
     const handleSubmit = async e => {
         e.preventDefault()
 
-        const res = await fetch('/api/send', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                name,
-                email,
-                message,
-            }),
+        await axios.get('/sanctum/csrf-cookie')
+        const res = await axios.post('/api/send/email', {
+            name,
+            email,
+            message,
         })
 
-        const data = await res.json()
+        const data = await res.data
 
         if (data.success) {
             Swal.fire({
