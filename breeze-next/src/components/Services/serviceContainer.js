@@ -165,7 +165,7 @@ export default function ServiceCard({ service, index, isOpen, toggle }) {
                         experts guide you through every step
                     </p>
                     <Link
-                        href={waLink(service.name, true)}
+                        href={waLink(service?.name, true)}
                         target="_blank"
                         className={` mt-12 w-40 h-16 block ${index == 1 ? 'bg-[#f5c77e] text-black' : 'bg-black text-white'} rounded-xl shadow-lg shadow-[#00000020`}>
                         <p className="flex justify-center items-center h-full">

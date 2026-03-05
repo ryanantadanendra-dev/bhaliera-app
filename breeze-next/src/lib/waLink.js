@@ -5,5 +5,5 @@ export default function waLink({ data = null, isService = false } = {}) {
         message = `Hello, I am interested in ${data} service`
     }
 
-    return `https://wa.me/${process.env.NEXT_PHONE}?text=${encodeURIComponent(message)}`
+    return `https://wa.me/${process.env.NEXT_PUBLIC_PHONE}?text=${encodeURIComponent(message)}`
 }
