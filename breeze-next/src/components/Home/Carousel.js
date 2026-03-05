@@ -10,7 +10,7 @@ import Image from 'next/image'
 const CAROUSEL_IMAGES = [
     '/assets/gallery3.jpeg',
     '/assets/carousel4.jpeg',
-    '/assets/carousel1.png',
+    '/assets/carousel2.PNG',
     '/assets/carousel5.jpg',
 ]
 

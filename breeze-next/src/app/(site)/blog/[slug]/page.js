@@ -6,7 +6,7 @@ export async function generateMetadata({ params }) {
     const blog = blogs.find(b => b.slug === params.slug)
     const imageUrl = blog?.image
         ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/${blog?.image}`
-        : `https://stellabali.com/public/assets/carousel1.png`
+        : `${process.env.NEXT_PUBLIC_BACKEND_URL}/public/assets/logo2.png`
 
     if (!blog) return { title: 'Not found' }
 
