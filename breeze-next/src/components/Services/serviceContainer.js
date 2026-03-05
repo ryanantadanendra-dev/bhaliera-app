@@ -84,7 +84,7 @@ export default function ServiceCard({ service, index, isOpen, toggle }) {
                     </p>
                     <Link
                         href={waLink({
-                            data: service.name,
+                            data: service?.name,
                             isService: true,
                         })}
                         target="_blank"
