@@ -1,6 +1,4 @@
 export default function robots() {
-    const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL
-
     return {
         rules: [
             {
