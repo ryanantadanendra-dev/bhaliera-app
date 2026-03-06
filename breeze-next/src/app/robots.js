@@ -14,6 +14,6 @@ export default function robots() {
                 disallow: ['/dashboard/', '/login'],
             },
         ],
-        sitemap: `${baseUrl}/sitemap.xml`,
+        sitemap: `https://bhaliera.com/sitemap.xml`,
     }
 }
