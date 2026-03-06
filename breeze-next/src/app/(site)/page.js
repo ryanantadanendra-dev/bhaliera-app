@@ -87,9 +87,9 @@ const TestimoialsSection = dynamic(
 const Home = () => {
     return (
         <>
-            <header className="relative min-h-screen md:min-h-full lg:h-screen text-center md:py-32 lg:py-0 md:text-left flex flex-col justify-center px-8 lg:px-0 lg:justify-start sm:items-center md:items-start pt-0 bg-[#082841] overflow-hidden">
+            <header className="relative min-h-screen md:min-h-full lg:h-screen text-center md:py-32 lg:py-0 md:text-left flex flex-col justify-center px-8 lg:px-0 sm:items-center md:items-start pt-0 bg-[#082841] overflow-hidden">
                 {/* Main Content - This should be LCP element */}
-                <h1 className="text-white text-3xl md:text-4xl lg:text-5xl lg:text-left ms-0 lg:ms-10 lg:pe-[18rem] md:pe-32 md:mt-28 lg:mt-40 z-30">
+                <h1 className="text-white text-3xl md:text-4xl lg:text-5xl lg:text-left ms-0 lg:ms-10 lg:pe-[18rem] md:pe-32 z-30">
                     <span>Your Trusted Partner in Legal,</span>
                     <span className="mt-0 md:mt-4 md:block">
                         Licensing, and Certification
