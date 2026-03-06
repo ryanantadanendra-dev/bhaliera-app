@@ -3,12 +3,12 @@
 const nextConfig = {
     images: {
         remotePatterns: [
-            // {
-            //     protocol: 'http',
-            //     hostname: 'localhost',
-            //     port: '8000',
-            //     pathname: '/images/**',
-            // },
+            {
+                protocol: 'http',
+                hostname: 'localhost',
+                port: '8000',
+                pathname: '/images/**',
+            },
             {
                 protocol: 'https',
                 hostname: 'api.bhaliera.com',

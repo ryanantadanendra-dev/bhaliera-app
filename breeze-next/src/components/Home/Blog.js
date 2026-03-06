@@ -69,7 +69,7 @@ const Blog = () => {
                 ))
             ) : (
                 <div className="w-full text-center py-10">
-                    <p className="text-xl">No Blogs Yet!</p>
+                    <p className="text-xl text-black">No Blogs Yet!</p>
                 </div>
             )}
         </>

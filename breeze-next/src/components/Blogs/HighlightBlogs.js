@@ -13,7 +13,12 @@ export default function HighlightBlogs() {
         return blogs.blogs.slice(0, 2)
     }, [blogs])
 
-    if (!highlight.length) return null
+    if (!highlight.length)
+        return (
+            <p className="text-black text-xl mt-12 text-center">
+                No Blogs Yet!
+            </p>
+        )
 
     return (
         <div className="blogs-wrapper flex md:flex-row flex-col items-center justify-center gap-3 pt-12 px-6 md:px-20">

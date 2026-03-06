@@ -1,5 +1,5 @@
 export default function sitemap() {
-    const baseUrl = 'bhaliera.com'
+    const baseUrl = 'https://bhaliera.com'
     return [
         {
             url: baseUrl,
