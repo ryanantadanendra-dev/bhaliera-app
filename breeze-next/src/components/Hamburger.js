@@ -19,7 +19,7 @@ const Hamburger = ({ isOpen, setIsOpen, goToSection, slugify }) => {
                     <Link
                         onClick={() => setIsOpen(false)}
                         href="/about"
-                        className="ms-3">
+                        className="ms-3 w-full">
                         About Us
                     </Link>
                 </div>
@@ -59,7 +59,7 @@ const Hamburger = ({ isOpen, setIsOpen, goToSection, slugify }) => {
                                     setIsExtended(false)
                                     setIsOpen(false)
                                 }}
-                                className="ms-3">
+                                className="ms-3 w-full text-start">
                                 Land Certification & Permitting
                             </button>
                         </div>
@@ -76,7 +76,7 @@ const Hamburger = ({ isOpen, setIsOpen, goToSection, slugify }) => {
                                     setIsExtended(false)
                                     setIsOpen(false)
                                 }}
-                                className="ms-3">
+                                className="ms-3 w-full text-start">
                                 Architectural & Construction Licensing
                             </button>
                         </div>
@@ -93,7 +93,7 @@ const Hamburger = ({ isOpen, setIsOpen, goToSection, slugify }) => {
                                     setIsExtended(false)
                                     setIsOpen(false)
                                 }}
-                                className="ms-3">
+                                className="ms-3 w-full text-start">
                                 ISO 22000 Certification Assistance
                             </button>
                         </div>
@@ -108,7 +108,7 @@ const Hamburger = ({ isOpen, setIsOpen, goToSection, slugify }) => {
                                     setIsExtended(false)
                                     setIsOpen(false)
                                 }}
-                                className="ms-3">
+                                className="ms-3 w-full text-start">
                                 Halal Certification Services
                             </button>
                         </div>
@@ -119,7 +119,7 @@ const Hamburger = ({ isOpen, setIsOpen, goToSection, slugify }) => {
                     <Link
                         onClick={() => setIsOpen(false)}
                         href="/blogs"
-                        className="ms-3">
+                        className="ms-3 w-full">
                         Blogs
                     </Link>
                 </div>
@@ -127,7 +127,7 @@ const Hamburger = ({ isOpen, setIsOpen, goToSection, slugify }) => {
                     <Link
                         onClick={() => setIsOpen(false)}
                         href="/contact"
-                        className="ms-3">
+                        className="ms-3 w-full">
                         Contact
                     </Link>
                 </div>
