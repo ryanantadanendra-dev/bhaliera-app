@@ -12,7 +12,7 @@ const HighlightBlogs = dynamic(() => import('./HighlightBlogs'), {
 
 const BlogsSection = () => {
     return (
-        <section className="w-screen min-h-screen md:min-h-full bg-white overflow-hidden pb-12">
+        <section className="w-screen min-h-full md:min-h-full bg-white overflow-hidden pb-12">
             <HighlightBlogs />
             <Carousel />
         </section>

@@ -64,6 +64,7 @@ export default function Carousel() {
 
     if (!ready) return null
     if (!blogs) return <Loading />
+    console.log(blogs?.blogs)
 
     return (
         <div className="w-screen bg-white mt-12">
@@ -113,7 +114,7 @@ export default function Carousel() {
                 </div>
             </div>
 
-            {blogs?.blogs?.length > 0 && (
+            {blogs?.blogs?.length > 2 ? (
                 <div className="flex justify-center items-center gap-7 mt-8">
                     <button
                         onClick={() => emblaApi?.scrollPrev()}
@@ -151,7 +152,7 @@ export default function Carousel() {
                         </svg>
                     </button>
                 </div>
-            )}
+            ) : null}
         </div>
     )
 }

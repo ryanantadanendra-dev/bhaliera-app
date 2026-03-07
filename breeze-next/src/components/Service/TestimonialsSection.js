@@ -9,7 +9,7 @@ const TestimoialsSection = () => {
                 Client Testimonials
             </h2>
             <p
-                className="text-center mt-3 text-xl"
+                className="text-center mt-3 text-[0.8rem] md:text-xl"
                 style={{ color: 'var(--color-primary)' }}>
                 Hear what our satisfied clients have to say about our land
                 certification services

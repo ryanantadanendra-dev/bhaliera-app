@@ -10,7 +10,7 @@ const Galleries = () => {
         <section className="w-full min-h-screen pt-20 bg-white pb-12">
             <h2 className="text-center text-5xl">Galleries</h2>
             <p
-                className="text-center mt-3 text-xl px-1 md:px-32 lg::px-56"
+                className="text-center mt-3 px-1 md:px-32 lg::px-56  md:text-[1rem] text-[0.8rem]"
                 style={{ color: 'var(--color-primary)' }}>
                 Successfully delivered land certification and permitting
                 services for diverse clients across Indonesia

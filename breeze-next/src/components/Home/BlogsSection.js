@@ -24,7 +24,7 @@ const BlogsSection = () => {
                 News & Articles
             </h2>
             <p
-                className="text-center  lg:text-xl lg:px-[24rem] lg:mt-3"
+                className="text-center text-[0.8rem]  lg:text-xl lg:px-[24rem] lg:mt-3"
                 style={{
                     fontFamily: 'var(--font-inter)',
                     color: 'var(--color-primary)',

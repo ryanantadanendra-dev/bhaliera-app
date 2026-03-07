@@ -80,7 +80,7 @@ const SendEmailForm = () => {
                 <li className="flex justify-center md:justify-end">
                     <button
                         type="submit"
-                        className="text-white px-12 py-3 bg-[#DFAE74] mt-5">
+                        className="text-black px-12 py-4 bg-[#DFAE74] mt-5">
                         Send
                     </button>
                 </li>

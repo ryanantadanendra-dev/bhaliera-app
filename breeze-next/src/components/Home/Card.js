@@ -26,7 +26,7 @@ const Card = () => {
             {services?.services?.map(service => (
                 <div
                     key={service?.name}
-                    className="card-container w-[20rem] md:w-[20rem] lg:w-[23rem] text-white flex flex-col justify-between pb-10"
+                    className="card-container w-[20rem] md:w-[20rem] rounded-xl lg:w-[23rem] text-white flex flex-col justify-between pb-10"
                     style={{ backgroundColor: 'var(--color-primary)' }}>
                     <div>
                         <figure className="image-wrapper relative w-40 h-40 lg:w-56 lg:h-56 md:w-48 md:h-48 mx-auto">
@@ -57,15 +57,15 @@ const Card = () => {
                             onClick={() =>
                                 goToSection('services', slugify(service.name))
                             }
-                            className=" px-5 py-3 bg-transparent border-2 border-[#dfae74] ms-8 mt-12 rounded-3xl">
+                            className=" px-5 py-3 bg-transparent border-2 border-[#dfae74] ms-8 mt-12 rounded-3xl hover:bg-[#dfae74] hover:text-white transition-all group">
                             <div className="flex gap-3">
                                 Learn More
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 384 512"
-                                    className="w-4 rotate-45">
+                                    className="w-4 transition-transform group-hover:rotate-45">
                                     <path
-                                        fill="#dfae74"
+                                        fill="currentColor"
                                         d="M214.6 17.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 117.3 160 488c0 17.7 14.3 32 32 32s32-14.3 32-32l0-370.7 105.4 105.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
                                     />
                                 </svg>

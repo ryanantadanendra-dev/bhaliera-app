@@ -2,7 +2,6 @@ import Image from 'next/image'
 import Pattern from '/public/assets/pattern.png'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
-import waLink from '@/lib/waLink'
 
 export const metadata = {
     title: 'Bhaliera - Your Trusted Partner in Legal, Licensing, and Certification Solutions',
@@ -107,7 +106,7 @@ const Home = () => {
 
                 <div className="mt-10 z-30">
                     <Link
-                        href={waLink({ data: null, isService: false })}
+                        href={'/contact'}
                         target="_blank"
                         rel="noopener noreferrer"
                         className=" px-5 py-3 ms-0 mt-6 lg:ms-10 lg:mt-5 lg:py-4 inline-block hover:opacity-90 transition-opacity text-black"
