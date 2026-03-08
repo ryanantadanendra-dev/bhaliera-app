@@ -107,7 +107,6 @@ const Home = () => {
                 <div className="mt-10 z-30">
                     <Link
                         href={'/contact'}
-                        target="_blank"
                         rel="noopener noreferrer"
                         className=" px-5 py-3 ms-0 mt-6 lg:ms-10 lg:mt-5 lg:py-4 inline-block hover:opacity-90 transition-opacity text-black"
                         style={{ backgroundColor: 'var(--color-secondary)' }}>
