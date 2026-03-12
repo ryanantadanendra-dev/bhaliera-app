@@ -84,7 +84,7 @@ const Contact = () => {
                                 Bali 80239
                             </li>
                             <li className="mt-3">
-                                Phone: +62 8515 778 0058 (Arya)
+                                Phone: +62 85190671757 (Arya)
                             </li>
                             <li className="mt-3">
                                 Email: bhumibalisejahtera@gmail.com

@@ -176,12 +176,12 @@ const Footer = () => {
                         <p
                             href="tel:+6200000000"
                             className="hover:text-[#DFAE74] transition-colors">
-                            (+62) 85157780058
+                            (+62) 85190671757
                         </p>
                     </div>
                     <div className="mt-5 flex gap-2 items-center">
                         <LocationIcon />
-                        <p>Jl. Raya Puputan 188, Renon</p>
+                        <p>Jl. Raya Puputan Depan Gedung BCA No.188</p>
                     </div>
                 </address>
             </div>
@@ -191,7 +191,7 @@ const Footer = () => {
                 <h2 className="font-semibold text-white">Our Location</h2>
                 <div className="w-[15rem] mt-3">
                     <MapPreview
-                        url="https://maps.app.goo.gl/KDFZFN5fGqnGdzxR9"
+                        url="https://maps.app.goo.gl/oRQEKVFZ6vqb3bKw5"
                         height="160px"
                         borderRadius="12px"
                         style={{
