@@ -63,8 +63,7 @@ export default function Carousel() {
     }, [])
 
     if (!ready) return null
-    if (!blogs) return <Loading />
-    console.log(blogs?.blogs)
+    if (!blogs && blogs?.blogs?.length > 0) return <Loading />
 
     return (
         <div className="w-screen bg-white mt-12">
